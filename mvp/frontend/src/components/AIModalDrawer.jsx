@@ -29,20 +29,32 @@ export default function AIModalDrawer({ itemId, onClose }) {
       }
     };
     
-  const positiveReviews = [
-    "Absolutely love the fit and quality! Highly recommend this.",
-    "Best purchase I've made this year. It looks exactly like the pictures.",
-    "The material is incredibly soft and comfortable for all-day wear.",
-    "Got so many compliments wearing this! Fits perfectly.",
-    "Exceeded my expectations. Great value for the price!"
-  ];
+    fetchData();
+  }, [itemId]);
+
+  const positiveReviews = React.useMemo(() => {
+    if (!itemData) return [];
+    const brand = itemData.brand || 'This brand';
+    const category = itemData.category || 'item';
+    const color = itemData.attributes?.color?.toLowerCase() || 'design';
+    const material = itemData.attributes?.material?.toLowerCase() || 'material';
+    
+    return [
+      `Absolutely love the fit and quality of this ${category}! Highly recommend.`,
+      `Best purchase I've made this year. ${brand} never disappoints.`,
+      `The ${material} is incredibly soft and comfortable for all-day wear.`,
+      `Got so many compliments wearing this ${color} ${category}! Fits perfectly.`,
+      `Exceeded my expectations. Great value for the price, looks exactly like the pictures.`
+    ];
+  }, [itemData]);
 
   useEffect(() => {
+    if (!positiveReviews.length) return;
     const interval = setInterval(() => {
       setCurrentReviewIndex((prev) => (prev + 1) % positiveReviews.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [positiveReviews]);
 
   const getStockCount = (id) => {
     if (!id) return 0;
