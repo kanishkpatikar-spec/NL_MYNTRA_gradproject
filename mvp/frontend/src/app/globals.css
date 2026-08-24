@@ -51,15 +51,15 @@
   --color-secondary: #818cf8; /* Updated to a premium light blue */
 
   --font-label-bold: "Inter", sans-serif;
-  --font-headline-lg-mobile: "Space Grotesk", sans-serif;
+  --font-headline-lg-mobile: "Inter", sans-serif;
   --font-body-lg: "Inter", sans-serif;
-  --font-display-lg: "Space Grotesk", sans-serif;
-  --font-headline-sm: "Space Grotesk", sans-serif;
-  --font-headline-md: "Space Grotesk", sans-serif;
+  --font-display-lg: "Inter", sans-serif;
+  --font-headline-sm: "Inter", sans-serif;
+  --font-headline-md: "Inter", sans-serif;
   --font-label-sm: "Inter", sans-serif;
   --font-body-sm: "Inter", sans-serif;
   --font-body-md: "Inter", sans-serif;
-  --font-headline-lg: "Space Grotesk", sans-serif;
+  --font-headline-lg: "Inter", sans-serif;
 
   --spacing-container-max: 1440px;
   --spacing-unit: 8px;
