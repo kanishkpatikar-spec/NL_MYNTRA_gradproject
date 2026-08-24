@@ -77,7 +77,7 @@ export default function AIModalDrawer({ itemId, onClose }) {
                     <span className="material-symbols-outlined text-on-surface-variant/40 text-[16px] cursor-help hover:text-primary transition-colors">info</span>
                   </h4>
                   <span className="bg-tertiary/20 text-tertiary font-label-bold text-[10px] px-2 py-1 rounded-full uppercase tracking-wider">
-                    {Math.round(modules.fit_confidence.confidence * 100)}% Match
+                    {Math.round(modules.fit_confidence.confidence <= 1 ? modules.fit_confidence.confidence * 100 : modules.fit_confidence.confidence > 10 ? modules.fit_confidence.confidence : modules.fit_confidence.confidence * 10)}% Match
                   </span>
                 </div>
                 <div className="glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50">
