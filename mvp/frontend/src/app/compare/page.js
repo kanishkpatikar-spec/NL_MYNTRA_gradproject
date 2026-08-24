@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { wishlistService, moduleService } from '@/services/api';
 import { Loader2, ArrowLeft, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import ComparisonClarity from '@/components/ComparisonClarity';
 
-export default function ComparePage() {
+function CompareContent() {
   const searchParams = useSearchParams();
   const idsParam = searchParams.get('ids');
   
@@ -112,5 +112,17 @@ export default function ComparePage() {
         <ComparisonClarity data={comparisonData} />
       )}
     </div>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col items-center justify-center min-h-[60vh]">
+        <Loader2 className="w-10 h-10 animate-spin text-primary mb-4" />
+      </div>
+    }>
+      <CompareContent />
+    </Suspense>
   );
 }
