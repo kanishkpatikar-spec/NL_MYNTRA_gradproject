@@ -1,6 +1,5 @@
 import React from 'react';
 import { Bookmark, ShoppingBag, X } from 'lucide-react';
-import { Bookmark, ShoppingBag, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { logEvent } from '@/services/events';
 
