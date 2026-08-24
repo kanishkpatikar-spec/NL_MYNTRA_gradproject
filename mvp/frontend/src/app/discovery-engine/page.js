@@ -205,26 +205,20 @@ export default function AnalyticsDashboard() {
         {/* Action Plan */}
         <div className="glass-card rounded-2xl p-10 bg-primary/5 border border-primary/20 flex flex-col">
           <h3 className="text-xl font-semibold mb-6 text-white border-l-2 border-primary pl-4" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-            Recommended Solution
+            AI Resolution Strategy
           </h3>
           {loading ? (
              <div className="text-on-surface-variant text-sm">Loading...</div>
           ) : topDriver ? (
              <div className="flex-grow flex flex-col">
                <div className="mb-4">
-                 <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-2">Top Issue</span>
+                 <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-2">Top Issue Detected</span>
                  <p className="text-lg font-bold text-error">{topDriver.driver_label}</p>
                </div>
                <div className="mb-6 flex-grow">
-                 <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-2">Action Plan</span>
+                 <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-2">Autopilot Strategy</span>
                  <p className="text-sm text-on-surface leading-relaxed">
-                   {topDriver.driver_id === 'fit_size_uncertainty' && "Enable the 'Fit Confidence' module on your product pages. This will automatically summarize sizing feedback for users and guide them to their correct size."}
-                   {topDriver.driver_id === 'price_deal_timing' && "Enable the 'Price Context' module to show users historical pricing trends, helping them feel confident they are getting a fair deal right now."}
-                   {topDriver.driver_id === 'styling_occasion_uncertainty' && "Enable the 'Styling Assist' module. This AI feature will suggest outfit combinations and occasions, helping the user visualize how to wear this item."}
-                   {topDriver.driver_id === 'comparison_paralysis' && "Enable the 'Comparison Clarity' module to proactively highlight the unique benefits of this item compared to similar ones in their wishlist."}
-                   {topDriver.driver_id === 'return_exchange_friction' && "Prominently display your return policy near the 'Add to Cart' button. Update your policy to be more flexible if possible."}
-                   {topDriver.driver_id === 'trust_review_credibility' && "Enable the 'Review Digest' module. It surfaces verified buyer experiences in a trustworthy, easy-to-read format."}
-                   {![ 'fit_size_uncertainty', 'price_deal_timing', 'styling_occasion_uncertainty', 'comparison_paralysis', 'return_exchange_friction', 'trust_review_credibility' ].includes(topDriver.driver_id) && "Review your product descriptions and imagery to address this specific customer concern proactively."}
+                   The AI has identified <strong className="text-primary">{topDriver.driver_label}</strong> as the highest overall drop-off factor. By activating the <strong>Resolution Engine</strong>, the AI will automatically inject the optimal confidence module into the Wishlist for high-risk items (e.g., 'Fit Confidence' for clothing, or 'Price Context' for expensive items) to dynamically solve this customer hesitation and save the sale.
                  </p>
                </div>
                <button 
@@ -239,10 +233,10 @@ export default function AnalyticsDashboard() {
                  {moduleEnabled ? (
                    <>
                      <span className="material-symbols-outlined text-[16px]">check_circle</span>
-                     Module Enabled
+                     Engine Active
                    </>
                  ) : (
-                   'Enable Module'
+                   'Activate Resolution Engine'
                  )}
                </button>
              </div>
