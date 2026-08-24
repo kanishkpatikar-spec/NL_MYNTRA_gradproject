@@ -57,13 +57,22 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
           <h3 className="font-headline-sm text-headline-sm text-on-surface line-clamp-2">{product.name}</h3>
         </div>
         
-        <div className="flex items-center justify-between mt-4">
-          <span className="text-on-surface-variant font-body-sm text-body-sm">
+        <div className="flex items-center justify-between mt-4 gap-2">
+          <span className="text-on-surface-variant font-body-sm text-body-sm min-w-max">
             ★ {product.rating}
           </span>
-          <button className="text-primary font-label-bold text-label-bold flex items-center gap-1 hover:text-secondary transition-colors">
-            {isSelected ? 'Close' : 'Analyze'} <span className="material-symbols-outlined text-[16px]">{isSelected ? 'close' : 'arrow_forward'}</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={(e) => { e.stopPropagation(); alert('Item added to cart!'); }}
+              className="bg-primary/20 text-primary border border-primary/30 px-3 py-1.5 rounded-lg font-label-bold text-[10px] uppercase tracking-wider hover:bg-primary hover:text-white transition-all flex items-center gap-1 shadow-sm"
+            >
+              <span className="material-symbols-outlined text-[14px]">shopping_cart_checkout</span>
+              Buy Now
+            </button>
+            <button className="text-primary font-label-bold text-label-bold flex items-center gap-1 hover:text-secondary transition-colors">
+              {isSelected ? 'Close' : 'Analyze'} <span className="material-symbols-outlined text-[16px]">{isSelected ? 'close' : 'arrow_forward'}</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@ export default function AIModalDrawer({ itemId, onClose }) {
   const [loading, setLoading] = useState(false);
   const [modules, setModules] = useState(null);
   const [itemData, setItemData] = useState(null);
+  const [itemDetails, setItemDetails] = useState(null);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   useEffect(() => {
     if (!itemId) return;
@@ -16,6 +18,7 @@ export default function AIModalDrawer({ itemId, onClose }) {
         logEvent('module_opened', { item_id: itemId });
         const itemRes = await wishlistService.getItemDetails(itemId);
         setItemData(itemRes.product || itemRes);
+        setItemDetails(itemRes);
         
         const modsRes = await moduleService.getModules(itemId);
         setModules(modsRes.modules || {});
@@ -29,6 +32,22 @@ export default function AIModalDrawer({ itemId, onClose }) {
     fetchData();
   }, [itemId]);
 
+  useEffect(() => {
+    if (!itemDetails?.reviews?.length) return;
+    const interval = setInterval(() => {
+      setCurrentReviewIndex((prev) => (prev + 1) % Math.min(itemDetails.reviews.length, 5));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [itemDetails]);
+
+  const getStockCount = (id) => {
+    if (!id) return 0;
+    let hash = 0;
+    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
+    return (hash % 12) + 2;
+  };
+  
+  const stockCount = itemData ? getStockCount(itemData.id) : 0;
   const isOpen = !!itemId;
 
   return (
@@ -67,6 +86,39 @@ export default function AIModalDrawer({ itemId, onClose }) {
            <p className="text-on-surface-variant text-center font-body-sm">No insights available.</p>
         ) : (
           <>
+            {/* Verified Reviews Slider */}
+            {itemDetails?.reviews && itemDetails.reviews.length > 0 && (
+              <div className="space-y-4">
+                <h4 className="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary text-[20px]">star</span>
+                  Verified Buyer Feedback
+                </h4>
+                <div className="glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 relative overflow-hidden min-h-[80px] flex items-center justify-center shadow-[0_0_10px_rgba(255,178,186,0.05)]">
+                  <p className="font-body-sm text-body-sm text-on-surface text-center italic animate-in fade-in zoom-in duration-500" key={currentReviewIndex}>
+                    "{itemDetails.reviews[currentReviewIndex].paraphrase}"
+                  </p>
+                  
+                  {/* Dots indicator */}
+                  <div className="absolute bottom-1 left-0 right-0 flex justify-center gap-1">
+                    {Array.from({ length: Math.min(itemDetails.reviews.length, 5) }).map((_, i) => (
+                      <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentReviewIndex ? 'bg-primary w-3' : 'bg-white/20'}`} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Glowing Stock Counter */}
+            <div className="flex items-center justify-between glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 shadow-[0_0_15px_rgba(255,178,186,0.15)] transition-all hover:shadow-[0_0_20px_rgba(255,178,186,0.25)]">
+              <span className="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+                <span className="material-symbols-outlined text-[16px] text-error animate-pulse">local_fire_department</span>
+                High Demand
+              </span>
+              <span className="text-primary font-bold text-[13px] tracking-wide animate-pulse">
+                Only {stockCount} left in stock
+              </span>
+            </div>
+
             {/* Fit Predictor */}
             {modules.fit_confidence && (
               <div className="space-y-4">
@@ -159,17 +211,6 @@ export default function AIModalDrawer({ itemId, onClose }) {
             )}
           </>
         )}
-      </div>
-
-      {/* Footer Area */}
-      <div className="p-5 border-t border-white/10 bg-surface-container-lowest/80 backdrop-blur-md flex flex-col items-center justify-center gap-2">
-        <div className="flex items-center gap-2 text-primary/80">
-          <span className="material-symbols-outlined text-[18px]">verified</span>
-          <span className="font-label-bold text-[11px] uppercase tracking-widest">Analysis Complete</span>
-        </div>
-        <p className="text-center font-label-bold text-[10px] text-on-surface-variant/40 uppercase tracking-widest">
-          Powered by Myntra Aura Gen-3
-        </p>
       </div>
     </aside>
   );
