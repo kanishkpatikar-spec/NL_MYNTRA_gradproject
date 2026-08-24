@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "drivers": [
+    {
+      "id": "fit_size_uncertainty",
+      "label": "Fit / Size Uncertainty",
+      "description": "User is unsure about sizing, fit, or body-type compatibility. Signals include mentioning being between sizes, requesting size charts, or expressing fear of wrong fit."
+    },
+    {
+      "id": "price_deal_timing",
+      "label": "Price / Deal-Timing Uncertainty",
+      "description": "User is waiting for a price drop, sale event, or better deal before purchasing. Signals include mentioning sales, discounts, price comparisons, or waiting for offers."
+    },
+    {
+      "id": "styling_occasion_uncertainty",
+      "label": "Styling / Occasion Uncertainty",
+      "description": "User is unsure how to style the item or what occasion it suits. Signals include asking about outfit pairings, occasion appropriateness, or color matching."
+    },
+    {
+      "id": "trust_review_credibility",
+      "label": "Trust / Review Credibility Doubt",
+      "description": "User doubts the authenticity of reviews, product quality claims, or brand trustworthiness. Signals include questioning fake reviews, product-photo mismatches, or brand reliability."
+    },
+    {
+      "id": "comparison_paralysis",
+      "label": "Comparison Paralysis",
+      "description": "User has saved multiple similar items and cannot decide between them. Signals include mentioning too many options, indecision, or requests for comparison help."
+    },
+    {
+      "id": "wishlist_as_bookmark",
+      "label": "Wishlist-as-Bookmark Behavior",
+      "description": "User treats the wishlist as a browsing tool rather than a purchase intent list. Signals include saving items casually, window shopping behavior, or explicitly stating no purchase intent."
+    },
+    {
+      "id": "return_exchange_friction",
+      "label": "Return / Exchange Friction Fear",
+      "description": "User is deterred by the perceived hassle of returns or exchanges. Signals include mentioning return policies, past bad return experiences, or fear of being stuck with a wrong item."
+    },
+    {
+      "id": "social_validation_seeking",
+      "label": "Social Validation Seeking",
+      "description": "User wants external opinions before purchasing. Signals include asking friends, posting on social media for feedback, or seeking community approval."
+    },
+    {
+      "id": "wishlist_abandonment",
+      "label": "Wishlist Abandonment / Forgetting",
+      "description": "User forgets about wishlisted items or loses interest over time. Signals include mentioning forgotten items, expired interest, or items sitting in wishlist for too long."
+    },
+    {
+      "id": "external_research",
+      "label": "External Research Before Purchase",
+      "description": "User leaves the app to research the product elsewhere. Signals include googling brand reviews, checking YouTube for product demos, or comparing prices on other platforms."
+    }
+  ]
+}

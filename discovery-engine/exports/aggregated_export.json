@@ -1,0 +1,255 @@
+{
+  "export_version": "1.0",
+  "exported_at": "2026-08-21T05:16:31.717322+00:00",
+  "total_snippets_classified": 185,
+  "aggregated_drivers": [
+    {
+      "driver_id": "fit_size_uncertainty",
+      "driver_label": "Fit / Size Uncertainty",
+      "frequency": 41,
+      "avg_intensity": 3.0,
+      "weight": 1.0,
+      "opportunity_score": 123.0,
+      "example_paraphrases": [
+        "User is unsure whether to order a larger size for Roadster cargo pants because of inconsistent sizing reports.",
+        "The user wants to purchase cargo pants but is unsure if the size will fit and asks others for sizing advice.",
+        "User is concerned about Myntra’s return policy for a maxi dress and fears being stuck with a size that doesn’t fit."
+      ]
+    },
+    {
+      "driver_id": "comparison_paralysis",
+      "driver_label": "Comparison Paralysis",
+      "frequency": 34,
+      "avg_intensity": 3.0,
+      "weight": 1.0,
+      "opportunity_score": 102.0,
+      "example_paraphrases": [
+        "User is overwhelmed by having five red jackets in their wishlist and wants help deciding which to buy.",
+        "User has five navy watches saved and is unsure which one to buy, asking for help deciding.",
+        "The user is comparing two similar handbags from different brands and is unsure which will be more durable, despite a slight price difference."
+      ]
+    },
+    {
+      "driver_id": "price_deal_timing",
+      "driver_label": "Price / Deal-Timing Uncertainty",
+      "frequency": 30,
+      "avg_intensity": 3.0,
+      "weight": 1.0,
+      "opportunity_score": 90.0,
+      "example_paraphrases": [
+        "They have kept the cargo pants in their wishlist for two months, hoping the price will fall below Rs. 2363 before making a purchase.",
+        "User is unsure whether the current price is a good deal or if they should wait for a sale event.",
+        "User is unsure whether the current price of the kurta is a good deal or if they should wait for a sale event."
+      ]
+    },
+    {
+      "driver_id": "social_validation_seeking",
+      "driver_label": "Social Validation Seeking",
+      "frequency": 26,
+      "avg_intensity": 3.0,
+      "weight": 1.0,
+      "opportunity_score": 78.0,
+      "example_paraphrases": [
+        "User loves the dress but is unsure how to style it and asks for advice.",
+        "User is unsure if the item is suitable for a wedding and wants help with accessorizing.",
+        "User questions whether the reviews are genuine and asks if anyone has actually purchased the jeans."
+      ]
+    },
+    {
+      "driver_id": "return_exchange_friction",
+      "driver_label": "Return / Exchange Friction Fear",
+      "frequency": 18,
+      "avg_intensity": 3.78,
+      "weight": 1.0,
+      "opportunity_score": 68.04,
+      "example_paraphrases": [
+        "User stopped buying from Myntra because returning watches was too difficult, yet still keeps some items in their wishlist.",
+        "User stopped buying from Myntra due to the hassle of returning heels, but still keeps some items in their wishlist.",
+        "User stopped buying from Myntra because returning t-shirts was too troublesome, yet they still keep some items in their wishlist."
+      ]
+    },
+    {
+      "driver_id": "external_research",
+      "driver_label": "External Research Before Purchase",
+      "frequency": 21,
+      "avg_intensity": 3.0,
+      "weight": 1.0,
+      "opportunity_score": 63.0,
+      "example_paraphrases": [
+        "User watched several YouTube reviews before deciding whether to keep the item in their wishlist.",
+        "The user watched multiple YouTube reviews before deciding to add the Puma t‑shirt to their wishlist.",
+        "The user watched multiple YouTube reviews to decide whether to keep the Puma kurta in their wishlist."
+      ]
+    },
+    {
+      "driver_id": "wishlist_as_bookmark",
+      "driver_label": "Wishlist-as-Bookmark Behavior",
+      "frequency": 22,
+      "avg_intensity": 2.5,
+      "weight": 1.0,
+      "opportunity_score": 55.0,
+      "example_paraphrases": [
+        "User stopped buying from Myntra due to the hassle of returning heels, but still keeps some items in their wishlist.",
+        "User stopped buying from Myntra because returning handbags was too troublesome, yet still keeps a few items in their wishlist.",
+        "User stopped buying from Myntra because returning jeans was too troublesome, yet they still keep some items in their wishlist."
+      ]
+    },
+    {
+      "driver_id": "styling_occasion_uncertainty",
+      "driver_label": "Styling / Occasion Uncertainty",
+      "frequency": 18,
+      "avg_intensity": 3.0,
+      "weight": 1.0,
+      "opportunity_score": 54.0,
+      "example_paraphrases": [
+        "User loves the dress but is unsure how to style it and asks for advice.",
+        "User is unsure if the item is suitable for a wedding and wants help with accessorizing.",
+        "User likes the jacket but is unsure how to style it with other pieces."
+      ]
+    },
+    {
+      "driver_id": "trust_review_credibility",
+      "driver_label": "Trust / Review Credibility Doubt",
+      "frequency": 17,
+      "avg_intensity": 3.0,
+      "weight": 1.0,
+      "opportunity_score": 51.0,
+      "example_paraphrases": [
+        "User doubts the material quality of the item due to the absence of photo reviews.",
+        "The user doubts the authenticity of the product reviews and wants confirmation that real buyers have purchased the sneakers.",
+        "User questions whether the reviews are genuine and asks if anyone has actually purchased the jeans."
+      ]
+    },
+    {
+      "driver_id": "wishlist_abandonment",
+      "driver_label": "Wishlist Abandonment / Forgetting",
+      "frequency": 0,
+      "avg_intensity": 0.0,
+      "weight": 1.0,
+      "opportunity_score": 0.0,
+      "example_paraphrases": []
+    }
+  ],
+  "cooccurrence_matrix": {
+    "wishlist_as_bookmark": {
+      "wishlist_as_bookmark": 0,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 0,
+      "social_validation_seeking": 0,
+      "return_exchange_friction": 5,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 0,
+      "fit_size_uncertainty": 0,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 1
+    },
+    "styling_occasion_uncertainty": {
+      "wishlist_as_bookmark": 0,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 0,
+      "social_validation_seeking": 3,
+      "return_exchange_friction": 0,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 0,
+      "fit_size_uncertainty": 0,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 0
+    },
+    "external_research": {
+      "wishlist_as_bookmark": 0,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 0,
+      "social_validation_seeking": 0,
+      "return_exchange_friction": 0,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 0,
+      "fit_size_uncertainty": 0,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 1
+    },
+    "social_validation_seeking": {
+      "wishlist_as_bookmark": 0,
+      "styling_occasion_uncertainty": 3,
+      "external_research": 0,
+      "social_validation_seeking": 0,
+      "return_exchange_friction": 0,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 3,
+      "fit_size_uncertainty": 20,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 0
+    },
+    "return_exchange_friction": {
+      "wishlist_as_bookmark": 5,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 0,
+      "social_validation_seeking": 0,
+      "return_exchange_friction": 0,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 0,
+      "fit_size_uncertainty": 8,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 0
+    },
+    "comparison_paralysis": {
+      "wishlist_as_bookmark": 0,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 0,
+      "social_validation_seeking": 0,
+      "return_exchange_friction": 0,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 1,
+      "fit_size_uncertainty": 0,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 0
+    },
+    "trust_review_credibility": {
+      "wishlist_as_bookmark": 0,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 0,
+      "social_validation_seeking": 3,
+      "return_exchange_friction": 0,
+      "comparison_paralysis": 1,
+      "trust_review_credibility": 0,
+      "fit_size_uncertainty": 0,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 0
+    },
+    "fit_size_uncertainty": {
+      "wishlist_as_bookmark": 0,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 0,
+      "social_validation_seeking": 20,
+      "return_exchange_friction": 8,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 0,
+      "fit_size_uncertainty": 0,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 0
+    },
+    "wishlist_abandonment": {
+      "wishlist_as_bookmark": 0,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 0,
+      "social_validation_seeking": 0,
+      "return_exchange_friction": 0,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 0,
+      "fit_size_uncertainty": 0,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 0
+    },
+    "price_deal_timing": {
+      "wishlist_as_bookmark": 1,
+      "styling_occasion_uncertainty": 0,
+      "external_research": 1,
+      "social_validation_seeking": 0,
+      "return_exchange_friction": 0,
+      "comparison_paralysis": 0,
+      "trust_review_credibility": 0,
+      "fit_size_uncertainty": 0,
+      "wishlist_abandonment": 0,
+      "price_deal_timing": 0
+    }
+  }
+}

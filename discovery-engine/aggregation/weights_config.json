@@ -1,0 +1,12 @@
+{
+  "fit_size_uncertainty": 1.0,
+  "price_deal_timing": 1.0,
+  "styling_occasion_uncertainty": 1.0,
+  "trust_review_credibility": 1.0,
+  "comparison_paralysis": 1.0,
+  "wishlist_as_bookmark": 1.0,
+  "return_exchange_friction": 1.0,
+  "social_validation_seeking": 1.0,
+  "wishlist_abandonment": 1.0,
+  "external_research": 1.0
+}

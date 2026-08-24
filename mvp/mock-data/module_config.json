@@ -1,0 +1,7 @@
+{
+  "fit_confidence": { "enabled": true },
+  "price_context": { "enabled": true },
+  "styling_assist": { "enabled": true },
+  "comparison_clarity": { "enabled": true },
+  "review_digest": { "enabled": true }
+}

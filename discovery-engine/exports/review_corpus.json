@@ -1,0 +1,2069 @@
+{
+  "export_version": "1.0",
+  "exported_at": "2026-08-21T05:16:31.719204+00:00",
+  "total_snippets": 185,
+  "snippets": [
+    {
+      "id": "220575df-eeea-4b08-9497-e37396736c9d",
+      "clean_id": "c1ec1496-774a-4c07-be10-52fc98fc9dfc",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price is a good deal or if they should wait for a sale event.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e9a03e0a-dbb2-403c-8c3a-ad26dbed82bb",
+      "clean_id": "36431849-a9f0-4986-913a-6ef041a2c059",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "User doubts the material quality of the item due to the absence of photo reviews.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "b94a3f97-70b6-4877-8577-a205209bfd36",
+      "clean_id": "928599af-4893-4053-b2c5-6f5428eb3a57",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that real buyers have purchased the sneakers.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c71de9b4-ebdc-4847-ae8a-e985603b6f0f",
+      "clean_id": "b8f191e3-c39b-4681-ab3d-0ccb05facf1e",
+      "tags": [
+        "styling_occasion_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User loves the dress but is unsure how to style it and asks for advice.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "235254ba-d3db-46da-8312-5fc4b2a9150b",
+      "clean_id": "156639f6-2449-4ef5-812c-efa8a4d2f040",
+      "tags": [
+        "return_exchange_friction"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returning watches was too difficult, yet still keeps some items in their wishlist.",
+      "intensity": 5,
+      "segments": []
+    },
+    {
+      "id": "3ba080ec-7c72-44bd-b46a-059273288899",
+      "clean_id": "aa6e33ee-0ec1-4af0-bd6d-be9b04e76003",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "The user keeps a large number of items in their wishlist but never ends up buying them.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "1ed87407-6569-4dd9-b71f-428d86d38a1d",
+      "clean_id": "1d122f84-0e9f-4e91-afbf-c7a50253c9eb",
+      "tags": [
+        "styling_occasion_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User is unsure if the item is suitable for a wedding and wants help with accessorizing.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "b4dff5ce-4ce3-4ca4-8150-cb0d7ac6fecd",
+      "clean_id": "6b2f492b-53b5-4887-b556-24adc4434a36",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price of the kurta is a good deal or if they should wait for a sale event.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "45c66ef2-fc66-4199-b2fc-dc20fec838a2",
+      "clean_id": "115215fb-ff63-44d4-844d-c6c69c9277b6",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the jacket but is unsure how to style it with other pieces.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "342b258c-7404-4bfb-b29b-9147e9a051cb",
+      "clean_id": "b784c75a-3f10-4f67-af1d-ad419cef1c68",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "User watched several YouTube reviews before deciding whether to keep the item in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "1fcd04eb-f8cc-4d41-b35a-5b15a4e9b773",
+      "clean_id": "c81d7e40-3a6c-4c59-a1fb-475f86288268",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user has kept the maxi dress in their wishlist for two months, hoping the price will drop below Rs. 893 before making a purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "02b49b54-ef4a-4dcc-82f7-9ca3b065438c",
+      "clean_id": "85909402-dcc7-4a40-bfc9-c3192fc7982c",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is overwhelmed by having five red jackets in their wishlist and wants help deciding which to buy.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "328c64c7-9956-4f27-8b1f-e4d70ba3301e",
+      "clean_id": "2642b358-7d12-4f1c-a479-97686597ab11",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User is unsure whether to order a larger size for Roadster cargo pants because of inconsistent sizing reports.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c40ca8e7-dd7f-4929-bce9-9d9027024c6d",
+      "clean_id": "4ff0c946-7957-426c-8388-8956cea0bb70",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User has five navy watches saved and is unsure which one to buy, asking for help deciding.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "595fc791-c9e3-4b43-a92a-b4ba101ef6d5",
+      "clean_id": "b82e6678-46bc-4fed-89cd-9bb98682f32b",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "The user is comparing two similar handbags from different brands and is unsure which will be more durable, despite a slight price difference.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "fefbcabc-3886-48ba-8781-9051dad7af0c",
+      "clean_id": "073cd142-e92a-468a-b03a-be6284e29fa5",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user watched multiple YouTube reviews before deciding to add the Puma t‑shirt to their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "7f98c5d7-ac47-4a27-a958-2a603e8defd4",
+      "clean_id": "47ad92d7-7582-4e49-b882-f9e1d25062d9",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar cargo pants and is unsure which will be more durable.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "b0303173-1eee-40cc-9ffe-bbe9d5f8038c",
+      "clean_id": "41590f3d-6b91-41db-923b-93e4811a15d0",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User has several similar watches in their wishlist and is unsure which one to buy.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "78f369e2-2ab1-4ce3-99b2-a1e1f0d19606",
+      "clean_id": "fbfffcb4-a1b9-4938-be48-2bb08f384e02",
+      "tags": [
+        "trust_review_credibility",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User questions whether the reviews are genuine and asks if anyone has actually purchased the jeans.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "d37fcc1a-7259-4eb4-be5f-577c855e994d",
+      "clean_id": "c7572a8a-7258-4e66-97d0-7087d554f2f6",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase cargo pants but is unsure if the size will fit and asks others for sizing advice.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "4889b4e2-841c-4bf3-bf8a-97c4f2953309",
+      "clean_id": "716e6990-1981-4469-8a08-ca4edbe6005a",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "The user has several similar beige sneakers in their wishlist and is struggling to choose one, asking for assistance in making a decision.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e3dc60bf-6ea7-4ccc-bd68-124d7cbd105b",
+      "clean_id": "5e14afbe-fdff-470f-a75c-5356fc77a39e",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the red heels but is unsure how to style them for an outfit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "28a14c2b-4142-451e-b7dd-eb7d2782ddd7",
+      "clean_id": "2a546636-a209-4ee0-8e1f-a8136314f14d",
+      "tags": [
+        "return_exchange_friction",
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User is concerned about Myntra’s return policy for a maxi dress and fears being stuck with a size that doesn’t fit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "3c9369cb-0009-442b-a2ef-b8b102657357",
+      "clean_id": "be1d750e-e76f-482b-a100-25cd5a2cffb7",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is asking whether someone bought the item after the sale had ended.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "920a8deb-e506-436f-9d4b-ad24a80a9225",
+      "clean_id": "a1ad9770-bf84-4267-a183-f63692619227",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to buy a kurta but is unsure if it fits true to size and asks others for sizing advice.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "b959ef59-548a-4eea-9917-a6b7687217c4",
+      "clean_id": "e031e6d2-682b-4d86-969a-d72ebe91afdc",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that the jeans are genuine.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "b313563c-2333-4790-8c63-324b1d972c98",
+      "clean_id": "f8c85093-7588-49de-88dc-697596cc8364",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the navy kurta but is unsure how to style it and seeks pairing suggestions.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "5a287f1d-7a8f-4089-8e29-9fa1e6525096",
+      "clean_id": "e82ec997-f19d-4454-9487-1d235438152b",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is overwhelmed by having multiple similar handbags in their wishlist and is seeking help to decide which one to purchase.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "05a0c4cd-e230-436d-9ee4-19abc98fa084",
+      "clean_id": "390f9bb7-506a-483f-b677-2cddf20c8396",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is overwhelmed by having multiple similar items in their wishlist and needs help deciding which one to purchase.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "443288be-83bf-45ab-b481-76bf597d378c",
+      "clean_id": "4bd9097f-ae87-4372-a09b-2d496730c98a",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User has several similar items in their wishlist and is unsure which one to choose.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "038b33b5-c70e-4f77-be9c-64e4b753db68",
+      "clean_id": "0d880917-b15a-42cf-a678-8daa4f34f03a",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User has kept a t‑shirt in their wishlist for two months, hoping the price will drop below Rs. 724 before buying.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "9d5ead16-5e27-4cbb-a9f2-e853cb6d35e8",
+      "clean_id": "368bc3c0-dbe1-42f6-be95-d7ab3d80bc5c",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that real buyers have purchased the Nike t-shirt.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "2329d13c-6998-4bf9-b2a5-45688f948b55",
+      "clean_id": "487f24ed-3fee-4199-8aeb-785901938af5",
+      "tags": [
+        "return_exchange_friction",
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returning jeans was too troublesome, yet they still keep some items in their wishlist.",
+      "intensity": 4,
+      "segments": []
+    },
+    {
+      "id": "60be71f0-82d3-46f1-97dc-f1fc698d0447",
+      "clean_id": "9b874ee5-f1d5-44fb-a019-abe2c31c22f8",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the pants but is unsure how to style them for an outfit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "0ab203c1-8d89-4662-a0d5-0137084ec573",
+      "clean_id": "24ff3c42-befe-4a0f-a2e3-76bad92b62dc",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price is a good deal or if they should wait for a sale event.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "6ee43fed-07bf-4f4a-95bd-7dd15952c797",
+      "clean_id": "dda58da3-61bc-4d9d-ac07-c2a7a6f6e8d2",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "The user keeps adding items to their wishlist but never buys them, wondering if others do the same.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "78df7a13-f553-43e0-af5a-63cfad0a3544",
+      "clean_id": "b9e398fd-d73d-4905-8cc4-c65f2cdd92ff",
+      "tags": [
+        "trust_review_credibility",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation from others who have actually purchased the item.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "9bcfffa3-6472-4a9c-9ed5-6e5639e8f04f",
+      "clean_id": "11076ae9-5594-49f3-9181-9f0119533c03",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase sneakers but is unsure if the size will fit and is asking others for confirmation.",
+      "intensity": 3,
+      "segments": [
+        "women's fashion"
+      ]
+    },
+    {
+      "id": "22b5edb2-3533-439d-b783-3497e927582d",
+      "clean_id": "d1d812f0-9d47-4ed3-a029-ce0011bc6910",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User keeps a large number of items in their wishlist but never ends up buying them, using it more as a browsing list.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "ca62bb7c-d2d8-4094-931f-b848145b4b7c",
+      "clean_id": "78d9549b-4a72-41c2-afbc-884cf422f78d",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User keeps items on the wishlist for inspiration and likely won't buy most of them.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "05073b49-1bde-4be7-8ed4-dd16adbca4f8",
+      "clean_id": "837850cb-6fcf-4f93-9859-51ac2c74f0d5",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user watched multiple YouTube reviews to decide whether to keep the Puma kurta in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "10093d17-2778-4149-a022-9b8ff7b64c90",
+      "clean_id": "503a3313-0838-41e3-8f81-829f31e1b6a5",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user is unsure whether to order a larger size because H&M’s sizing is reportedly inconsistent.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "a0983d8c-b106-472b-94bb-360a7a4d2ba0",
+      "clean_id": "53557efb-577d-4c1d-8d21-0e0debe14830",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "They found a maxi dress on Myntra and are looking up the brand’s own site on Google to compare prices.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "9b207333-3bc2-42a6-a92b-ab1b8b958532",
+      "clean_id": "24bb4e2d-31f1-4db9-ba0e-f7b7c1001ce0",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the sneakers but is unsure how to style them with other outfits.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "456f0791-eb88-41ff-acf4-4d463fa003f2",
+      "clean_id": "8c73f76b-9be5-4e7b-baba-498bf97e0483",
+      "tags": [
+        "return_exchange_friction",
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User worries about Myntra’s return policy for handbags and wants to be able to return if the item doesn’t fit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "dedd4c02-442f-4968-b993-082ac39a1fec",
+      "clean_id": "057cdac3-9aa8-4063-8c48-8d0964f7a353",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user is researching online to compare prices before deciding to buy the handbag.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "67db73cd-b905-496f-8eb8-d45dd7890cff",
+      "clean_id": "c5f3386d-98fb-4f05-82a8-39e8f4e7048b",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase a t‑shirt but is unsure if it will fit properly and asks others for sizing confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "2e0fc93d-ca69-4e1a-bc7c-d23b5f1bacf5",
+      "clean_id": "391feeef-8f31-4e82-97a6-9c50fa9cd6e6",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User adds many items to their wishlist but never follows through with a purchase, using it more as a browsing list.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "becb69b4-20d9-44c7-8c35-dd5404d637cc",
+      "clean_id": "e1dcd582-1a02-43fa-bf85-5cebe428bbee",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "The user keeps items on Myntra’s wishlist just for inspiration and doesn’t intend to purchase most of them.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "7e34f72c-f4b3-4eec-8db7-771a0c79125c",
+      "clean_id": "a309e2c4-1548-4a29-bd84-90ad0e74be8a",
+      "tags": [
+        "return_exchange_friction",
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User is worried about Myntra’s return policy for jeans and wants to avoid being stuck if the fit is wrong.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "8a91452e-520a-4057-a890-010257dd90c6",
+      "clean_id": "88a4b644-e033-4082-96f1-b94938a0e780",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User has several similar watches in their wishlist and is unsure which to purchase, seeking advice to decide.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "331d81bf-c72a-42c0-838e-519354faabc5",
+      "clean_id": "dc86b397-d927-4a39-8c64-1f76d7623fa3",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User has five red kurtas saved and is unsure which one to purchase, seeking help to decide.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "ac5b71fc-540c-4457-9dea-02672d8aa5ce",
+      "clean_id": "43aadc68-8063-495d-9664-69614fa25b28",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "The user is comparing two similar products and wants to know which one is more durable.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c73349b8-cd81-431d-aaf4-4a5c20ad66c1",
+      "clean_id": "c3af2d93-70f0-4f2d-b1ef-16043f2d3cb0",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user is unsure about the sizing of Biba watches due to reports of inconsistency and wonders whether to order a larger size.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "86239346-d46a-4c61-b34c-e5c962f751f9",
+      "clean_id": "7938a21a-98c0-435c-a8e4-4bda1a169a8f",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "User watched several YouTube reviews before deciding whether to keep the item in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "f0bab2a2-5091-40fd-add1-981691680b27",
+      "clean_id": "54f976bc-62a4-4237-a6da-2a3e1f6cce3d",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price is a good deal or if they should wait for an upcoming sale.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "59d22ab7-87a6-4d3b-9332-5fa78de5b993",
+      "clean_id": "bfdc9db1-bc9c-4945-8d72-cd5670edb03b",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user is uncertain about the sizing of Roadster jeans due to inconsistent fit reports and wonders whether to order a larger size.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "b606cb95-38cf-47a3-844f-c864964f95aa",
+      "clean_id": "310600d8-96a4-46d1-8d58-2b2c09af956e",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user watched three YouTube reviews to decide whether to keep the Roadster jeans in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "04509bd7-7d23-4b1c-860c-6755acde5e3f",
+      "clean_id": "80c87a9e-3177-4f52-86e6-55e8dda828d6",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that the item has been purchased by real customers.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "fb43a014-ddd9-4ffb-a811-eb808d8c88cb",
+      "clean_id": "267ec502-bfd4-4535-ab3b-7619ea95c581",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is overwhelmed by multiple similar items and needs help choosing one.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "d19ffdc8-57cf-473c-9d8f-87b6f03bf581",
+      "clean_id": "0f34681c-3530-49d9-a1be-755edb245679",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar t-shirts and is unsure which will last longer, noting a price difference.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "64d5958d-3b30-4040-9f13-a690d0a8e92b",
+      "clean_id": "2d31c691-b7f1-40df-aa09-e3641bb0f789",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User keeps jeans on the wishlist mainly for inspiration and likely won't purchase most of them.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "12fc177d-6837-4581-b5e0-e96a94ca5766",
+      "clean_id": "620e230c-c677-4fe7-bba6-72d60b6f7eb1",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "The user is comparing two similar brands and is unsure which one to choose based on price and durability.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "0d6054b4-85ce-4222-a736-f03131d74926",
+      "clean_id": "3ea44b4a-0d65-40c2-bbe8-d88abcdd047f",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "The user remarks that the white dress looks attractive.",
+      "intensity": 1,
+      "segments": []
+    },
+    {
+      "id": "ec0cf599-537c-4705-867e-a7fdb104c86d",
+      "clean_id": "0aed52b6-26c8-4104-976c-f5a010b9a042",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user has kept the sneakers in their wishlist for two months, hoping the price will drop below Rs.2325 before making a purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "38d547ef-ea59-448a-9d02-3fa90713036a",
+      "clean_id": "908f8576-9177-4e68-b988-9e7f059c6fa1",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "The user has several similar olive jackets saved and is unsure which one to purchase.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "b9949bf4-27b3-4925-b519-7bc572e93f29",
+      "clean_id": "ebba0871-1ca1-4165-bceb-6bcdad6aec8d",
+      "tags": [
+        "return_exchange_friction"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returning kurtas was too difficult, yet still keeps some items in their wishlist.",
+      "intensity": 4,
+      "segments": []
+    },
+    {
+      "id": "788929b2-68b1-4062-9ad0-34445e9232c7",
+      "clean_id": "aada32ce-1e43-4ab8-8e8a-01fa3d22cb9c",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price of the cargo pants is a good deal or if they should wait for a sale event.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "d0fd5d8b-58c8-4bd0-920c-597bea6f2393",
+      "clean_id": "6cae4510-ec6c-4d2b-ac26-4bdc55b22f1f",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "User is researching the jacket’s price on other sites before deciding to buy.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "16eb2241-6f7b-44fa-b04f-7a92f0e6c148",
+      "clean_id": "8833fafc-6920-4e18-87ce-1c6c20623224",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that others have actually purchased the Puma heels.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "4d227caa-18d2-4ba7-b94b-b86bd6410171",
+      "clean_id": "98261893-2c51-4722-87fd-b4807415eed1",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user is asking whether the current price of the jacket is a good deal or if they should wait for a sale event.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "379c4505-9efe-4aba-81bc-20e6125c7718",
+      "clean_id": "bb913612-93a1-4c8d-9dd2-c3f89b404c28",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "They have kept the watch in their wishlist for two months, hoping the price will fall below Rs. 1233 before making a purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "abe6d10f-8146-456f-af22-3d7c835962c0",
+      "clean_id": "a4bf71a3-1c55-4786-970a-4f7b9369de92",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user is unsure about Nike's inconsistent sizing and wonders if they should order a larger size.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "f1f0ed57-7adf-440c-97dc-9703462076f5",
+      "clean_id": "0ece3515-b2c7-40a5-9f67-dfe8318d3ae6",
+      "tags": [
+        "return_exchange_friction",
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returns were too troublesome, yet still keeps some items in their wishlist.",
+      "intensity": 4,
+      "segments": []
+    },
+    {
+      "id": "ac4476f6-591e-4f63-9eed-bab042c46ef7",
+      "clean_id": "a9559271-c347-444c-9791-24ac6ff68350",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that real buyers have purchased the jeans.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "beebee1e-fddf-491b-ab24-d5047a741e45",
+      "clean_id": "25b8d965-ab4b-437f-9125-60d34e63076f",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user is researching online to compare prices and see if the item is cheaper on the brand’s own site.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "f070296c-2baa-4f05-a47d-d7749e586e8b",
+      "clean_id": "c599a4ae-8d22-409b-a7b0-b4b68137e577",
+      "tags": [
+        "return_exchange_friction",
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returns were too troublesome, yet still keeps some items in their wishlist.",
+      "intensity": 4,
+      "segments": []
+    },
+    {
+      "id": "49a697a5-9977-4f66-984a-ab3005af2b48",
+      "clean_id": "0f423d1c-f9cc-41d8-b1f0-8445929270fd",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price is a good deal or if they should wait for a sale event.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "1af2ffdb-04ee-4920-80b1-687e6d046f30",
+      "clean_id": "6fc121d4-ea85-4704-818b-6f4a9ee5fe0e",
+      "tags": [
+        "return_exchange_friction",
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User stopped buying from Myntra due to the hassle of returning heels, but still keeps some items in their wishlist.",
+      "intensity": 5,
+      "segments": []
+    },
+    {
+      "id": "7c2463ea-0626-48d8-8bfd-1162f9b86f61",
+      "clean_id": "1f35f2c4-70c1-4dbf-88b9-be05127e805f",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "User is looking up the same watch on Google to compare prices before deciding to buy.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "ee851134-7ef6-41c6-b1ba-f202569f8ec0",
+      "clean_id": "69b58bef-c677-4f76-97b3-8c5423325906",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to buy a Nike handbag but is unsure if it fits true to size and asks others for confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "44185a13-5e4d-45ce-9cac-d68062f74c6b",
+      "clean_id": "de7e3850-c514-441d-b839-ca013f2329a5",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "The user loves the kurta but is unsure how to style it with other pieces.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "811bfdd6-3de4-404d-8b31-cd0a35f9264e",
+      "clean_id": "5e6c9fa8-463f-4b0a-ab27-708ad5a2ffc9",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user is unsure whether to order a larger size for Levi’s jeans because of reports of inconsistent sizing.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "122f1a69-6f8e-4a2d-90ae-a48877840689",
+      "clean_id": "0c60925f-0416-4294-bbf6-cfeaa4652b26",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User compliments the app for offering attractive clothing and frequent discounts.",
+      "intensity": 1,
+      "segments": []
+    },
+    {
+      "id": "2f937326-5258-4662-b83e-044c56a4fe30",
+      "clean_id": "dd6bb34d-39fa-4cd8-853f-da4ced5095a4",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the pastel heels but is unsure how to style them for an outfit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "3f526b89-af4c-415e-9aa6-cea717f12cbe",
+      "clean_id": "cee4c026-e89e-4dfa-9973-82e3d69fd626",
+      "tags": [
+        "return_exchange_friction",
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User worries about Myntra’s return policy for kurtas and fears being stuck with a piece that doesn’t fit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "1cc6d896-f289-431d-9fb4-5758c81dedc2",
+      "clean_id": "ace9008f-1694-4333-b17c-e11146524b94",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "They watched several YouTube reviews before deciding whether to keep the handbag on their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "efdd73f5-529b-416a-9ec8-5696e57d844c",
+      "clean_id": "1f06aed4-4966-4644-b24a-1246d8e0b89c",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user has kept a kurta in their wishlist for two months, hoping the price will fall below Rs. 755 before making a purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "8691df54-a7d7-49a0-beec-dbb7d53f4aab",
+      "clean_id": "1702bef4-f8c8-495f-8384-4d469c63b36f",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "User is researching outside the app to compare prices with the brand's own website.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "367727be-b12e-4342-9123-2550a584daf1",
+      "clean_id": "96f5c55f-ff43-4586-9aa5-92f35429c4cc",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "The user is comparing two similar jeans brands and is unsure which will be more durable, despite a slight price difference.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "533d3422-f2be-4fcc-b1cc-41d000ef5bfa",
+      "clean_id": "62b520fe-eefe-40ef-a8a1-d198d3b84d0a",
+      "tags": [
+        "price_deal_timing",
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User has kept cargo pants in their wishlist for two months, hoping the price will drop below 575 rupees before making a purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "173e9119-5e8a-4d1b-833f-d7f621172a82",
+      "clean_id": "6d6e9f5e-8956-40c9-9d4a-aeb9749db18a",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User has five navy heels saved and is unsure which to buy, asking for assistance in making a choice.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "d7399bd9-2ca2-4c30-8017-c3fcf49f4438",
+      "clean_id": "8e5558c1-8870-4377-948e-bb5075d98d4c",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user watched several YouTube reviews to decide whether to keep the Puma cargo pants on their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c7465089-bff2-41b4-9248-d42f515ab449",
+      "clean_id": "50247e4e-01ec-4591-88f0-bac7b2066e2a",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current Rs.555 price for the jeans is a good deal or if they should wait for an upcoming sale.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "a5aff1fc-9c48-4266-b747-6d9467fd9ecd",
+      "clean_id": "1531811d-dfc9-4a40-9d43-ccecb8725506",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that real buyers have purchased the item.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "495b7cbf-cd71-4678-b05c-71fd50996f0b",
+      "clean_id": "86ed50fc-9f07-4bcf-8e99-859da83ef056",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User wants to purchase a Mango handbag but is unsure if the size will fit, asking others for sizing confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c0c22268-0002-4e45-968c-1b028fa851b2",
+      "clean_id": "73f710d6-0d92-4951-b33f-90e1e2797f05",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user is unsure if the Vero Moda kurta fits true to size and seeks confirmation from others.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "fc366331-23ff-4187-9f39-d42a389236be",
+      "clean_id": "743ec6df-a5a5-4f3f-bcf5-74018b5ae6fc",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User wants to purchase a Mango kurta but is unsure if it fits true to size and asks others for sizing advice.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "47ff595d-0e29-44af-8f86-46df08161f15",
+      "clean_id": "ca02c23b-c4b4-4b2e-9890-389ecc03aadc",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price of Rs. 912 is a good deal or if they should wait for a sale event.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "bec744d7-65d3-472b-ae2f-3b8446671d59",
+      "clean_id": "449c3e3c-c5f6-4966-91a2-8133864b6c67",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User has several similar olive sneakers saved and is unsure which one to buy.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "7e500c0d-1b39-41c5-a08a-3162fd8ead4a",
+      "clean_id": "ad89db2d-3421-47fa-86dc-509a0cb59b3e",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User keeps items on the wishlist for inspiration and plans to buy only a few, if any.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c0346ca6-b2d5-4e44-8553-29e0688d6fa8",
+      "clean_id": "89c8471e-ab88-423f-9126-99f0eeba010c",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User wants to purchase a handbag but is unsure if it fits true to size and asks others for confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "febb50fb-a1dc-4c3c-b00a-c76d6c83a709",
+      "clean_id": "73484570-5def-4922-a0bf-1e398689f7bc",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user is unsure about Vero Moda's sizing consistency and wonders whether to order a larger size.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "352452a2-269b-4e24-b914-7f7012b7c6df",
+      "clean_id": "f7d359cd-b10e-4fc1-9db9-cadaa11c7783",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to buy a Puma watch but is unsure if the size will fit, asking others for confirmation.",
+      "intensity": 3,
+      "segments": [
+        "men's fashion"
+      ]
+    },
+    {
+      "id": "4d260dc7-a483-4da6-a7bb-dfb324242117",
+      "clean_id": "1cacdfc7-eadb-4499-aef5-1cf75cd0c3c9",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase Mango heels but is unsure about sizing and asks others for confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "41631074-1008-455b-ae68-2dffa7ca273a",
+      "clean_id": "ea2cd5ef-b320-4ace-b6c3-3a1ca8c3c2e0",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "The user keeps adding items to their wishlist for future reference but never ends up buying them.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "9117eea9-badc-4e19-a9fa-0e010caa1924",
+      "clean_id": "1d091aa4-6d67-488d-8af6-3c0f3803c886",
+      "tags": [
+        "return_exchange_friction"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returning t-shirts was too troublesome, yet they still keep some items in their wishlist.",
+      "intensity": 5,
+      "segments": []
+    },
+    {
+      "id": "4aafd609-78ab-4ec0-b0b5-e15554d74733",
+      "clean_id": "efcc0dc9-8046-47df-8905-5af476705421",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase a kurta but is unsure if it fits true to size and asks others for confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e471bcde-f77f-4eaf-b44b-42e2aa8ae47d",
+      "clean_id": "326e1d2d-dd20-4178-bf9c-81400f4a8cb2",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the sneakers but is unsure how to style them and asks for pairing suggestions.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "66c4f262-5b60-4c6e-9841-1e257edabcec",
+      "clean_id": "984c5b2b-0887-49c4-9444-bb7c75dbff9f",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to buy a kurta but is unsure if the size will fit properly and asks others for confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e8abf70a-bbae-45ad-b968-fc2ccde6e679",
+      "clean_id": "b3633c11-76f1-47b0-abef-bddb6b6e59c5",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User keeps a huge wishlist of jeans but never actually buys them, treating the list as a browsing tool.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c2228c5c-0b86-4170-a8aa-bf82dcb30984",
+      "clean_id": "5f8d55ea-7ee2-41c7-ac46-2c4660f30c4c",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price of the heels is a good deal or if they should wait for an upcoming sale.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "40b92558-695a-4da6-9444-032af6decef3",
+      "clean_id": "aceaf6e6-d75f-4b29-8e27-c0e9b8f181d3",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User has several similar pastel kurtas saved and is unsure which to purchase, seeking assistance in choosing.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "46ae9374-3525-47e8-b2bb-56040e34b72e",
+      "clean_id": "3df2324b-d463-4a39-98b1-768a4ef34d92",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "They watched several YouTube reviews before deciding whether to keep the jeans in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "f1b16bc5-8e00-4e50-8b5d-4575c99c511c",
+      "clean_id": "78d43cde-d7ef-4183-9b67-93aded61a619",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "User watched several YouTube reviews to decide whether to keep the watch in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "83f86a59-9903-4e13-a3fa-b5a83e671ce1",
+      "clean_id": "8791a34d-c847-42ab-a61c-6e2ec20c0099",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User is unsure whether to order a larger size for Puma maxi dresses because of inconsistent sizing reports.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "cd96009a-8fe7-4a5a-9cf9-f86dc739a1fc",
+      "clean_id": "aaf70c9e-acd8-4295-bad6-01c6953c5be3",
+      "tags": [
+        "return_exchange_friction",
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User worries about Myntra’s return policy for heels and fears the shoes might not fit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "1d623526-2667-4c56-af66-7cb16b26b813",
+      "clean_id": "5591d78a-3b0c-4ab7-a073-5292ba443985",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user is unsure whether to order a larger size for Puma handbags because of reports of inconsistent sizing.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "053cb4c7-7d48-41a8-8399-0be939d24173",
+      "clean_id": "ef208dd0-b587-4bfb-bb0d-0452a426350e",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User has kept the heels in their wishlist for two months, hoping the price will drop below Rs. 1990 before making a purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "c7844b86-5f9c-4ee3-8738-974a61713974",
+      "clean_id": "5ba1c7aa-c4a3-4630-8466-a4aa3de62e23",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "The user likes the sneakers but is unsure how to style them with other outfits.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "0ebe8e98-4b6b-4d8a-abaf-5ae0fa8313b6",
+      "clean_id": "36d37253-98a7-48eb-9b7c-162855101df1",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the handbag reviews and wants confirmation from real buyers.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "0c0f40a3-310b-4d25-a2a2-9ce5c1773e7d",
+      "clean_id": "730cc4a3-9acb-4f5c-9be8-2797a8cd6297",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user watched several YouTube reviews before deciding whether to keep the DressBerry heels in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "50b4a920-bc1a-459c-8db4-756021e3590a",
+      "clean_id": "db076acc-b3b8-4e26-a7f4-40e171e43815",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the red heels but is unsure how to style them for an outfit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "f2acca6b-129d-4d6e-89bb-72d5f5d3441a",
+      "clean_id": "a20e9017-cf71-4606-a711-a21393a1bbd1",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "User is looking up the product on Google to compare prices before deciding to purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "14d0f9c8-848c-4ea3-8203-c9687f7cb86c",
+      "clean_id": "19de6624-696d-46a7-840c-cb4585e84ddd",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User keeps items on the wishlist for inspiration, not intending to purchase most of them.",
+      "intensity": 2,
+      "segments": [
+        "women's fashion"
+      ]
+    },
+    {
+      "id": "ba39425b-7153-4d6e-af8c-74064c163ccc",
+      "clean_id": "ba984193-2841-47f9-8edb-c5f0caba4bc8",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user watched several YouTube reviews to decide whether to keep the Levi's jeans in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e4f6803f-0a58-470f-93fc-1af9821ce2c9",
+      "clean_id": "4c4042bf-dd0e-434a-a948-242b3877574e",
+      "tags": [
+        "return_exchange_friction",
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User wants to know if Myntra’s return policy is still good for cargo pants and is worried about being stuck with a bad fit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "92498eb4-7d05-4668-995c-2a5c7edca4b0",
+      "clean_id": "5cefe5b0-f565-4110-ae4b-66b28740ace4",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is overwhelmed by multiple similar pastel handbags and wants help deciding which to buy.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "2aa907ef-892d-43fc-8f88-870d1e058300",
+      "clean_id": "1ea901ca-10b5-4687-a405-74b9f25cc062",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase a maxi dress but is unsure if it fits true to size and asks others for confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "f0711cc5-c266-4b3f-be54-bb82d0477904",
+      "clean_id": "86d01239-df6d-4c83-b15a-281c05a1f7c8",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user is asking whether the current price of the heels is a good deal or if they should wait for an upcoming sale.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "cf38cb96-db70-4016-8c85-ab3440cb2da9",
+      "clean_id": "c7cbe643-32dd-453f-a156-07a06dd4ea93",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "The user expresses that the red item was great.",
+      "intensity": 1,
+      "segments": []
+    },
+    {
+      "id": "2b424512-886b-45f6-91e4-9f047091f331",
+      "clean_id": "02ba3352-496a-42c8-b3ab-adc09fab5dfe",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "The user has several jacket options saved and is unsure which to choose, seeking help to decide.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "27cf657b-fda7-4c69-897c-9bbec9973a26",
+      "clean_id": "7103f7c4-5296-4b92-b35f-a1184a804729",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user has kept the maxi dress in their wishlist for two months, hoping the price will drop below Rs. 2466 before making a purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "ea7f3343-010f-47cb-8d3d-52970c8f5d77",
+      "clean_id": "f426826f-2081-4700-8420-5afe824c1578",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User is unsure whether to order a larger size because Levis t-shirts are known for inconsistent sizing.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "bb49ea44-524f-483a-883b-cdec42c0d397",
+      "clean_id": "0cd0a6cc-034b-44b4-86fd-9e258b9c310e",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "The user watched several YouTube reviews to decide whether to keep the Mango watch in their wishlist.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "0e3d5432-e7c0-4acd-b166-e2db1a052ee6",
+      "clean_id": "477f3d94-cf0b-43ee-95d0-56faa892af04",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar dresses and is unsure which will last longer.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "bfe28d57-4a4a-4be3-9678-515b6d81a6a0",
+      "clean_id": "88741d61-e98d-490a-840d-0d67d349ea8e",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is overwhelmed by multiple similar items in their wishlist and wants help deciding which one to purchase.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e7ec79df-c452-4d42-afc2-13fb0ce67961",
+      "clean_id": "a87804a8-f082-448b-bd9c-40f9905fd8ef",
+      "tags": [
+        "trust_review_credibility",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and seeks confirmation from others who have purchased the dress.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "9db90ea1-3a31-4200-b4c2-9acef2db2aa2",
+      "clean_id": "59d92303-d088-4229-a0bf-3da1b2e9c2b3",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User is commenting on a video, possibly asking about something but not expressing a purchase hesitation.",
+      "intensity": 1,
+      "segments": []
+    },
+    {
+      "id": "87c22811-4a57-4b5e-aea9-a9f17bf5da7c",
+      "clean_id": "a6beb440-1eff-4996-b2e0-ad3fd4176ef5",
+      "tags": [
+        "external_research"
+      ],
+      "paraphrase": "User is researching online to compare prices before deciding to purchase.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e50deb53-fde7-411b-8fb1-48f4a4870544",
+      "clean_id": "69876135-1338-45b0-95d2-79b80fd712a4",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User has kept the jacket in their wishlist for two months, hoping the price will fall below Rs. 1031 before buying.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "05866648-988f-4975-8c66-50c99970560e",
+      "clean_id": "92bf5dce-61d8-4981-88d4-1e27a35027f6",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar watches and is uncertain which one will be more durable.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "74158d8c-e71c-4a17-950c-77b64f8b03d9",
+      "clean_id": "bd41df08-de5a-487e-847b-15af24415bc2",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar jeans brands and is unsure which will be more durable.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "57780fd0-9789-443a-99b8-c6b2bda1bbb2",
+      "clean_id": "fd1fd8b5-3535-413b-849e-e8e2d9252cdd",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the olive jeans but is unsure how to style them and seeks pairing suggestions.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "0776b99a-3fb6-4d37-ba8f-36db83913d03",
+      "clean_id": "8f79add3-cad3-4485-a39e-3934a9d3cd22",
+      "tags": [
+        "return_exchange_friction"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returning sneakers was too difficult, yet still keeps some items in their wishlist.",
+      "intensity": 4,
+      "segments": []
+    },
+    {
+      "id": "b970e52d-e5bd-4893-8957-2b1ee4055259",
+      "clean_id": "905230bc-3279-41ba-844c-917d7420743a",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the olive kurta but is unsure how to style it with other pieces.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "995c704d-4372-4d71-b1ff-7b0ad55c3903",
+      "clean_id": "f312c9df-e926-4b10-8638-7f5be13e2899",
+      "tags": [
+        "styling_occasion_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user loves the handbag but is unsure how to style it and seeks advice.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "527603e7-dde3-4096-953b-0f9f9c73d462",
+      "clean_id": "5e4184f5-5a26-4daa-be43-3bd1f7874c3d",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation from real buyers.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "078096a9-2d66-4889-b95b-930a09591967",
+      "clean_id": "072ae14f-fa81-4130-b7af-bfd993527fab",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar handbags and is unsure which will be more durable.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "302c72a6-a769-4241-a384-5465f495e22b",
+      "clean_id": "8dcf09e0-1a11-4645-92bc-6f27c8425ba6",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User wants to purchase a Nike watch but is unsure if it fits properly and asks others for sizing confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e99227a4-168b-4a8e-b1af-0c71b1d5b2f2",
+      "clean_id": "c1665034-5fac-4da7-9ac3-f12c376763c5",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user has kept a jacket in their wishlist for two months, hoping the price will fall below Rs. 2778 before making a purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "1925ab52-da2d-46d5-9bfa-142fd7fb18a4",
+      "clean_id": "da66c72e-6f14-4e29-adc7-cb5e39430205",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User loves the dress but is unsure how to style it for an occasion.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "d0d8551c-a7e0-469d-ba10-114243377f94",
+      "clean_id": "cd4778f4-dff2-4983-8b31-dbbe8e0f449b",
+      "tags": [
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User adds many items to their wishlist but never purchases them, asking if others experience the same habit.",
+      "intensity": 2,
+      "segments": []
+    },
+    {
+      "id": "fc19196c-7db9-489f-ba94-1e9794674a1b",
+      "clean_id": "8ccf862d-15ae-462f-990d-d0b69f8a2642",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user is questioning whether the current price of the kurta is a good deal or if they should wait for an upcoming sale to get a better price.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "5dbd614b-33a1-4c6c-a738-edcacc9a2261",
+      "clean_id": "aad1643f-8378-4454-8dff-54aa7548fad8",
+      "tags": [
+        "comparison_paralysis",
+        "trust_review_credibility"
+      ],
+      "paraphrase": "User is comparing two similar maxi dresses from Nike and Zara, unsure which will last longer and which to purchase.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "7d81529d-b876-4f29-956b-b6d65ab4fdf1",
+      "clean_id": "6911dd46-38dc-4c21-a94a-6ca1f21bc1af",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user is unsure whether the current price of the watch is a good deal or if they should wait for an upcoming sale to get a better price.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "50e29070-837b-4920-a011-ad91d8fdbe15",
+      "clean_id": "b06e1750-5347-4628-a1a3-f9a4c4d76734",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "User questions whether the reviews for the Puma jeans are genuine and seeks confirmation from actual buyers.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "ed5804ab-d3ff-49ae-8400-465841739a67",
+      "clean_id": "b77f36c9-b4ac-45f2-82a8-9365774ecb39",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the heels but is unsure how to style them for an outfit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e93dec37-4989-4df4-907d-c67ed5da0a4a",
+      "clean_id": "f453ed42-5b1c-44b2-afe6-06e64948815c",
+      "tags": [
+        "price_deal_timing",
+        "external_research"
+      ],
+      "paraphrase": "User is comparing prices between Myntra and the brand’s own site to find a cheaper option.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "62b824a9-173d-4407-925b-55ce0447c361",
+      "clean_id": "ecf81106-09fa-4bf9-9092-c82114cbc283",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that the item has been genuinely purchased.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c457e58d-1b3a-4a28-8508-f94e0967d81b",
+      "clean_id": "18580e40-4bde-40cb-b7ea-602683664840",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "User is unsure whether the current price is a good deal or if they should wait for a sale event.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "c1f5c3e7-74ef-4fa8-b6ba-ae5e27851f16",
+      "clean_id": "1e4a38b4-ad85-48f7-aed1-e813a9a66605",
+      "tags": [
+        "return_exchange_friction"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returning jackets was too difficult, yet still keeps some items in their wishlist.",
+      "intensity": 4,
+      "segments": []
+    },
+    {
+      "id": "3ecaa4c9-b237-4d39-80f9-b5e1ebc9eef0",
+      "clean_id": "009a44c8-ca52-40be-a128-33595d620bbf",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "They have kept the cargo pants in their wishlist for two months, hoping the price will fall below Rs. 2363 before making a purchase.",
+      "intensity": 4,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "3720a138-ee7f-4054-8ddf-d8a3927ea8bb",
+      "clean_id": "2f04b15c-c6bf-45cc-b95e-df049d70f317",
+      "tags": [
+        "return_exchange_friction",
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user wants to buy sneakers but is worried about fitting issues and whether Myntra’s return policy will allow them to return if it doesn’t fit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "ac8b18d2-b280-400a-9bfb-2229a12acc74",
+      "clean_id": "9aac22a3-3b65-424f-97e1-007c10593689",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user is questioning whether the current price of the heels is a good deal or if they should wait for an upcoming sale.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "f877f061-0e0e-47b5-9623-0aa559733648",
+      "clean_id": "0dacde42-46cf-49da-ad9a-9eb6af98b9d8",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user is questioning whether the current price of the jeans is a good deal or if they should wait for an upcoming sale.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "6a2f0fbf-cfa0-4cde-92db-ff72272d7ad1",
+      "clean_id": "d2be6277-5e71-45a8-876d-3d8e48b97074",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User wants to buy a Levis handbag but is unsure if it fits true to size and asks others for confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "1f746287-9ebe-4528-bd8e-04d4af4062bb",
+      "clean_id": "8d88e97a-de79-473d-ada5-020ddad9be6e",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar brands and is unsure which will last longer.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "64b3bc6d-69c8-4be7-ae5e-0dbc08065a5f",
+      "clean_id": "53d0ce2e-8259-48e0-b9b3-eb4d03a205d2",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase sneakers but is unsure if they fit true to size and asks others for confirmation.",
+      "intensity": 3,
+      "segments": [
+        "men's fashion"
+      ]
+    },
+    {
+      "id": "5cba11c7-6c7f-486f-a087-2da3697dea3e",
+      "clean_id": "13d702a6-d62a-4151-b7e9-744e465d5f4f",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase a Nike kurta but is unsure if it fits true to size and asks others for confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "b8c20720-5fb8-41ef-941a-7af86d1e3c45",
+      "clean_id": "b3552ffb-a2d2-4948-8c61-282debb50a74",
+      "tags": [
+        "trust_review_credibility"
+      ],
+      "paraphrase": "The user doubts the authenticity of the product reviews and wants confirmation that the item is genuinely liked by buyers.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "b5392520-3c6f-4bef-969f-c5548eabc82b",
+      "clean_id": "a859efcd-577e-4607-93f3-18b1bdc96718",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar jackets and wants to know which will last longer.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "8df1337b-b06c-4a6b-9333-0d173ebaf2e8",
+      "clean_id": "fd2fc33a-93f0-4bef-8e14-f6d7bb0d710b",
+      "tags": [
+        "return_exchange_friction",
+        "wishlist_as_bookmark"
+      ],
+      "paraphrase": "User stopped buying from Myntra because returning handbags was too troublesome, yet still keeps a few items in their wishlist.",
+      "intensity": 5,
+      "segments": []
+    },
+    {
+      "id": "f2f712ae-b66e-4723-83a6-3200a3be1cb3",
+      "clean_id": "2708ddd7-2f66-4687-8e69-cddd8642cc46",
+      "tags": [
+        "return_exchange_friction",
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User worries about Myntra’s return policy for t-shirts and fears ending up with a size that doesn’t fit.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "9f0dbd5d-6ef8-42f3-a7d1-dd8412ca00b7",
+      "clean_id": "ef81b218-0291-4386-92c0-bea6f5b19848",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "User wants to buy Levi jeans but is unsure if the size will fit and asks others for confirmation.",
+      "intensity": 3,
+      "segments": [
+        "men's fashion"
+      ]
+    },
+    {
+      "id": "a22a651c-4e7a-4e43-933c-cd5b033cd6c8",
+      "clean_id": "6d17fe17-8e96-4c1c-8c54-34903134048c",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User is unsure whether to order a larger size because Anouk t-shirts are known to have inconsistent sizing.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "8301d60b-30b6-476e-9bd7-b3f956d5f0df",
+      "clean_id": "0aaa4612-f88c-4e9b-9e04-9781db9b3bb3",
+      "tags": [
+        "fit_size_uncertainty",
+        "social_validation_seeking"
+      ],
+      "paraphrase": "The user wants to purchase a t‑shirt but is unsure if it will fit properly and is asking others for sizing confirmation.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "3ded3b62-96b7-4c23-bf96-10388b78c3c1",
+      "clean_id": "001fd03b-9d9b-4e43-bde0-58216abbe438",
+      "tags": [
+        "price_deal_timing"
+      ],
+      "paraphrase": "The user is unsure whether the current price of the cargo pants is a good deal or if they should wait for an upcoming sale.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "1742ac67-36f5-4fcc-884a-bdddbb45a28e",
+      "clean_id": "f6bc73c7-ed77-4ada-bccc-6961af7076aa",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar watches and is uncertain about which will have better durability.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "967c5a7b-8380-4a5d-9318-49946879872b",
+      "clean_id": "4ac34ec1-2531-4883-9ba7-fc8617d28a77",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "User is unsure whether to order a larger size because Nike jeans are known for inconsistent sizing.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "5d42193b-2731-488e-87ca-29527d23615b",
+      "clean_id": "fbf06870-da28-4ce5-956c-8ba62863cc4e",
+      "tags": [
+        "styling_occasion_uncertainty"
+      ],
+      "paraphrase": "User likes the sneakers but doesn't know how to style them with other outfits.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "e563687e-abd6-470b-b606-0ce34a6cd464",
+      "clean_id": "903a567a-9f53-426b-9b01-a3ff2105eee0",
+      "tags": [
+        "fit_size_uncertainty"
+      ],
+      "paraphrase": "The user is unsure whether to order a larger size because the brand’s sizing is reportedly inconsistent.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "f05666b3-e156-4c80-a71f-02fa7d3faa31",
+      "clean_id": "95ba2df5-c7ed-4940-8a10-d9f20d66449b",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar cargo pants from Puma and Only, unsure which will be more durable.",
+      "intensity": 3,
+      "segments": [
+        "budget shopper"
+      ]
+    },
+    {
+      "id": "92d8244e-fdbf-4fb2-ac8a-e8a2917470e3",
+      "clean_id": "c608730f-55ec-4f39-8a9f-0e14a4a90838",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is comparing two similar items from different brands and wants to know which will be more durable.",
+      "intensity": 3,
+      "segments": []
+    },
+    {
+      "id": "738c125c-9026-4d7f-bc92-f2243847b45b",
+      "clean_id": "e1f8c01e-e3c2-42e3-9eea-15235cd6cf9a",
+      "tags": [
+        "comparison_paralysis"
+      ],
+      "paraphrase": "User is overwhelmed by having five red handbags on their wishlist and needs help deciding which one to purchase.",
+      "intensity": 3,
+      "segments": []
+    }
+  ],
+  "aggregated_drivers": [
+    {
+      "driver_id": "fit_size_uncertainty",
+      "driver_label": "Fit / Size Uncertainty",
+      "frequency": 41,
+      "avg_intensity": 3.0,
+      "opportunity_score": 123.0,
+      "example_paraphrases": [
+        "User is unsure whether to order a larger size for Roadster cargo pants because of inconsistent sizing reports.",
+        "The user wants to purchase cargo pants but is unsure if the size will fit and asks others for sizing advice.",
+        "User is concerned about Myntra’s return policy for a maxi dress and fears being stuck with a size that doesn’t fit."
+      ]
+    },
+    {
+      "driver_id": "comparison_paralysis",
+      "driver_label": "Comparison Paralysis",
+      "frequency": 34,
+      "avg_intensity": 3.0,
+      "opportunity_score": 102.0,
+      "example_paraphrases": [
+        "User is overwhelmed by having five red jackets in their wishlist and wants help deciding which to buy.",
+        "User has five navy watches saved and is unsure which one to buy, asking for help deciding.",
+        "The user is comparing two similar handbags from different brands and is unsure which will be more durable, despite a slight price difference."
+      ]
+    },
+    {
+      "driver_id": "price_deal_timing",
+      "driver_label": "Price / Deal-Timing Uncertainty",
+      "frequency": 30,
+      "avg_intensity": 3.0,
+      "opportunity_score": 90.0,
+      "example_paraphrases": [
+        "They have kept the cargo pants in their wishlist for two months, hoping the price will fall below Rs. 2363 before making a purchase.",
+        "User is unsure whether the current price is a good deal or if they should wait for a sale event.",
+        "User is unsure whether the current price of the kurta is a good deal or if they should wait for a sale event."
+      ]
+    },
+    {
+      "driver_id": "social_validation_seeking",
+      "driver_label": "Social Validation Seeking",
+      "frequency": 26,
+      "avg_intensity": 3.0,
+      "opportunity_score": 78.0,
+      "example_paraphrases": [
+        "User loves the dress but is unsure how to style it and asks for advice.",
+        "User is unsure if the item is suitable for a wedding and wants help with accessorizing.",
+        "User questions whether the reviews are genuine and asks if anyone has actually purchased the jeans."
+      ]
+    },
+    {
+      "driver_id": "return_exchange_friction",
+      "driver_label": "Return / Exchange Friction Fear",
+      "frequency": 18,
+      "avg_intensity": 3.78,
+      "opportunity_score": 68.04,
+      "example_paraphrases": [
+        "User stopped buying from Myntra because returning watches was too difficult, yet still keeps some items in their wishlist.",
+        "User stopped buying from Myntra due to the hassle of returning heels, but still keeps some items in their wishlist.",
+        "User stopped buying from Myntra because returning t-shirts was too troublesome, yet they still keep some items in their wishlist."
+      ]
+    },
+    {
+      "driver_id": "external_research",
+      "driver_label": "External Research Before Purchase",
+      "frequency": 21,
+      "avg_intensity": 3.0,
+      "opportunity_score": 63.0,
+      "example_paraphrases": [
+        "User watched several YouTube reviews before deciding whether to keep the item in their wishlist.",
+        "The user watched multiple YouTube reviews before deciding to add the Puma t‑shirt to their wishlist.",
+        "The user watched multiple YouTube reviews to decide whether to keep the Puma kurta in their wishlist."
+      ]
+    },
+    {
+      "driver_id": "wishlist_as_bookmark",
+      "driver_label": "Wishlist-as-Bookmark Behavior",
+      "frequency": 22,
+      "avg_intensity": 2.5,
+      "opportunity_score": 55.0,
+      "example_paraphrases": [
+        "User stopped buying from Myntra due to the hassle of returning heels, but still keeps some items in their wishlist.",
+        "User stopped buying from Myntra because returning handbags was too troublesome, yet still keeps a few items in their wishlist.",
+        "User stopped buying from Myntra because returning jeans was too troublesome, yet they still keep some items in their wishlist."
+      ]
+    },
+    {
+      "driver_id": "styling_occasion_uncertainty",
+      "driver_label": "Styling / Occasion Uncertainty",
+      "frequency": 18,
+      "avg_intensity": 3.0,
+      "opportunity_score": 54.0,
+      "example_paraphrases": [
+        "User loves the dress but is unsure how to style it and asks for advice.",
+        "User is unsure if the item is suitable for a wedding and wants help with accessorizing.",
+        "User likes the jacket but is unsure how to style it with other pieces."
+      ]
+    },
+    {
+      "driver_id": "trust_review_credibility",
+      "driver_label": "Trust / Review Credibility Doubt",
+      "frequency": 17,
+      "avg_intensity": 3.0,
+      "opportunity_score": 51.0,
+      "example_paraphrases": [
+        "User doubts the material quality of the item due to the absence of photo reviews.",
+        "The user doubts the authenticity of the product reviews and wants confirmation that real buyers have purchased the sneakers.",
+        "User questions whether the reviews are genuine and asks if anyone has actually purchased the jeans."
+      ]
+    },
+    {
+      "driver_id": "wishlist_abandonment",
+      "driver_label": "Wishlist Abandonment / Forgetting",
+      "frequency": 0,
+      "avg_intensity": 0.0,
+      "opportunity_score": 0.0,
+      "example_paraphrases": []
+    }
+  ]
+}
