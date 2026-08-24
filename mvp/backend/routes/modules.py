@@ -108,12 +108,13 @@ async def analyze_sandbox(request: CompareRequest):
         }
 
 
+# In-memory cache to prevent hitting Groq rate limits during demos
+_DEMO_CACHE = {}
+
 @router.post("/api/modules/{item_id}")
 async def generate_modules(item_id: str, request: ModuleRequest = None):
     """
     Generate AI confidence insights for a specific product.
-    If `modules` is provided in the request body, only those will be generated.
-    Otherwise, all enabled modules are run.
     """
     product = catalog_service.get_product(item_id)
     if not product:
@@ -128,30 +129,34 @@ async def generate_modules(item_id: str, request: ModuleRequest = None):
     if not modules_to_run:
         return {"results": []}
 
+    cache_key = f"{item_id}_{','.join(sorted(requested_ids))}"
+    if cache_key in _DEMO_CACHE:
+        return _DEMO_CACHE[cache_key]
+
     # Fetch context data
     reviews = catalog_service.get_reviews_for_product(item_id, limit=20)
     price_history = catalog_service.get_price_history(item_id)
     similar_products = catalog_service.get_similar_products(item_id, max_results=3)
 
-    # Run modules concurrently
-    tasks = [
-        module.generate(
-            product=product,
-            reviews=reviews,
-            price_history=price_history,
-            similar_products=similar_products
-        )
-        for module in modules_to_run
-    ]
-    
-    results = await asyncio.gather(*tasks, return_exceptions=True)
-    
+    # Run modules sequentially to avoid Groq 429 concurrency limits
+    results = []
+    for module in modules_to_run:
+        try:
+            res = await module.generate(
+                product=product,
+                reviews=reviews,
+                price_history=price_history,
+                similar_products=similar_products
+            )
+            results.append(res)
+        except Exception as e:
+            results.append(e)
+            
     # Format successful results
     formatted_results = []
     modules_map = {}
     for res in results:
         if isinstance(res, Exception):
-            # Log the error in a real app; here we just skip it
             continue
         payload = {
             "module_id": res.module_id,
@@ -163,10 +168,13 @@ async def generate_modules(item_id: str, request: ModuleRequest = None):
         formatted_results.append(payload)
         modules_map[res.module_id] = payload
 
-    return {
+    final_response = {
         "results": formatted_results,
         "modules": modules_map,
     }
+    
+    _DEMO_CACHE[cache_key] = final_response
+    return final_response
 
 
 @router.post("/api/compare")
