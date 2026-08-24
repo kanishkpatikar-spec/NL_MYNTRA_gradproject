@@ -11,7 +11,7 @@ const BAR_COLORS = [
   '#00a1a7', '#ff7e9a', '#ffd0a0', '#4de8ef', '#e58090',
 ];
 
-const DISCOVERY_API_BASE = 'http://127.0.0.1:8001';
+const DISCOVERY_API_BASE = process.env.NEXT_PUBLIC_DISCOVERY_API_URL || 'http://127.0.0.1:8001';
 
 async function getOpportunities(limit = 10) {
   const res = await axios.get(`${DISCOVERY_API_BASE}/api/dashboard/opportunities`, { params: { limit } });
