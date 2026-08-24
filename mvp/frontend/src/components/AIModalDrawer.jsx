@@ -241,20 +241,6 @@ export default function AIModalDrawer({ itemId, onClose }) {
               </div>
             )}
 
-            {/* Review Digest */}
-            {modules.review_digest && (
-              <div className="space-y-4">
-                <h4 className="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-surface flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary text-[20px]">forum</span>
-                  Sentiment Summary
-                </h4>
-                <ul className="space-y-3 font-body-sm text-body-sm text-on-surface-variant bg-surface-container-lowest/30 p-4 rounded-xl border border-white/5">
-                  <li className="flex items-start gap-3 italic">
-                     "{modules.review_digest.content}"
-                  </li>
-                </ul>
-              </div>
-            )}
           </>
         )}
       </div>
