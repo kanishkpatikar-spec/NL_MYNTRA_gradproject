@@ -195,15 +195,48 @@ export default function AIModalDrawer({ itemId, onClose }) {
                   <span className="material-symbols-outlined text-secondary text-[20px] hover:text-primary hover:shadow-[0_0_8px_rgba(255,178,186,0.4)] cursor-pointer transition-colors">style</span>
                   Wardrobe Match
                 </h4>
-                <div className="glass-panel p-4 rounded-xl flex flex-col gap-4 bg-surface-container-low/50 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)] transition-all duration-300">
-                  <p className="font-body-sm text-body-sm text-on-surface leading-relaxed whitespace-pre-line">
-                    {modules.styling_assist.content.split('\n').map((line, idx) => (
-                      <React.Fragment key={idx}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
-                  </p>
+                <div className="glass-panel p-4 rounded-xl flex flex-col gap-2 bg-surface-container-low/50 hover:shadow-[0_0_15px_rgba(255,51,102,0.3)] transition-all duration-300">
+                  <div className="font-body-sm text-body-sm text-on-surface leading-relaxed space-y-1.5">
+                    {modules.styling_assist.content.split('\n').map((line, idx) => {
+                      const trimmed = line.trim();
+                      if (!trimmed) return null;
+                      
+                      // Render **Headers** as stylish badges
+                      if (trimmed.startsWith('**') && (trimmed.endsWith('**') || trimmed.endsWith('**:'))) {
+                        return (
+                          <div key={idx} className="mt-3 mb-2 first:mt-0">
+                            <span className="font-label-bold text-primary uppercase tracking-widest text-[10px] bg-primary/15 border border-primary/20 px-2.5 py-1 rounded-md shadow-sm">
+                              {trimmed.replace(/\*\*/g, '').replace(/:/g, '')}
+                            </span>
+                          </div>
+                        );
+                      }
+                      
+                      // Render - bullets with nice icons
+                      if (trimmed.startsWith('- ')) {
+                        const content = trimmed.substring(2);
+                        // Make text before colon bold
+                        const parts = content.split(':');
+                        return (
+                          <div key={idx} className="flex items-start gap-2 ml-1">
+                            <span className="material-symbols-outlined text-secondary text-[16px] mt-0.5 opacity-80">check_circle</span>
+                            <span className="flex-1">
+                              {parts.length > 1 ? (
+                                <>
+                                  <strong className="text-white font-medium">{parts[0]}:</strong>
+                                  <span className="text-on-surface-variant">{parts.slice(1).join(':')}</span>
+                                </>
+                              ) : (
+                                <span className="text-on-surface-variant">{content}</span>
+                              )}
+                            </span>
+                          </div>
+                        );
+                      }
+                      
+                      return <p key={idx} className="text-on-surface-variant">{trimmed}</p>;
+                    })}
+                  </div>
                 </div>
               </div>
             )}
