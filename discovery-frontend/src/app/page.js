@@ -302,7 +302,7 @@ export default function AnalyticsDashboard() {
             Myntra Aura | AI Discovery Engine
           </h1>
           <p className="text-on-surface-variant mt-2 tracking-wide max-w-xl">
-            Command Center for live ingestion of multi-channel consumer friction data (Reddit, YouTube, App Store, Play Store).
+            Real-time intelligence feed monitoring cross-platform consumer sentiment and purchasing friction.
           </p>
         </div>
       </div>
