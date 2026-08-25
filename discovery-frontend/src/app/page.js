@@ -309,7 +309,7 @@ export default function AnalyticsDashboard() {
               Live Data Pipeline
             </h2>
             <p className="text-sm text-on-surface-variant max-w-lg leading-relaxed">
-              Trigger asynchronous scrapers to fetch real-time consumer signals across Reddit, YouTube, and the App Store. The AI engine instantly classifies intent and synchronizes the live data lake.
+              Trigger asynchronous scrapers to fetch real-time consumer signals across Reddit, YouTube, the App Store, and the Play Store. The AI engine instantly classifies intent and synchronizes the live data lake.
             </p>
             <div className="flex gap-4 items-center mt-4">
                 <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10">
