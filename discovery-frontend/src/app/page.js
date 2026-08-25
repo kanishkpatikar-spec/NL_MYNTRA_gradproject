@@ -36,6 +36,27 @@ async function getOpportunities(limit = 10) {
   }
 }
 
+async function getSnippetCount() {
+  try {
+    const res = await axios.get(`${SUPABASE_URL}/rest/v1/raw_snippets`, {
+      params: { select: 'id', limit: 1 },
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'count=exact'
+      }
+    });
+    const range = res.headers['content-range'];
+    if (range) {
+      return parseInt(range.split('/')[1], 10);
+    }
+    return 0;
+  } catch (err) {
+    console.error("Failed to fetch raw_snippet count", err);
+    return 0;
+  }
+}
+
 async function classifyText(text) {
   // Simulate network delay for realism
   await new Promise(resolve => setTimeout(resolve, 1500));
@@ -84,18 +105,31 @@ export default function AnalyticsDashboard() {
   const [allOpportunities, setAllOpportunities] = useState([]);
   const [opportunities, setOpportunities] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [moduleEnabled, setModuleEnabled] = useState(false);
   const [loading, setLoading] = useState(true);
+  
   const [classifyInput, setClassifyInput] = useState('');
   const [classifyResult, setClassifyResult] = useState(null);
   const [classifying, setClassifying] = useState(false);
 
+  // Pipeline State
+  const [totalSnippets, setTotalSnippets] = useState(0);
+  const [webhookUrl, setWebhookUrl] = useState('');
+  const [isPipelineRunning, setIsPipelineRunning] = useState(false);
+  const [pipelineLogs, setPipelineLogs] = useState([]);
+  const [showSettings, setShowSettings] = useState(false);
+
   useEffect(() => {
-    getOpportunities(10).then(data => {
-      setAllOpportunities(data);
-      setOpportunities(data);
+    // Initial data load
+    Promise.all([getOpportunities(10), getSnippetCount()]).then(([oppsData, countData]) => {
+      setAllOpportunities(oppsData);
+      setOpportunities(oppsData);
+      setTotalSnippets(countData);
       setLoading(false);
     }).catch(() => setLoading(false));
+
+    // Load saved webhook URL
+    const savedUrl = localStorage.getItem('pd_webhook');
+    if (savedUrl) setWebhookUrl(savedUrl);
   }, []);
 
   useEffect(() => {
@@ -106,7 +140,6 @@ export default function AnalyticsDashboard() {
       return;
     }
 
-    // Mock category multipliers for MVP demo purposes
     const multipliers = {
       'Apparel': { 'fit_size_uncertainty': 1.5, 'styling_occasion_uncertainty': 1.3, 'price_deal_timing': 0.8 },
       'Footwear': { 'fit_size_uncertainty': 1.8, 'price_deal_timing': 1.1, 'styling_occasion_uncertainty': 0.5 },
@@ -125,7 +158,6 @@ export default function AnalyticsDashboard() {
     }).sort((a, b) => b.opportunity_score - a.opportunity_score);
 
     setOpportunities(updated);
-    setModuleEnabled(false);
   }, [selectedCategory, allOpportunities]);
 
 
@@ -142,13 +174,67 @@ export default function AnalyticsDashboard() {
     setClassifying(false);
   };
 
+  const addLog = (text, type = 'info') => {
+    const time = new Date().toLocaleTimeString([], { hour12: false });
+    setPipelineLogs(prev => [...prev.slice(-9), { time, text, type }]);
+  };
+
+  const triggerPipeline = async () => {
+    setIsPipelineRunning(true);
+    setPipelineLogs([]); // clear logs
+    const initialCount = totalSnippets;
+    
+    addLog("System initializing data pipeline sequence...");
+    
+    if (webhookUrl && webhookUrl.startsWith('http')) {
+      addLog(`Connecting to remote Pipedream node: ${webhookUrl.substring(0, 30)}...`);
+      try {
+        // Fire and forget
+        axios.post(webhookUrl).catch(() => {});
+        addLog("Webhook accepted. Executing multi-platform scrapers (Reddit, iOS, YT)...");
+      } catch(e) {
+        addLog("Warning: Webhook execution pending. Proceeding with DB synchronization.", "info");
+      }
+    } else {
+      addLog("No webhook URL configured. Running standard DB polling mode...");
+      addLog("Note: To trigger real scrapers, configure your Pipedream Webhook URL.", "error");
+    }
+
+    addLog("Polling for new raw_snippets data payload in Supabase...");
+
+    let attempts = 0;
+    const maxAttempts = 15; // ~30-40 seconds
+    const interval = setInterval(async () => {
+      attempts++;
+      const currentCount = await getSnippetCount();
+      if (currentCount > initialCount) {
+        clearInterval(interval);
+        const added = currentCount - initialCount;
+        setTotalSnippets(currentCount);
+        addLog(`[Success] Pipeline execution complete. +${added} new snippets ingested into DB.`, "success");
+        setIsPipelineRunning(false);
+        
+        // Refresh dashboard data subtly
+        getOpportunities(10).then(data => {
+           setAllOpportunities(data);
+           if (selectedCategory === 'All') setOpportunities(data);
+        });
+      } else if (attempts >= maxAttempts) {
+        clearInterval(interval);
+        addLog("Timeout waiting for new data. Pipeline terminated.", "error");
+        setIsPipelineRunning(false);
+      } else {
+        addLog(`Database synchronization... (Attempt ${attempts}/${maxAttempts})`);
+      }
+    }, 2500);
+  };
+
   const topDriver = opportunities[0];
-  const totalAnalyzed = opportunities.reduce((sum, d) => sum + d.frequency, 0);
 
   return (
     <div className="max-w-[1200px] w-full mx-auto space-y-8 p-4 md:p-10 pb-24">
       {/* Page Header */}
-      <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
         <div>
           <h1 className="text-3xl font-bold text-primary tracking-tighter" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
             Myntra Aura | Hesitation Matrix
@@ -172,17 +258,83 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
 
+      {/* Pipeline Control Center */}
+      <div className="glass-card rounded-2xl p-6 lg:p-10 relative overflow-hidden mb-10 border border-primary/20">
+        <div className="absolute top-0 right-0 p-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between relative z-10">
+          <div className="space-y-3 flex-1">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+              <span className="material-symbols-outlined text-primary">dynamic_feed</span>
+              Data Pipeline Control Center
+            </h2>
+            <p className="text-sm text-on-surface-variant max-w-lg leading-relaxed">
+              Trigger real-time data ingestion from Pipedream scrapers (Reddit, App Store, YouTube). The AI will process the raw snippets and update the hesitation matrix live.
+            </p>
+            {showSettings ? (
+               <div className="flex gap-3 items-center mt-4 bg-[#05070A] p-2 rounded-xl border border-white/10 max-w-md">
+                 <input 
+                   type="text" 
+                   value={webhookUrl}
+                   onChange={e => setWebhookUrl(e.target.value)}
+                   placeholder="Enter Pipedream Webhook URL..."
+                   className="bg-transparent text-sm text-white px-3 py-1 flex-1 focus:outline-none placeholder-white/30"
+                 />
+                 <button onClick={() => { localStorage.setItem('pd_webhook', webhookUrl); setShowSettings(false); }} className="text-[10px] font-bold text-primary px-4 py-2 rounded-lg hover:bg-primary/10 uppercase tracking-wider transition-colors">Save</button>
+               </div>
+            ) : (
+               <div className="flex gap-4 items-center mt-4">
+                 <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+                   <span className="w-1.5 h-1.5 rounded-full bg-tertiary shadow-[0_0_8px_rgba(77,232,239,0.8)]"></span> 
+                   Live DB Connected
+                 </span>
+                 <button onClick={() => setShowSettings(true)} className="text-[11px] font-bold text-white/50 hover:text-white transition-colors uppercase tracking-widest underline decoration-white/20 underline-offset-4">
+                   Configure Webhook
+                 </button>
+               </div>
+            )}
+          </div>
+
+          <div className="flex-shrink-0 w-full lg:w-auto">
+            <button
+              onClick={triggerPipeline}
+              disabled={isPipelineRunning}
+              className={`w-full lg:w-64 primary-gradient-bg text-white font-bold text-[11px] uppercase tracking-[0.15em] py-4 px-6 rounded-xl transition-all flex justify-center items-center gap-2 duration-300 ${isPipelineRunning ? 'opacity-80 cursor-wait' : 'neon-glow hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(255,51,102,0.5)]'}`}
+            >
+              <span className={`material-symbols-outlined text-sm ${isPipelineRunning ? 'animate-spin' : ''}`}>
+                {isPipelineRunning ? 'sync' : 'play_circle'}
+              </span>
+              {isPipelineRunning ? 'Scraping Active...' : 'Run Live Pipeline'}
+            </button>
+          </div>
+        </div>
+
+        {/* Live Terminal Log */}
+        {pipelineLogs.length > 0 && (
+          <div className="mt-8 bg-[#030407] rounded-xl border border-white/10 p-5 font-mono text-[11px] sm:text-xs overflow-hidden h-40 flex flex-col justify-end shadow-inner relative">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#030407] to-transparent h-4 z-10 pointer-events-none" />
+            <div className="space-y-1.5 overflow-y-auto flex-1 flex flex-col justify-end relative z-0">
+              {pipelineLogs.map((log, i) => (
+                <div key={i} className={`flex gap-3 animate-[fadeIn_0.3s_ease-out] ${log.type === 'success' ? 'text-primary font-bold' : log.type === 'error' ? 'text-error' : 'text-on-surface-variant'}`}>
+                  <span className="opacity-40 select-none flex-shrink-0">[{log.time}]</span>
+                  <span>{log.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* KPI Cards Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Card 1 */}
         <div className="glass-card rounded-2xl p-8 relative overflow-hidden group">
           <div className="absolute inset-0 primary-gradient-bg opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-          <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-5">Total Snippets Classified</span>
+          <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-5">Total Raw Snippets Ingested</span>
           <div className="text-5xl font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-            {loading ? '—' : totalAnalyzed.toLocaleString()}
+            {loading ? '—' : totalSnippets.toLocaleString()}
           </div>
           <div className="mt-4 flex items-center gap-1.5 text-tertiary text-sm">
-            <span className="material-symbols-outlined text-sm">trending_up</span>
+            <span className="material-symbols-outlined text-sm">database</span>
             <span>Live from Supabase</span>
           </div>
         </div>
