@@ -322,64 +322,84 @@ export default function AnalyticsDashboard() {
       </div>
 
       {/* KPI Cards Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         
         {/* Card 1: Total Signals */}
-        <div className="bg-[#0a0d14]/80 border border-white/5 rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between backdrop-blur-md hover:border-white/10 transition-colors">
-          <div className="absolute top-0 left-0 w-1 h-full primary-gradient-bg" />
-          <div className="flex justify-between items-start mb-6">
-            <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Total Signals Ingested</span>
-            <div className="flex items-center gap-1 bg-tertiary/10 text-tertiary px-2 py-1 rounded text-[10px] font-bold">
-              <span className="material-symbols-outlined text-[12px]">trending_up</span> +14%
+        <div className="group relative rounded-3xl p-[1px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_30px_-10px_rgba(255,51,102,0.2)]">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/50 via-transparent to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
+          <div className="relative h-full bg-[#05070A]/60 backdrop-blur-3xl rounded-3xl p-6 md:p-8 flex flex-col justify-between overflow-hidden border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
+            <div className="absolute -top-12 -right-12 w-40 h-40 bg-primary/20 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/30 transition-colors duration-700" />
+            
+            <div className="flex justify-between items-start mb-6 relative z-10">
+              <span className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em]">Total Signals Ingested</span>
+              <div className="flex items-center gap-1 bg-white/10 backdrop-blur-md text-white px-2.5 py-1 rounded-full text-[10px] font-bold border border-white/10 shadow-lg">
+                <span className="material-symbols-outlined text-[12px] text-tertiary">trending_up</span> +14%
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-              {loading ? '—' : totalSnippets.toLocaleString()}
-            </div>
-            <div className="mt-2 text-[11px] text-white/40 flex items-center gap-1.5 uppercase tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
-              Live Sync Active
+            
+            <div className="relative z-10">
+              <div className="text-5xl font-bold text-white tracking-tight drop-shadow-md" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+                {loading ? '—' : totalSnippets.toLocaleString()}
+              </div>
+              <div className="mt-3 text-[10px] text-white/50 flex items-center gap-2 uppercase tracking-[0.15em] font-bold">
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+                </span>
+                Live Sync Active
+              </div>
             </div>
           </div>
         </div>
 
         {/* Card 2: Top Driver */}
-        <div className="bg-[#0a0d14]/80 border border-white/5 rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between backdrop-blur-md hover:border-white/10 transition-colors">
-          <div className="absolute top-0 left-0 w-1 h-full bg-[#ffb596]" />
-          <div className="flex justify-between items-start mb-6">
-            <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Critical Friction Point</span>
-            <div className="flex items-center gap-1 bg-[#ff4f73]/10 text-[#ff4f73] px-2 py-1 rounded text-[10px] font-bold border border-[#ff4f73]/20">
-              P1 PRIORITY
+        <div className="group relative rounded-3xl p-[1px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_30px_-10px_rgba(255,181,150,0.2)]">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#ffb596]/50 via-transparent to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
+          <div className="relative h-full bg-[#05070A]/60 backdrop-blur-3xl rounded-3xl p-6 md:p-8 flex flex-col justify-between overflow-hidden border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
+            <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-[#ffb596]/15 rounded-full blur-3xl pointer-events-none group-hover:bg-[#ffb596]/25 transition-colors duration-700" />
+            
+            <div className="flex justify-between items-start mb-6 relative z-10">
+              <span className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em]">Critical Friction Point</span>
+              <div className="flex items-center gap-1 bg-[#ff4f73]/20 backdrop-blur-md text-[#ff4f73] px-2.5 py-1 rounded-full text-[10px] font-bold border border-[#ff4f73]/30 shadow-[0_0_15px_rgba(255,79,115,0.2)]">
+                P1 PRIORITY
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="text-xl font-bold text-white leading-tight mb-2" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-              {loading ? '—' : topDriver?.driver_label || 'N/A'}
-            </div>
-            <div className="w-full bg-white/5 rounded-full h-1.5 mb-1.5 overflow-hidden">
-               <div className="bg-[#ffb596] h-full rounded-full" style={{ width: '85%' }}></div>
-            </div>
-            <div className="text-[10px] text-white/40 uppercase tracking-wide">
-              Opportunity Score: <span className="text-white font-bold">{topDriver?.opportunity_score}</span>
+            
+            <div className="relative z-10">
+              <div className="text-xl md:text-2xl font-bold text-white leading-tight mb-4 drop-shadow-md" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+                {loading ? '—' : topDriver?.driver_label || 'N/A'}
+              </div>
+              <div className="w-full bg-white/5 rounded-full h-1.5 mb-2 overflow-hidden shadow-inner">
+                 <div className="bg-gradient-to-r from-[#ff4f73] to-[#ffb596] h-full rounded-full" style={{ width: '85%' }}></div>
+              </div>
+              <div className="text-[10px] text-white/50 uppercase tracking-[0.15em] font-bold">
+                Opportunity Score: <span className="text-white drop-shadow-md">{topDriver?.opportunity_score}</span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Card 3: Active Streams */}
-        <div className="bg-[#0a0d14]/80 border border-white/5 rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between backdrop-blur-md hover:border-white/10 transition-colors">
-          <div className="absolute top-0 left-0 w-1 h-full bg-tertiary" />
-          <div className="flex justify-between items-start mb-6">
-            <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Active AI Classifiers</span>
-            <span className="material-symbols-outlined text-white/20 text-lg">memory</span>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-white tracking-tight flex items-baseline gap-2" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-              {loading ? '—' : opportunities.filter((d) => d.frequency > 0).length}
-              <span className="text-sm text-white/30 font-normal">/ 12</span>
+        <div className="group relative rounded-3xl p-[1px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_30px_-10px_rgba(0,220,229,0.2)]">
+          <div className="absolute inset-0 bg-gradient-to-br from-tertiary/50 via-transparent to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
+          <div className="relative h-full bg-[#05070A]/60 backdrop-blur-3xl rounded-3xl p-6 md:p-8 flex flex-col justify-between overflow-hidden border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-tertiary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-tertiary/20 transition-colors duration-700" />
+            
+            <div className="flex justify-between items-start mb-6 relative z-10">
+              <span className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em]">Active AI Classifiers</span>
+              <div className="w-6 h-6 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10">
+                <span className="material-symbols-outlined text-white/80 text-[14px]">memory</span>
+              </div>
             </div>
-            <div className="mt-2 text-[11px] text-white/40 flex items-center gap-1.5 uppercase tracking-wide">
-              Taxonomy Categories Tracking
+            
+            <div className="relative z-10">
+              <div className="text-5xl font-bold text-white tracking-tight flex items-baseline gap-2 drop-shadow-md" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+                {loading ? '—' : opportunities.filter((d) => d.frequency > 0).length}
+                <span className="text-sm text-white/40 font-normal">/ 12</span>
+              </div>
+              <div className="mt-3 text-[10px] text-white/50 flex items-center gap-1 uppercase tracking-[0.15em] font-bold">
+                Taxonomy Categories Tracking
+              </div>
             </div>
           </div>
         </div>
