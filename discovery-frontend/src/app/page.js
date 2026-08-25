@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, ResponsiveContainer, Cell,
+  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, ResponsiveContainer,
 } from 'recharts';
 import axios from 'axios';
 
@@ -395,13 +395,10 @@ export default function AnalyticsDashboard() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 z-10">
             <div>
               <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-                Opportunity Scatter Plot
-                <span className="ml-3 text-[10px] bg-white/5 border border-white/10 px-2 py-1 rounded text-on-surface-variant uppercase tracking-widest font-normal">
-                  Score = Freq × Intensity × Weight
-                </span>
+                Opportunity Radar
               </h3>
               <p className="text-xs text-on-surface-variant mt-2 ml-4">
-                X-Axis: Frequency &nbsp;|&nbsp; Y-Axis: Intensity &nbsp;|&nbsp; Bubble Size: Opportunity Score
+                Mapping the multidimensional shape of consumer friction based on Final Opportunity Score.
               </p>
             </div>
             <div className="flex gap-2 bg-[#05070A]/50 p-1.5 rounded-xl border border-white/10 backdrop-blur-sm">
@@ -422,39 +419,29 @@ export default function AnalyticsDashboard() {
           ) : (
             <div className="flex-1 min-h-[420px] z-10">
               <ResponsiveContainer width="100%" height="100%">
-                <ScatterChart margin={{ top: 20, right: 30, bottom: 20, left: 0 }}>
-                  <XAxis 
-                    type="number" 
-                    dataKey="frequency" 
-                    name="Frequency" 
-                    stroke="#5c3f42" 
-                    tick={{ fill: '#ac888b', fontSize: 12 }} 
+                <RadarChart cx="50%" cy="50%" outerRadius="65%" data={opportunities} margin={{ top: 20, right: 30, bottom: 20, left: 30 }}>
+                  <PolarGrid stroke="rgba(255,255,255,0.15)" strokeDasharray="3 3" />
+                  <PolarAngleAxis 
+                    dataKey="driver_label" 
+                    tick={{ fill: '#e5bdc0', fontSize: 11, fontWeight: 600 }} 
+                  />
+                  <PolarRadiusAxis 
+                    angle={30} 
+                    domain={[0, 'auto']} 
+                    tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} 
                     axisLine={false} 
-                    tickLine={false}
                   />
-                  <YAxis 
-                    type="number" 
-                    dataKey="avg_intensity" 
-                    name="Intensity" 
-                    domain={[0, 5]}
-                    stroke="#5c3f42" 
-                    tick={{ fill: '#ac888b', fontSize: 12 }} 
-                    axisLine={false} 
-                    tickLine={false}
+                  <Radar
+                    name="Opportunity Score"
+                    dataKey="opportunity_score"
+                    stroke="#ff3366"
+                    strokeWidth={2}
+                    fill="#ff3366"
+                    fillOpacity={0.4}
+                    className="drop-shadow-[0_0_15px_rgba(255,51,102,0.5)] transition-all hover:fill-opacity-60"
                   />
-                  <ZAxis 
-                    type="number" 
-                    dataKey="opportunity_score" 
-                    range={[100, 1500]} 
-                    name="Score" 
-                  />
-                  <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '3 3', stroke: 'rgba(255,51,102,0.2)' }} />
-                  <Scatter name="Hesitations" data={opportunities} animationDuration={1000}>
-                    {opportunities.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={BAR_COLORS[index % BAR_COLORS.length]} className="hover:opacity-80 transition-opacity drop-shadow-[0_0_8px_currentColor]" />
-                    ))}
-                  </Scatter>
-                </ScatterChart>
+                  <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,51,102,0.05)' }} />
+                </RadarChart>
               </ResponsiveContainer>
             </div>
           )}
