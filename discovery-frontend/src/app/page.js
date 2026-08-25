@@ -436,15 +436,22 @@ export default function AnalyticsDashboard() {
 
         {/* Live Snippet Feed Column (Span 1) */}
         <div className="glass-card rounded-2xl p-0 flex flex-col overflow-hidden h-[540px]">
-          <div className="p-6 border-b border-white/10 bg-[#05070A]/50 flex justify-between items-center z-10 relative">
-            <h3 className="text-lg font-semibold text-white flex items-center gap-2" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-              <span className="material-symbols-outlined text-tertiary">stream</span>
-              Latest Raw Signals
-            </h3>
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
-            </span>
+          <div className="px-6 py-5 border-b border-white/5 bg-gradient-to-r from-[#0a0d14] to-transparent flex justify-between items-center z-10 relative">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shadow-inner">
+                <span className="material-symbols-outlined text-white/70 text-[14px]">sensors</span>
+              </div>
+              <h3 className="text-[13px] font-bold text-white uppercase tracking-[0.1em]">
+                Live Signal Feed
+              </h3>
+            </div>
+            <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
+               <span className="flex h-1.5 w-1.5 relative">
+                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-tertiary"></span>
+               </span>
+               <span className="text-[9px] uppercase tracking-widest font-bold text-tertiary">Syncing</span>
+            </div>
           </div>
           
           <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-4 relative">
