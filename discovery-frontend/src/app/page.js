@@ -608,38 +608,38 @@ export default function AnalyticsDashboard() {
 
           {/* MOCK SHOPPING APP FRAME - MOBILE DEVICE */}
           <div className="flex justify-center items-center">
-            <div className="relative bg-white w-[360px] h-[780px] rounded-[55px] overflow-hidden shadow-2xl border-[12px] border-black flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[3px] ring-gray-300">
+            <div className="relative bg-white w-[360px] h-[780px] rounded-[52px] overflow-hidden shadow-2xl border-[14px] border-[#0a0a0a] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[2px] ring-[#3a3a3c]">
               
               {/* iOS Status Bar & Dynamic Island */}
-              <div className="absolute top-0 w-full h-[54px] flex justify-between items-center px-6 z-40 pt-3">
+              <div className="absolute top-0 w-full h-[54px] flex justify-between items-center px-6 z-40 pt-2">
                 {/* Time */}
-                <span className="text-[15px] font-bold text-black tracking-tighter w-[60px] text-center ml-1">9:41</span>
+                <span className="text-[14px] font-semibold text-black tracking-tight w-[60px] text-center ml-1">9:41</span>
                 
                 {/* Dynamic Island */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-[12px] w-[125px] h-[37px] bg-black rounded-full flex items-center justify-between px-3 shadow-sm">
-                  <div className="w-3.5 h-3.5 rounded-full bg-[#111] border border-white/10 shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]"></div>
+                <div className="absolute left-1/2 -translate-x-1/2 top-[10px] w-[105px] h-[32px] bg-black rounded-full flex items-center justify-between px-2.5 shadow-sm">
+                  <div className="w-3 h-3 rounded-full bg-[#111] border border-white/10 shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]"></div>
                   <div className="w-1.5 h-1.5 rounded-full bg-green-500/80 mr-1 blur-[1px]"></div>
                 </div>
 
                 {/* Icons */}
-                <div className="flex gap-[7px] items-center shrink-0 justify-end mr-2">
+                <div className="flex gap-1.5 items-center w-[60px] justify-end mr-1">
                   {/* iOS Signal */}
-                  <svg width="22" height="14" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.5" y="7" width="3" height="4" rx="1" fill="black"/>
                     <rect x="4.5" y="5" width="3" height="6" rx="1" fill="black"/>
                     <rect x="8.5" y="3" width="3" height="8" rx="1" fill="black"/>
                     <rect x="12.5" y="0" width="3" height="11" rx="1" fill="black"/>
                   </svg>
                   {/* iOS Wifi */}
-                  <svg width="20" height="14" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M7.5 11C8.25939 11 8.875 10.3844 8.875 9.625C8.875 8.86561 8.25939 8.25 7.5 8.25C6.74061 8.25 6.125 8.86561 6.125 9.625C6.125 10.3844 6.74061 11 7.5 11ZM7.5 5.5C5.83609 5.5 4.34027 6.17415 3.25625 7.25817L4.22915 8.23107C5.06822 7.392 6.22359 6.875 7.5 6.875C8.77641 6.875 9.93178 7.392 10.7709 8.23107L11.7438 7.25817C10.6597 6.17415 9.16391 5.5 7.5 5.5ZM7.5 2.75C5.10519 2.75 2.94632 3.72266 1.39167 5.27732L2.36456 6.25021C3.68112 4.93365 5.50025 4.125 7.5 4.125C9.49975 4.125 11.3189 4.93365 12.6354 6.25021L13.6083 5.27732C12.0537 3.72266 9.89481 2.75 7.5 2.75ZM7.5 0C4.37688 0 1.55403 1.26629 -0.554443 3.31505L0.41845 4.28795C2.28581 2.4566 4.7709 1.375 7.5 1.375C10.2291 1.375 12.7142 2.4566 14.5816 4.28795L15.5544 3.31505C13.446 1.26629 10.6231 0 7.5 0Z" fill="black"/>
                   </svg>
                   {/* iOS Battery */}
                   <div className="flex items-center ml-0.5">
-                    <div className="w-[30px] h-[15px] border-[1px] border-black/40 rounded-[5px] p-[1.5px] relative">
-                      <div className="bg-black w-full h-full rounded-[2px]"></div>
+                    <div className="w-[24px] h-[11px] border-[1px] border-black/40 rounded-[3px] p-[1.5px] relative">
+                      <div className="bg-black w-full h-full rounded-[1.5px]"></div>
                     </div>
-                    <div className="w-[3px] h-[6px] bg-black/40 rounded-r-sm ml-[1px]"></div>
+                    <div className="w-[3px] h-[4px] bg-black/40 rounded-r-sm ml-[1px]"></div>
                   </div>
                 </div>
               </div>
