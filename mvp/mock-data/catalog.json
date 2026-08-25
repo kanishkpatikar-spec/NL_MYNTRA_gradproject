@@ -138,7 +138,7 @@
     "category": "kurta",
     "price": 2499,
     "sizes": ["S", "M", "L", "XL", "XXL"],
-    "image_url": "https://images.unsplash.com/photo-1617627143750-d56007567705?w=400&h=520&fit=crop",
+    "image_url": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&h=520&fit=crop",
     "attributes": { "material": "Viscose Rayon", "pattern": "Embroidered", "fit": "Straight", "sleeve": "3/4 Sleeve", "occasion": "Festive / Ethnic" },
     "rating": 4.3,
     "review_count": 345
