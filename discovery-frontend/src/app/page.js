@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
+  ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, ResponsiveContainer, Cell,
 } from 'recharts';
 import axios from 'axios';
 
@@ -279,21 +279,8 @@ export default function AnalyticsDashboard() {
             Myntra Aura | AI Discovery Engine
           </h1>
           <p className="text-on-surface-variant mt-2 tracking-wide max-w-xl">
-            Command Center for live ingestion of multi-channel consumer friction data (Reddit, YouTube, App Store).
+            Command Center for live ingestion of multi-channel consumer friction data (Reddit, YouTube, App Store, Play Store).
           </p>
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="text-[11px] uppercase tracking-[0.15em] text-on-surface-variant font-bold">Filter Category</label>
-          <select 
-            value={selectedCategory} 
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="bg-[#05070A] border border-white/20 text-on-surface rounded-xl px-4 py-2 focus:outline-none focus:border-primary/50 text-sm w-48"
-          >
-            <option value="All">All Categories</option>
-            <option value="Apparel">Apparel</option>
-            <option value="Footwear">Footwear</option>
-            <option value="Accessories">Accessories</option>
-          </select>
         </div>
       </div>
 
@@ -400,35 +387,72 @@ export default function AnalyticsDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Chart Column (Span 2) */}
-        <div className="glass-card rounded-2xl p-8 lg:col-span-2 flex flex-col">
-          <h3 className="text-xl font-semibold mb-8 text-white border-l-2 border-primary pl-4 flex items-center" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-            Opportunity Scores by Driver
-            <span className="ml-3 text-[10px] bg-white/5 border border-white/10 px-2 py-1 rounded text-on-surface-variant uppercase tracking-widest font-normal">
-              Score = Freq × Intensity × Weight
-            </span>
-          </h3>
+        <div className="glass-card rounded-2xl p-8 lg:col-span-2 flex flex-col relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-8 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 z-10">
+            <div>
+              <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+                Opportunity Scatter Plot
+                <span className="ml-3 text-[10px] bg-white/5 border border-white/10 px-2 py-1 rounded text-on-surface-variant uppercase tracking-widest font-normal">
+                  Score = Freq × Intensity × Weight
+                </span>
+              </h3>
+              <p className="text-xs text-on-surface-variant mt-2 ml-4">
+                X-Axis: Frequency &nbsp;|&nbsp; Y-Axis: Intensity &nbsp;|&nbsp; Bubble Size: Opportunity Score
+              </p>
+            </div>
+            <div className="flex gap-2 bg-[#05070A]/50 p-1.5 rounded-xl border border-white/10 backdrop-blur-sm">
+              {['All', 'Apparel', 'Footwear', 'Accessories'].map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-lg transition-all ${selectedCategory === cat ? 'bg-primary text-white shadow-[0_0_15px_rgba(255,51,102,0.4)]' : 'text-on-surface-variant hover:text-white hover:bg-white/5'}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+          
           {loading ? (
-            <div className="flex-1 min-h-[420px] flex items-center justify-center text-on-surface-variant">Loading chart data...</div>
+            <div className="flex-1 min-h-[420px] flex items-center justify-center text-on-surface-variant">Plotting multidimensional metrics...</div>
           ) : (
-            <div className="flex-1 min-h-[420px]">
+            <div className="flex-1 min-h-[420px] z-10">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={opportunities} layout="vertical" margin={{ left: 30, right: 40, top: 5, bottom: 5 }}>
-                  <XAxis type="number" stroke="#5c3f42" tick={{ fill: '#ac888b', fontSize: 12 }} axisLine={false} />
-                  <YAxis
-                    type="category"
-                    dataKey="driver_label"
-                    width={220}
-                    tick={{ fill: '#e5bdc0', fontSize: 13 }}
-                    stroke="transparent"
+                <ScatterChart margin={{ top: 20, right: 30, bottom: 20, left: 0 }}>
+                  <XAxis 
+                    type="number" 
+                    dataKey="frequency" 
+                    name="Frequency" 
+                    stroke="#5c3f42" 
+                    tick={{ fill: '#ac888b', fontSize: 12 }} 
+                    axisLine={false} 
                     tickLine={false}
                   />
-                  <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,51,102,0.05)' }} />
-                  <Bar dataKey="opportunity_score" radius={[0, 8, 8, 0]} barSize={14}>
-                    {opportunities.map((_, i) => (
-                      <Cell key={i} fill={BAR_COLORS[i % BAR_COLORS.length]} className="hover:opacity-80 transition-opacity" />
+                  <YAxis 
+                    type="number" 
+                    dataKey="avg_intensity" 
+                    name="Intensity" 
+                    domain={[0, 5]}
+                    stroke="#5c3f42" 
+                    tick={{ fill: '#ac888b', fontSize: 12 }} 
+                    axisLine={false} 
+                    tickLine={false}
+                  />
+                  <ZAxis 
+                    type="number" 
+                    dataKey="opportunity_score" 
+                    range={[100, 1500]} 
+                    name="Score" 
+                  />
+                  <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '3 3', stroke: 'rgba(255,51,102,0.2)' }} />
+                  <Scatter name="Hesitations" data={opportunities} animationDuration={1000}>
+                    {opportunities.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={BAR_COLORS[index % BAR_COLORS.length]} className="hover:opacity-80 transition-opacity drop-shadow-[0_0_8px_currentColor]" />
                     ))}
-                  </Bar>
-                </BarChart>
+                  </Scatter>
+                </ScatterChart>
               </ResponsiveContainer>
             </div>
           )}
