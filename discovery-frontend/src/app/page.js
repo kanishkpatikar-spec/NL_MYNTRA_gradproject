@@ -514,40 +514,36 @@ export default function AnalyticsDashboard() {
         </div>
 
         {/* Live Snippet Feed Column (Span 1) */}
-        <div className="glass-card rounded-2xl p-0 flex flex-col overflow-hidden h-[540px]">
-          <div className="px-6 py-5 border-b border-white/5 bg-gradient-to-r from-[#0a0d14] to-transparent flex justify-between items-center z-10 relative">
+        <div className="glass-card rounded-3xl p-0 flex flex-col overflow-hidden h-[540px] border border-white/5 shadow-2xl">
+          <div className="px-6 py-5 border-b border-white/5 bg-gradient-to-r from-white/[0.02] to-transparent flex justify-between items-center z-10 relative backdrop-blur-md">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shadow-inner">
-                <span className="material-symbols-outlined text-white/70 text-[14px]">sensors</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shadow-[inset_0_1px_3px_rgba(255,255,255,0.1)]">
+                <span className="material-symbols-outlined text-white/80 text-[15px]">forum</span>
               </div>
-              <h3 className="text-[13px] font-bold text-white uppercase tracking-[0.1em]">
-                Live Signal Feed
+              <h3 className="text-[12px] font-semibold text-white/90 uppercase tracking-[0.15em]">
+                Raw Friction Streams
               </h3>
-            </div>
-            <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
-               <span className="flex h-1.5 w-1.5 relative">
-                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
-                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-tertiary"></span>
-               </span>
-               <span className="text-[9px] uppercase tracking-widest font-bold text-tertiary">Syncing</span>
             </div>
           </div>
           
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-4 relative">
+          <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-4 relative bg-[#030303]/40">
              {/* Fade overlay for top/bottom scrolling */}
-             <div className="absolute top-0 left-0 w-full h-4 bg-gradient-to-b from-[#11141e] to-transparent z-10 pointer-events-none"/>
+             <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-[#030303]/90 to-transparent z-10 pointer-events-none"/>
              
              {loading ? (
                <div className="flex justify-center py-10"><span className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin"/></div>
              ) : (
                displayedSnippets.map((snippet, idx) => (
-                 <div key={idx} className={`p-4 rounded-xl border border-white/5 bg-[#05070A]/40 hover:bg-[#05070A]/80 hover:border-white/15 transition-all group ${isPipelineRunning && idx === 0 ? 'animate-pulse bg-primary/5 border-primary/20' : ''}`}>
-                   <div className="flex justify-between items-start mb-2">
-                     <span className="text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded bg-white/5 text-white/60 group-hover:text-white/90">
+                 <div key={idx} className={`p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 hover:shadow-lg transition-all duration-300 group relative overflow-hidden ${isPipelineRunning && idx === 0 ? 'animate-pulse bg-primary/5 border-primary/20' : ''}`}>
+                   {/* Subtle glass reflection */}
+                   <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                   
+                   <div className="flex justify-between items-start mb-3 relative z-10">
+                     <span className="text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-md bg-white/5 text-white/60 group-hover:bg-white/10 group-hover:text-white/90 transition-colors border border-white/5">
                        {snippet.source || 'Scraped'}
                      </span>
                    </div>
-                   <p className="text-xs text-on-surface leading-relaxed line-clamp-4">
+                   <p className="text-[13px] text-white/70 leading-relaxed font-light relative z-10">
                      "{snippet.text}"
                    </p>
                  </div>
