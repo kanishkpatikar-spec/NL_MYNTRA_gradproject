@@ -6,9 +6,11 @@ import { wishlistService, moduleService } from '@/services/api';
 import ItemCard from '@/components/ItemCard';
 import AIModalDrawer from '@/components/AIModalDrawer';
 import { logEvent } from '@/services/events';
+import { useCart } from '@/context/CartContext';
 
 export default function WishlistHome() {
   const router = useRouter();
+  const { addToCart } = useCart();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -88,6 +90,14 @@ export default function WishlistHome() {
     } finally {
       setAnalyzingSandbox(false);
     }
+  };
+
+  const handleAddAllToCart = () => {
+    sandboxItems.forEach(item => {
+      addToCart(item.product || item);
+    });
+    logEvent('sandbox_added_to_cart', { item_ids: sandboxItems.map(i => (i.product?.id || i.id)) });
+    alert("Items added to cart!");
   };
 
   if (loading) {
@@ -207,9 +217,18 @@ export default function WishlistHome() {
                   {sandboxResult.compatibility_score}% Match
                 </div>
               </div>
-              <p className="text-on-surface leading-relaxed whitespace-pre-line text-sm">
+              <p className="text-on-surface leading-relaxed whitespace-pre-line text-sm mb-4">
                 {sandboxResult.analysis}
               </p>
+              <div className="flex justify-end border-t border-primary/20 pt-3 mt-3">
+                <button 
+                  onClick={handleAddAllToCart}
+                  className="px-4 py-2 flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-on-primary-fixed text-sm font-bold rounded-lg hover:scale-105 transition-transform shadow-md"
+                >
+                  <span className="material-symbols-outlined text-[18px]">shopping_cart_checkout</span>
+                  Add All to Cart
+                </button>
+              </div>
             </div>
           )}
           {sandboxResult?.error && (

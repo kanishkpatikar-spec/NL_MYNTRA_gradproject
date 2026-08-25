@@ -47,6 +47,7 @@ async def analyze_sandbox(request: CompareRequest):
         "You are an expert AI fashion stylist for Myntra Aura. "
         "Analyze the style compatibility between these items: [Item 1] and [Item 2]. Do their colors, materials, and occasions match? "
         "Provide a Style Compatibility Score (0-100%) and a 2-sentence styling recommendation. "
+        "IMPORTANT: You MUST explicitly reference the specific product names, colors, and materials in your analysis. Make it personalized to the fit the user is trying to create, and do NOT provide generic, cookie-cutter responses. "
         "Return ONLY valid JSON with exactly two keys: "
         "'compatibility_score' (integer 0-100) and 'analysis' (the 2-sentence styling recommendation). "
         "Do not include markdown fences, disclaimers, or extra text."
@@ -92,13 +93,27 @@ async def analyze_sandbox(request: CompareRequest):
         hash_val = sum(ord(c) for id_val in ids_sorted for c in id_val)
         
         scores = [82, 45, 95, 60, 78, 30]
+        
+        n1 = p1.get('name', 'Item 1')
+        n2 = p2.get('name', 'Item 2')
+        c1 = (p1.get('attributes') or {}).get('color', 'color')
+        c2 = (p2.get('attributes') or {}).get('color', 'color')
+        cat1 = p1.get('category', 'piece')
+        cat2 = p2.get('category', 'piece')
+        
+        if p3:
+            n3 = p3.get('name', 'Item 3')
+            items_str = f"{n1}, {n2}, and {n3}"
+        else:
+            items_str = f"{n1} and {n2}"
+            
         analyses = [
-            "These pieces share a strong premium casual mix and can be styled together for elevated daywear. The pairing works best for brunch, smart casual outings, or an easy all-day look.",
-            "This is a bold clash of styles. While it could work for a highly experimental streetwear look, the contrasting formalities make it difficult to pull off effortlessly.",
-            "An absolute perfect match. The complementary color palettes and aligned material weights make this a foolproof combination for any occasion.",
-            "They can work together with the right accessories, but the proportions are slightly off. Consider adding a belt or a structured third layer to balance the silhouette.",
-            "A solid, safe combination. It won't turn heads, but it's a reliable pairing that adheres to classic color blocking principles.",
-            "These items clash significantly in both seasonality and texture. We do not recommend pairing them together unless you're intentionally breaking fashion rules."
+            f"The {n1} and {n2} share a strong premium casual mix. The {c1} and {c2} tones complement each other perfectly for an elevated daywear look.",
+            f"This is a bold clash of styles. While the {cat1} and {cat2} could work together for a highly experimental streetwear look, their contrasting formalities make {items_str} difficult to pull off effortlessly.",
+            f"An absolute perfect match. Combining the {n1} with the {n2} makes this a foolproof combination. The {c1} and {c2} palette works flawlessly.",
+            f"They can work together with the right accessories. Consider adding a belt or a structured third layer to balance the silhouette when pairing the {n1} with the {n2}.",
+            f"A solid, safe combination. The {cat1} balances nicely with the {cat2}, and {items_str} adhere to classic color blocking principles.",
+            f"These items clash significantly in both seasonality and texture. We do not recommend pairing the {n1} with the {n2} unless you're intentionally breaking fashion rules."
         ]
         
         idx = hash_val % len(scores)
