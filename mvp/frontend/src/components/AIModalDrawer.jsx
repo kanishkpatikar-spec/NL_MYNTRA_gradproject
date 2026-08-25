@@ -70,24 +70,25 @@ export default function AIModalDrawer({ itemId, onClose }) {
     <aside 
       className={`fixed right-0 top-20 bottom-0 w-full md:w-[400px] glass-panel-heavy z-40 flex flex-col transform transition-transform duration-500 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
     >
-      {/* Drawer Header */}
-      <div className="px-6 py-5 border-b border-white/10 flex justify-between items-center bg-surface-container-lowest/50">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center neon-glow">
-            <span className="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+      {/* Drawer Header - Redesigned */}
+      <div className="px-8 py-6 border-b border-white/5 bg-[#0a0e18]/90 backdrop-blur-md flex justify-between items-center sticky top-0 z-10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+        <div className="flex flex-col gap-1.5">
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-[20px] animate-pulse">auto_awesome</span>
+            <h3 className="text-xl font-bold tracking-tight text-white" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+              Confidence Assistant
+            </h3>
           </div>
-          <div>
-            <h3 className="font-headline-sm text-headline-sm text-on-surface leading-tight">Confidence Assistant</h3>
-            <p className="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider text-[10px]">
-              Analyzing: {itemData?.name || 'Item'}
-            </p>
-          </div>
+          <p className="text-[10px] text-on-surface-variant flex items-center gap-1.5 uppercase tracking-[0.15em] font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]"></span>
+            Analyzing: <span className="text-primary truncate max-w-[180px]">{itemData?.name || 'Item'}</span>
+          </p>
         </div>
         <button 
           onClick={onClose}
-          className="text-on-surface-variant hover:text-on-surface transition-colors p-2 rounded-full hover:bg-white/5"
+          className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-on-surface-variant hover:text-white transition-all border border-white/10 hover:border-white/20 hover:scale-105 shadow-sm"
         >
-          <span className="material-symbols-outlined">close</span>
+          <span className="material-symbols-outlined text-[18px]">close</span>
         </button>
       </div>
 
