@@ -608,26 +608,41 @@ export default function AnalyticsDashboard() {
 
           {/* MOCK SHOPPING APP FRAME - MOBILE DEVICE */}
           <div className="flex justify-center items-center">
-            <div className="relative bg-white w-[340px] h-[680px] rounded-[3rem] overflow-hidden shadow-2xl border-[8px] border-[#111] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)]">
+            <div className="relative bg-white w-[350px] h-[750px] rounded-[48px] overflow-hidden shadow-2xl border-[14px] border-black flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-4 ring-[#2a2a2c]">
               
-              {/* iPhone Notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#111] rounded-b-3xl z-40 flex justify-center items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
-                <div className="w-12 h-3 rounded-full bg-white/10"></div>
+              {/* iPhone Dynamic Island */}
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[120px] h-[32px] bg-black rounded-full z-40 flex items-center justify-between px-2.5 shadow-sm">
+                <div className="w-3 h-3 rounded-full bg-[#111] border border-white/10 shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-green-500/80 mr-1 blur-[1px]"></div>
               </div>
 
-              {/* Status Bar */}
-              <div className="bg-transparent absolute top-0 w-full px-5 py-1.5 flex justify-between items-center z-30 text-[10px] font-bold text-gray-800">
-                <span>9:41</span>
-                <div className="flex gap-1 items-center">
-                  <span className="material-symbols-outlined text-[12px]">signal_cellular_4_bar</span>
-                  <span className="material-symbols-outlined text-[12px]">wifi</span>
-                  <span className="material-symbols-outlined text-[12px]">battery_full</span>
+              {/* iOS Status Bar */}
+              <div className="bg-transparent absolute top-0 w-full px-6 pt-3 pb-1 flex justify-between items-center z-30">
+                <span className="text-[13px] font-semibold text-black tracking-tight mt-1 ml-1">9:41</span>
+                <div className="flex gap-1.5 items-center mr-1">
+                  {/* iOS Signal */}
+                  <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="7" width="3" height="4" rx="1" fill="black"/>
+                    <rect x="4.5" y="5" width="3" height="6" rx="1" fill="black"/>
+                    <rect x="8.5" y="3" width="3" height="8" rx="1" fill="black"/>
+                    <rect x="12.5" y="0" width="3" height="11" rx="1" fill="black"/>
+                  </svg>
+                  {/* iOS Wifi */}
+                  <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M7.5 11C8.25939 11 8.875 10.3844 8.875 9.625C8.875 8.86561 8.25939 8.25 7.5 8.25C6.74061 8.25 6.125 8.86561 6.125 9.625C6.125 10.3844 6.74061 11 7.5 11ZM7.5 5.5C5.83609 5.5 4.34027 6.17415 3.25625 7.25817L4.22915 8.23107C5.06822 7.392 6.22359 6.875 7.5 6.875C8.77641 6.875 9.93178 7.392 10.7709 8.23107L11.7438 7.25817C10.6597 6.17415 9.16391 5.5 7.5 5.5ZM7.5 2.75C5.10519 2.75 2.94632 3.72266 1.39167 5.27732L2.36456 6.25021C3.68112 4.93365 5.50025 4.125 7.5 4.125C9.49975 4.125 11.3189 4.93365 12.6354 6.25021L13.6083 5.27732C12.0537 3.72266 9.89481 2.75 7.5 2.75ZM7.5 0C4.37688 0 1.55403 1.26629 -0.554443 3.31505L0.41845 4.28795C2.28581 2.4566 4.7709 1.375 7.5 1.375C10.2291 1.375 12.7142 2.4566 14.5816 4.28795L15.5544 3.31505C13.446 1.26629 10.6231 0 7.5 0Z" fill="black"/>
+                  </svg>
+                  {/* iOS Battery */}
+                  <div className="flex items-center ml-0.5">
+                    <div className="w-[22px] h-[11px] border border-black/40 rounded-[4px] p-[1.5px] relative">
+                      <div className="bg-black w-full h-full rounded-[1.5px]"></div>
+                    </div>
+                    <div className="w-[3px] h-[4px] bg-black/40 rounded-r-sm ml-[1px]"></div>
+                  </div>
                 </div>
               </div>
 
-              {/* App Header */}
-              <div className="bg-gray-50/80 backdrop-blur-md pt-8 pb-3 px-4 flex items-center justify-between z-20 border-b border-gray-200">
+              {/* App Header (Pushed down for Dynamic Island) */}
+              <div className="bg-white pt-12 pb-3 px-4 flex items-center justify-between z-20 border-b border-gray-100">
                 <span className="material-symbols-outlined text-gray-800">arrow_back</span>
                 <span className="font-bold text-gray-800 tracking-tight text-sm truncate max-w-[150px]">{mockProducts[simScenario].brand}</span>
                 <div className="flex gap-4">
