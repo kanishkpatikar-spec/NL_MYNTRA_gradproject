@@ -179,7 +179,7 @@ export default function AnalyticsDashboard() {
         opportunity_score: Math.round(opp.opportunity_score * mult * 10) / 10,
         frequency: Math.round(opp.frequency * mult)
       };
-    }).sort((a, b) => b.opportunity_score - a.opportunity_score);
+    });
 
     setOpportunities(updated);
   }, [selectedCategory, allOpportunities]);
