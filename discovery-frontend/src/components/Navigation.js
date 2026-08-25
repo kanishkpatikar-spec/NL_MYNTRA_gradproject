@@ -15,8 +15,8 @@ export default function Navigation() {
         href="/" 
         className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 font-body-md text-sm text-primary font-bold bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(216,180,254,0.2)]`}
       >
-        <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
-        <span>Wishlist Assistant</span>
+        <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>analytics</span>
+        <span>Discovery Engine</span>
       </Link>
     </nav>
   );

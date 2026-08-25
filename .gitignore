@@ -6,3 +6,6 @@ __pycache__/
 .env
 .DS_Store
 events.db
+
+# presentation script
+docs/script.md
