@@ -573,13 +573,7 @@ export default function AnalyticsDashboard() {
               Trigger Shopper Hesitation
             </button>
             
-            {/* Status Log */}
-            <div className="bg-black/50 rounded-xl p-4 border border-white/5 font-mono text-[10px] text-white/60">
-              <div className="mb-1 text-primary">System Log:</div>
-              <div>{'>'} Status: {simStatus.toUpperCase()}</div>
-              {simStatus === 'hesitating' && <div className="text-yellow-400 animate-pulse">{'>'} Detecting idle cursor patterns...</div>}
-              {simStatus === 'aura_active' && <div className="text-tertiary">{'>'} Aura confidence widget injected successfully.</div>}
-            </div>
+
           </div>
 
           {/* MOCK SHOPPING APP FRAME */}
