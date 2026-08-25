@@ -238,7 +238,7 @@ export default function AnalyticsDashboard() {
                <div className="mb-6 flex-grow">
                  <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-2">Autopilot Strategy</span>
                  <p className="text-sm text-on-surface leading-relaxed">
-                   The AI has identified <strong className="text-primary">{topDriver.driver_label}</strong> as the highest overall drop-off factor for <strong>{selectedCategory === 'All' ? 'all items' : selectedCategory}</strong>. The <strong>Resolution Engine</strong> will automatically inject the optimal confidence module into the Wishlist for high-risk items (e.g., 'Fit Confidence' for clothing, or 'Price Context' for expensive items) to dynamically solve this customer hesitation and save the sale.
+                   The AI has identified <strong className="text-primary">{topDriver.driver_label}</strong> as the highest overall drop-off factor for <strong>{selectedCategory === 'All' ? 'all items' : selectedCategory}</strong>. To resolve this, Myntra Aura dynamically deploys targeted confidence modules (such as 'Fit Confidence' for clothing, or 'Price Context' for expensive items) directly into the user's Wishlist to address this specific hesitation and save the sale.
                  </p>
                </div>
               </div>
