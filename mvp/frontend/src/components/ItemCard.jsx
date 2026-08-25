@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useCart } from '@/context/CartContext';
 
 export default function ItemCard({ item, onClick, isSelected, draggable, onDragStart, onAddToSandbox, isInSandbox }) {
   // Fix the mapping: data is inside item.product if it's the wrapper format
   const product = item.product || item;
+  const { addToCart } = useCart();
+  const [showToast, setShowToast] = useState(false);
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    addToCart(product);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  };
   
   return (
     <div 
@@ -12,6 +22,14 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
       onClick={() => onClick(item.id || product.id)}
     >
       <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent z-10"></div>
+      
+      {/* Toast Notification */}
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-surface-container-highest/90 backdrop-blur-md px-4 py-2 rounded-lg border border-primary/20 shadow-xl transition-all duration-300 ${showToast ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
+        <span className="text-on-surface font-label-sm flex items-center gap-2 whitespace-nowrap">
+          <span className="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+          Added to cart
+        </span>
+      </div>
       
       {/* Image */}
       <div className="h-[280px] w-full relative overflow-hidden bg-surface-container-low">
@@ -63,7 +81,7 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
           </span>
           <div className="flex items-center gap-3">
             <button 
-              onClick={(e) => { e.stopPropagation(); alert('Item added to cart!'); }}
+              onClick={handleAddToCart}
               className="bg-primary/20 text-primary border border-primary/30 px-3 py-1.5 rounded-lg font-label-bold text-[10px] uppercase tracking-wider hover:bg-primary hover:text-white transition-all flex items-center gap-1 shadow-sm"
             >
               <span className="material-symbols-outlined text-[14px]">shopping_cart_checkout</span>
