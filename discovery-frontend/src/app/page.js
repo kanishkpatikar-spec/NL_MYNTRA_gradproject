@@ -309,7 +309,7 @@ export default function AnalyticsDashboard() {
               Live Data Pipeline
             </h2>
             <p className="text-sm text-on-surface-variant max-w-lg leading-relaxed">
-              Trigger asynchronous scrapers on Pipedream to fetch real-time reviews. The AI engine classifies intent and synchronizes with Supabase instantly.
+              Trigger asynchronous scrapers to fetch real-time consumer signals across Reddit, YouTube, and the App Store. The AI engine instantly classifies intent and synchronizes the live data lake.
             </p>
             <div className="flex gap-4 items-center mt-4">
                 <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10">
@@ -338,10 +338,10 @@ export default function AnalyticsDashboard() {
                 </div>
                 
                 <div className="text-sm font-semibold text-white truncate">
-                  {activePipelineStep === 1 && "Authenticating Pipedream Nodes..."}
+                  {activePipelineStep === 1 && "Authenticating Secure Nodes..."}
                   {activePipelineStep === 2 && "Scraping Multi-Channel Signals..."}
                   {activePipelineStep === 3 && "Applying AI NLP Classifications..."}
-                  {activePipelineStep === 4 && "Synchronizing Supabase Data Lake..."}
+                  {activePipelineStep === 4 && "Synchronizing Live Data Lake..."}
                   {activePipelineStep === 5 && <span className="text-tertiary">Pipeline Sync Complete!</span>}
                 </div>
                 
