@@ -68,15 +68,20 @@ class StylingAssistModule(BaseModule):
             category = product.get('category', 'item').lower()
             color = product.get('attributes', {}).get('color', 'neutral').lower()
             
-            female_only = ["kurta", "dress", "saree", "skirt", "heels"]
-            male_only = ["blazer", "suit"] # Assuming blazer is male in this context
+            name = product.get('name', '').lower()
             
-            if category in female_only:
+            female_categories = ["kurta", "dress", "saree", "skirt", "heels", "bag"]
+            male_categories = ["blazer", "suit"] # Assuming blazer is male in this context
+            
+            is_female = category in female_categories or "stiletto" in name or "bag" in name
+            is_male = category in male_categories
+            
+            if is_female:
                 responses = [
                     f"- Casual: Pair this {category} with flats and delicate jewelry.\n- Dressy: Add statement earrings and a clutch.",
                     f"- Day out: Style with a stylish tote bag.\n- Evening: Pair with heels and bold lipstick.",
                 ]
-            elif category in male_only:
+            elif is_male:
                 responses = [
                     f"- Smart Casual: Layer over a crisp t-shirt.\n- Formal: Pair with trousers and leather dress shoes.",
                     f"- Office: Wear with tailored chinos.\n- Evening: Complete the look with a luxury watch.",
