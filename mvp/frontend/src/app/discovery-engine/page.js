@@ -222,7 +222,10 @@ export default function AnalyticsDashboard() {
                  </p>
                </div>
                <button 
-                 onClick={() => setModuleEnabled(true)}
+                 onClick={() => {
+                   setModuleEnabled(true);
+                   alert("Resolution Engine activated! AI confidence modules will now automatically resolve hesitations in the Wishlist.");
+                 }}
                  disabled={moduleEnabled}
                  className={`w-full font-bold text-xs uppercase tracking-[0.15em] py-3 rounded-lg transition-all flex items-center justify-center gap-2 ${
                    moduleEnabled 
