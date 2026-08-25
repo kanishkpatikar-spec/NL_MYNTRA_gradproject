@@ -11,6 +11,12 @@ const BAR_COLORS = [
   '#00a1a7', '#ff7e9a', '#ffd0a0', '#4de8ef', '#e58090',
 ];
 
+const QUICK_PROMPTS = [
+  "I love this jacket but I'm between M and L and don't want to deal with returns.",
+  "I added these sneakers but I'll just wait for the Diwali sale.",
+  "This dress looks amazing but I have no idea what shoes to wear with it.",
+];
+
 const DISCOVERY_API_BASE = process.env.NEXT_PUBLIC_DISCOVERY_API_URL || 'http://127.0.0.1:8001';
 
 async function getOpportunities(limit = 10) {
@@ -147,7 +153,15 @@ export default function AnalyticsDashboard() {
         {/* Card 2 */}
         <div className="glass-card rounded-2xl p-8 relative overflow-hidden group">
           <div className="absolute inset-0 bg-secondary-container/20 opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-          <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-5">Top Hesitation Driver</span>
+          <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] flex items-center mb-5">
+            Top Hesitation Driver
+            <div className="group/tooltip relative inline-flex items-center cursor-help ml-2">
+              <span className="material-symbols-outlined text-[14px]">info</span>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/tooltip:block w-48 p-2 bg-[#1a1f2c] text-xs text-white rounded border border-white/10 shadow-xl z-20 text-center normal-case tracking-normal font-normal">
+                Based on highest Opportunity Score across recent user data.
+              </div>
+            </div>
+          </span>
           <div className="text-2xl font-semibold text-secondary tracking-tight" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
             {loading ? '—' : topDriver?.driver_label || 'N/A'}
           </div>
@@ -172,8 +186,14 @@ export default function AnalyticsDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Chart */}
         <div className="glass-card rounded-2xl p-10 lg:col-span-2">
-          <h3 className="text-xl font-semibold mb-8 text-white border-l-2 border-primary pl-4" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+          <h3 className="text-xl font-semibold mb-8 text-white border-l-2 border-primary pl-4 flex items-center" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
             Opportunity Scores by Driver
+            <div className="group/tooltip relative inline-flex items-center cursor-help ml-3 text-on-surface-variant hover:text-white transition-colors">
+              <span className="material-symbols-outlined text-[18px]">help</span>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/tooltip:block w-56 p-2 bg-[#1a1f2c] text-xs text-white rounded border border-white/10 shadow-xl z-20 text-center font-normal">
+                Score = Frequency × Avg. Intensity × Business Weight
+              </div>
+            </div>
           </h3>
           {loading ? (
             <div className="h-[420px] flex items-center justify-center text-on-surface-variant">Loading chart data...</div>
@@ -218,7 +238,7 @@ export default function AnalyticsDashboard() {
                <div className="mb-6 flex-grow">
                  <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] block mb-2">Autopilot Strategy</span>
                  <p className="text-sm text-on-surface leading-relaxed">
-                   The AI has identified <strong className="text-primary">{topDriver.driver_label}</strong> as the highest overall drop-off factor. By activating the <strong>Resolution Engine</strong>, the AI will automatically inject the optimal confidence module into the Wishlist for high-risk items (e.g., 'Fit Confidence' for clothing, or 'Price Context' for expensive items) to dynamically solve this customer hesitation and save the sale.
+                   The AI has identified <strong className="text-primary">{topDriver.driver_label}</strong> as the highest overall drop-off factor for <strong>{selectedCategory === 'All' ? 'all items' : selectedCategory}</strong>. The <strong>Resolution Engine</strong> will automatically inject the optimal confidence module into the Wishlist for high-risk items (e.g., 'Fit Confidence' for clothing, or 'Price Context' for expensive items) to dynamically solve this customer hesitation and save the sale.
                  </p>
                </div>
               </div>
@@ -240,7 +260,18 @@ export default function AnalyticsDashboard() {
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Input Side */}
-          <div className="space-y-5">
+          <div className="space-y-4">
+            <div className="flex flex-wrap gap-2 mb-2">
+              {QUICK_PROMPTS.map((prompt, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setClassifyInput(prompt)}
+                  className="text-[11px] bg-primary/10 hover:bg-primary/25 text-primary px-3 py-1.5 rounded-full transition-colors border border-primary/20 text-left leading-tight"
+                >
+                  <span className="font-bold mr-1">Try:</span> {prompt.substring(0, 32)}...
+                </button>
+              ))}
+            </div>
             <textarea
               className="w-full bg-[#05070A] border border-white/10 rounded-xl p-5 text-sm text-on-surface focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all resize-none h-40 placeholder-white/25 leading-relaxed"
               placeholder="Type a hesitation a shopper might have...&#10;&#10;Example: 'I love the look of this jacket but I have no idea what to wear it with and I'm afraid it won't fit me properly.'"
@@ -258,16 +289,16 @@ export default function AnalyticsDashboard() {
           </div>
 
           {/* Results Side */}
-          <div className="min-h-[200px]">
+          <div className="min-h-[200px] relative">
             {!classifyResult && !classifying && (
-              <div className="h-full flex items-center justify-center text-on-surface-variant/40 text-sm italic">
+              <div className="h-full flex items-center justify-center text-on-surface-variant/40 text-sm italic border-2 border-dashed border-white/5 rounded-xl">
                 Results will appear here after analysis.
               </div>
             )}
             {classifying && (
-              <div className="h-full flex items-center justify-center text-primary text-sm">
-                <span className="material-symbols-outlined animate-spin mr-2">progress_activity</span>
-                Querying AI model...
+              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#05070A]/80 backdrop-blur-sm rounded-xl border border-white/5">
+                <div className="w-12 h-12 rounded-full border-4 border-primary/20 border-t-primary animate-spin mb-4" />
+                <span className="text-primary text-xs font-bold tracking-widest uppercase animate-pulse">Scanning Intent...</span>
               </div>
             )}
             {classifyResult && !classifyResult.error && (
