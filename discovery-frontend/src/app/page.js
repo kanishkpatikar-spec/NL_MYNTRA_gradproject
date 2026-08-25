@@ -138,6 +138,21 @@ export default function AnalyticsDashboard() {
   const [activePipelineStep, setActivePipelineStep] = useState(0);
   // 0: none, 1: auth, 2: scrape, 3: AI, 4: sync, 5: complete
 
+  // Aura Simulation State
+  const [simScenario, setSimScenario] = useState('size'); // 'size', 'style', 'price'
+  const [simStatus, setSimStatus] = useState('idle'); // 'idle', 'hesitating', 'aura_active'
+
+  const handleSimulate = () => {
+    if (simStatus !== 'idle') {
+      setSimStatus('idle');
+      setTimeout(() => setSimStatus('hesitating'), 300);
+      setTimeout(() => setSimStatus('aura_active'), 2500);
+    } else {
+      setSimStatus('hesitating');
+      setTimeout(() => setSimStatus('aura_active'), 2200);
+    }
+  };
+
   useEffect(() => {
     // Initial data load
     Promise.all([
@@ -513,98 +528,169 @@ export default function AnalyticsDashboard() {
 
       </div>
 
-      {/* Live Classifier — Full Width, Two-Column Interior */}
-      <div className="glass-card rounded-2xl p-10 relative overflow-hidden mt-6">
-        <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-        <h3 className="text-xl font-semibold mb-2 text-white flex items-center gap-3 border-l-2 border-primary pl-4" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-          <span className="material-symbols-outlined text-primary">forum</span>
-          Myntra Aura: Intent Recognition Demo
+      {/* LIVE AURA SIMULATION */}
+      <div className="glass-card rounded-3xl p-10 relative overflow-hidden mt-8 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <div className="absolute -right-20 -top-20 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+        <h3 className="text-2xl font-bold mb-3 text-white flex items-center gap-3 border-l-4 border-primary pl-4" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+          <span className="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
+          Live Aura AI Simulation
         </h3>
-        <p className="text-sm text-on-surface-variant mb-8 ml-4 max-w-2xl">
-          How does Myntra Aura know what you need? Type a hesitation a shopper might have below, and watch how the AI instantly detects the underlying concern to trigger the right support module.
+        <p className="text-sm text-on-surface-variant mb-10 ml-5 max-w-3xl leading-relaxed">
+          The ultimate goal of the Discovery Engine. Choose a consumer friction scenario below and watch how Myntra Aura translates our analytics into a real-time, proactive intervention on the shopping screen to prevent drop-off.
         </p>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Input Side */}
-          <div className="space-y-4">
-            <div className="flex flex-wrap gap-2 mb-2">
-              {QUICK_PROMPTS.map((prompt, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setClassifyInput(prompt)}
-                  className="text-[11px] bg-primary/10 hover:bg-primary/25 text-primary px-3 py-1.5 rounded-full transition-colors border border-primary/20 text-left leading-tight"
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
+          {/* SIMULATION CONTROLS */}
+          <div className="space-y-6">
+            <h4 className="text-[11px] uppercase tracking-[0.2em] text-white/50 font-bold mb-4">1. Select Shopper Friction Scenario</h4>
+            <div className="space-y-3">
+              {[
+                { id: 'size', title: 'Size & Fit Uncertainty', icon: 'straighten', desc: 'User doubts if the item will fit properly.' },
+                { id: 'style', title: 'Styling & Occasion Doubt', icon: 'dry_cleaning', desc: 'User loves it, but doesn\'t know what to wear it with.' },
+                { id: 'price', title: 'Price & Deal Timing', icon: 'sell', desc: 'User is waiting for a better discount.' }
+              ].map(scen => (
+                <div 
+                  key={scen.id}
+                  onClick={() => { setSimScenario(scen.id); setSimStatus('idle'); }}
+                  className={`p-4 rounded-2xl border cursor-pointer transition-all ${simScenario === scen.id ? 'bg-primary/10 border-primary shadow-[inset_0_0_20px_rgba(255,51,102,0.1)]' : 'bg-white/5 border-white/10 hover:bg-white/10'}`}
                 >
-                  <span className="font-bold mr-1">Try:</span> {prompt.substring(0, 32)}...
-                </button>
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className={`material-symbols-outlined text-sm ${simScenario === scen.id ? 'text-primary' : 'text-white/60'}`}>{scen.icon}</span>
+                    <span className={`font-bold text-sm ${simScenario === scen.id ? 'text-white' : 'text-white/80'}`}>{scen.title}</span>
+                  </div>
+                  <p className="text-xs text-white/50 pl-7">{scen.desc}</p>
+                </div>
               ))}
             </div>
-            <textarea
-              className="w-full bg-[#05070A] border border-white/10 rounded-xl p-5 text-sm text-on-surface focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all resize-none h-40 placeholder-white/25 leading-relaxed"
-              placeholder="Type a hesitation a shopper might have...&#10;&#10;Example: 'I love the look of this jacket but I have no idea what to wear it with and I'm afraid it won't fit me properly.'"
-              value={classifyInput}
-              onChange={(e) => setClassifyInput(e.target.value)}
-            />
+
             <button
-              onClick={handleClassify}
-              disabled={classifying || !classifyInput.trim()}
-              className="w-full primary-gradient-bg text-white font-bold text-xs uppercase tracking-[0.15em] py-4 rounded-xl neon-glow transition-all flex justify-center items-center gap-2 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(255,51,102,0.5)] duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+              onClick={handleSimulate}
+              disabled={simStatus !== 'idle' && simStatus !== 'aura_active'}
+              className="w-full mt-6 bg-gradient-to-r from-primary to-secondary text-white font-bold text-xs uppercase tracking-[0.2em] py-5 rounded-2xl transition-all flex justify-center items-center gap-2 hover:shadow-[0_0_30px_rgba(255,51,102,0.4)] disabled:opacity-50"
             >
-              <span className="material-symbols-outlined text-sm">troubleshoot</span>
-              {classifying ? 'Analyzing...' : 'Analyze Intent'}
+              <span className="material-symbols-outlined text-sm">play_arrow</span>
+              Trigger Shopper Hesitation
             </button>
+            
+            {/* Status Log */}
+            <div className="bg-black/50 rounded-xl p-4 border border-white/5 font-mono text-[10px] text-white/60">
+              <div className="mb-1 text-primary">System Log:</div>
+              <div>{'>'} Status: {simStatus.toUpperCase()}</div>
+              {simStatus === 'hesitating' && <div className="text-yellow-400 animate-pulse">{'>'} Detecting idle cursor patterns...</div>}
+              {simStatus === 'aura_active' && <div className="text-tertiary">{'>'} Aura confidence widget injected successfully.</div>}
+            </div>
           </div>
 
-          {/* Results Side */}
-          <div className="min-h-[200px] relative">
-            {!classifyResult && !classifying && (
-              <div className="h-full flex items-center justify-center text-on-surface-variant/40 text-sm italic border-2 border-dashed border-white/5 rounded-xl">
-                Results will appear here after analysis.
+          {/* MOCK SHOPPING APP FRAME */}
+          <div className="relative bg-white rounded-[2rem] overflow-hidden shadow-2xl border-[6px] border-[#1a1c23] h-[600px] flex flex-col">
+            {/* App Header */}
+            <div className="bg-gray-50 border-b border-gray-200 px-5 py-4 flex items-center justify-between z-10">
+              <span className="material-symbols-outlined text-gray-800">arrow_back</span>
+              <span className="font-bold text-gray-800 tracking-tight text-sm">Roadster Denim</span>
+              <div className="flex gap-4">
+                <span className="material-symbols-outlined text-gray-800">favorite_border</span>
+                <span className="material-symbols-outlined text-gray-800">shopping_bag</span>
               </div>
-            )}
-            {classifying && (
-              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#05070A]/80 backdrop-blur-sm rounded-xl border border-white/5">
-                <div className="w-12 h-12 rounded-full border-4 border-primary/20 border-t-primary animate-spin mb-4" />
-                <span className="text-primary text-xs font-bold tracking-widest uppercase animate-pulse">Scanning Intent...</span>
+            </div>
+
+            {/* Product Image */}
+            <div className="h-[300px] bg-gray-100 relative">
+              <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&q=80" alt="Jacket" className="w-full h-full object-cover" />
+              <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur text-gray-900 text-[10px] font-bold px-2 py-1 rounded">4.2 ★ | 1.2k Ratings</div>
+            </div>
+
+            {/* Product Details */}
+            <div className="p-5 flex-1 bg-white relative">
+              <h2 className="text-gray-900 font-bold text-lg leading-tight mb-1">Roadster</h2>
+              <p className="text-gray-500 text-xs mb-3">Men Blue Solid Denim Jacket</p>
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-gray-900 font-bold text-xl">₹1,299</span>
+                <span className="text-gray-400 text-sm line-through">₹2,999</span>
+                <span className="text-orange-500 text-xs font-bold">(56% OFF)</span>
               </div>
-            )}
-            {classifyResult && !classifyResult.error && (
-              <div className="space-y-6 animate-[fadeIn_0.4s_ease-out]">
-                <div>
-                  <h4 className="text-[11px] uppercase tracking-[0.15em] text-on-surface-variant font-bold mb-3">Detected Drivers</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {classifyResult.tags?.map((tag) => (
-                      <span key={tag} className="px-4 py-1.5 rounded-full bg-primary/15 text-primary text-xs font-semibold border border-primary/25 capitalize">
-                        {tag.replace(/_/g, ' ')}
-                      </span>
-                    ))}
+
+              {/* Fake Add to Cart Button (The target of hesitation) */}
+              <div className="absolute bottom-6 left-5 right-5">
+                <div className="bg-rose-500 text-white font-bold uppercase text-center py-4 rounded-xl tracking-wider text-sm shadow-lg">
+                  Add to Bag
+                </div>
+                
+                {/* Simulated Mouse Cursor for Hesitation */}
+                <div className={`absolute top-1/2 left-1/2 w-6 h-6 transition-all duration-[2000ms] pointer-events-none z-20 ${
+                  simStatus === 'idle' ? 'opacity-0 scale-50' : 
+                  simStatus === 'hesitating' ? 'opacity-100 -translate-x-12 -translate-y-6 animate-bounce' : 
+                  'opacity-0'
+                }`}>
+                  <svg viewBox="0 0 24 24" fill="black" stroke="white" strokeWidth="1" className="w-full h-full drop-shadow-md">
+                    <path d="M3 3l7 18 3-7 7-3z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* AURA BOTTOM SHEET INTERVENTION */}
+            <div className={`absolute bottom-0 left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-gray-200 rounded-t-[2rem] p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.15)] transition-transform duration-500 ease-out z-30 ${
+              simStatus === 'aura_active' ? 'translate-y-0' : 'translate-y-full'
+            }`}>
+              <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-5" />
+              
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-6 h-6 rounded-md bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-md">
+                  <span className="material-symbols-outlined text-white text-[12px]">auto_awesome</span>
+                </div>
+                <span className="text-xs font-bold text-gray-900 uppercase tracking-widest">Myntra Aura</span>
+              </div>
+
+              {/* Dynamic Content based on Scenario */}
+              {simScenario === 'size' && (
+                <div className="space-y-3">
+                  <p className="text-gray-800 text-sm font-semibold leading-tight">We noticed you might be unsure about the fit.</p>
+                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="material-symbols-outlined text-green-500">check_circle</span>
+                      <span className="text-gray-900 text-sm font-bold">Size L is perfect for you.</span>
+                    </div>
+                    <p className="text-gray-500 text-xs">Based on your past purchases and 94% of shoppers with similar profiles, Large is the best fit.</p>
+                  </div>
+                  <button className="w-full bg-gray-900 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider">View 3D Fit Guide</button>
+                </div>
+              )}
+
+              {simScenario === 'style' && (
+                <div className="space-y-3">
+                  <p className="text-gray-800 text-sm font-semibold leading-tight">Not sure how to style this jacket?</p>
+                  <div className="flex gap-2 overflow-hidden">
+                    <div className="w-20 h-24 bg-gray-200 rounded-lg overflow-hidden relative">
+                      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200" className="w-full h-full object-cover"/>
+                    </div>
+                    <div className="w-20 h-24 bg-gray-200 rounded-lg overflow-hidden relative">
+                      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=200" className="w-full h-full object-cover"/>
+                    </div>
+                    <div className="flex-1 bg-rose-50 rounded-lg border border-rose-100 flex flex-col items-center justify-center p-2 text-center cursor-pointer">
+                      <span className="material-symbols-outlined text-rose-500 mb-1">style</span>
+                      <span className="text-rose-600 text-[9px] font-bold uppercase">View 3 Outfits</span>
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div className="flex justify-between text-[11px] text-on-surface-variant mb-2 uppercase tracking-wider font-bold">
-                    <span>Hesitation Intensity</span>
-                    <span className="text-primary">Level {classifyResult.intensity} / 5</span>
+              )}
+
+              {simScenario === 'price' && (
+                <div className="space-y-3">
+                  <p className="text-gray-800 text-sm font-semibold leading-tight">Waiting for a better price?</p>
+                  <div className="bg-rose-50 rounded-xl p-4 border border-rose-100 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-rose-500/10 rounded-full blur-xl"/>
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="material-symbols-outlined text-rose-500">local_fire_department</span>
+                      <span className="text-rose-900 text-sm font-bold">This is the lowest price in 30 days.</span>
+                    </div>
+                    <p className="text-rose-600/80 text-xs font-medium">Stock is running low in your size.</p>
                   </div>
-                  <div className="flex gap-1.5 h-2.5">
-                    {[1,2,3,4,5].map(i => (
-                      <div
-                        key={i}
-                        className={`flex-1 rounded-sm transition-all duration-300 ${i <= classifyResult.intensity ? 'primary-gradient-bg' : 'bg-white/8'}`}
-                      />
-                    ))}
-                  </div>
+                  <button className="w-full bg-rose-500 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg">Secure Price Now</button>
                 </div>
-                <div>
-                  <h4 className="text-[11px] uppercase tracking-[0.15em] text-on-surface-variant font-bold mb-3">AI Summary</h4>
-                  <blockquote className="border-l-2 border-tertiary pl-4 text-sm text-on-surface-variant italic leading-relaxed">
-                    "{classifyResult.paraphrase}"
-                  </blockquote>
-                </div>
-              </div>
-            )}
-            {classifyResult?.error && (
-              <div className="p-4 rounded-xl bg-error/10 text-error text-sm border border-error/20">
-                {classifyResult.error}
-              </div>
-            )}
+              )}
+
+            </div>
           </div>
         </div>
       </div>
