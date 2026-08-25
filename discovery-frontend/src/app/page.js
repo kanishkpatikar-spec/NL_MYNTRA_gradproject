@@ -438,9 +438,8 @@ export default function AnalyticsDashboard() {
                     strokeWidth={2}
                     fill="#ff3366"
                     fillOpacity={0.4}
-                    className="drop-shadow-[0_0_15px_rgba(255,51,102,0.5)] transition-all hover:fill-opacity-60"
-                    animationDuration={250}
-                    animationEasing="ease-out"
+                    className="transition-all hover:fill-opacity-60"
+                    isAnimationActive={false}
                   />
                   <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,51,102,0.05)' }} />
                 </RadarChart>
