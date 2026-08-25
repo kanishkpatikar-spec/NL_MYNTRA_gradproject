@@ -33,7 +33,7 @@ export default defineComponent({
     const formattedData = [];
     const baseTime = Date.now();
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 150; i++) {
       // Random pick helpers
       const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
       const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
