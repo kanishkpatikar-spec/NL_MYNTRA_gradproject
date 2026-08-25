@@ -142,6 +142,36 @@ export default function AnalyticsDashboard() {
   const [simScenario, setSimScenario] = useState('size'); // 'size', 'style', 'price'
   const [simStatus, setSimStatus] = useState('idle'); // 'idle', 'hesitating', 'aura_active'
 
+  const mockProducts = {
+    'size': {
+      brand: 'Roadster',
+      title: 'Men Blue Solid Denim Jacket',
+      price: '₹1,299',
+      originalPrice: '₹2,999',
+      discount: '56% OFF',
+      image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=500&q=80',
+      rating: '4.2 ★ | 1.2k Ratings'
+    },
+    'style': {
+      brand: 'Anouk',
+      title: 'Women Floral Print Maxi Dress',
+      price: '₹1,899',
+      originalPrice: '₹3,499',
+      discount: '45% OFF',
+      image: 'https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=500&q=80',
+      rating: '4.5 ★ | 3.4k Ratings'
+    },
+    'price': {
+      brand: 'Nike',
+      title: 'Air Max 90 Sneakers',
+      price: '₹8,495',
+      originalPrice: '₹10,995',
+      discount: '22% OFF',
+      image: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&q=80',
+      rating: '4.8 ★ | 8.9k Ratings'
+    }
+  };
+
   const handleSimulate = () => {
     if (simStatus !== 'idle') {
       setSimStatus('idle');
@@ -576,44 +606,110 @@ export default function AnalyticsDashboard() {
 
           </div>
 
-          {/* MOCK SHOPPING APP FRAME */}
-          <div className="relative bg-white rounded-[2rem] overflow-hidden shadow-2xl border-[6px] border-[#1a1c23] h-[600px] flex flex-col">
-            {/* App Header */}
-            <div className="bg-gray-50 border-b border-gray-200 px-5 py-4 flex items-center justify-between z-10">
-              <span className="material-symbols-outlined text-gray-800">arrow_back</span>
-              <span className="font-bold text-gray-800 tracking-tight text-sm">Roadster Denim</span>
-              <div className="flex gap-4">
-                <span className="material-symbols-outlined text-gray-800">favorite_border</span>
-                <span className="material-symbols-outlined text-gray-800">shopping_bag</span>
+          {/* MOCK SHOPPING APP FRAME - MOBILE DEVICE */}
+          <div className="flex justify-center items-center">
+            <div className="relative bg-white w-[340px] h-[680px] rounded-[3rem] overflow-hidden shadow-2xl border-[8px] border-[#111] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)]">
+              
+              {/* iPhone Notch */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#111] rounded-b-3xl z-40 flex justify-center items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+                <div className="w-12 h-3 rounded-full bg-white/10"></div>
               </div>
-            </div>
 
-            {/* Product Image */}
-            <div className="h-[300px] bg-gray-100 relative">
-              <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&q=80" alt="Jacket" className="w-full h-full object-cover" />
-              <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur text-gray-900 text-[10px] font-bold px-2 py-1 rounded">4.2 ★ | 1.2k Ratings</div>
-            </div>
+              {/* Status Bar */}
+              <div className="bg-transparent absolute top-0 w-full px-5 py-1.5 flex justify-between items-center z-30 text-[10px] font-bold text-gray-800">
+                <span>9:41</span>
+                <div className="flex gap-1 items-center">
+                  <span className="material-symbols-outlined text-[12px]">signal_cellular_4_bar</span>
+                  <span className="material-symbols-outlined text-[12px]">wifi</span>
+                  <span className="material-symbols-outlined text-[12px]">battery_full</span>
+                </div>
+              </div>
 
-            {/* Product Details */}
-            <div className="p-5 flex-1 bg-white relative">
-              <h2 className="text-gray-900 font-bold text-lg leading-tight mb-1">Roadster</h2>
-              <p className="text-gray-500 text-xs mb-3">Men Blue Solid Denim Jacket</p>
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-gray-900 font-bold text-xl">₹1,299</span>
-                <span className="text-gray-400 text-sm line-through">₹2,999</span>
-                <span className="text-orange-500 text-xs font-bold">(56% OFF)</span>
+              {/* App Header */}
+              <div className="bg-gray-50/80 backdrop-blur-md pt-8 pb-3 px-4 flex items-center justify-between z-20 border-b border-gray-200">
+                <span className="material-symbols-outlined text-gray-800">arrow_back</span>
+                <span className="font-bold text-gray-800 tracking-tight text-sm truncate max-w-[150px]">{mockProducts[simScenario].brand}</span>
+                <div className="flex gap-4">
+                  <span className="material-symbols-outlined text-gray-800 text-[20px]">favorite_border</span>
+                  <span className="material-symbols-outlined text-gray-800 text-[20px]">shopping_bag</span>
+                </div>
+              </div>
+
+              {/* Product Content Wrapper */}
+              <div className="flex-1 overflow-hidden relative">
+                {/* Product Image */}
+                <div className="h-[380px] bg-gray-100 relative">
+                  <img src={mockProducts[simScenario].image} alt="Product" className="w-full h-full object-cover transition-opacity duration-300" />
+                  
+                  {/* Floating Widget: Size (Over Image) */}
+                  <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-white/95 backdrop-blur-xl border border-white/50 p-3 rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.15)] z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                    simStatus === 'aura_active' && simScenario === 'size' ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95 pointer-events-none'
+                  }`}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-5 h-5 rounded bg-green-100 text-green-600 flex items-center justify-center"><span className="material-symbols-outlined text-[14px]">check_circle</span></div>
+                      <span className="text-gray-900 text-xs font-bold">Size L is perfect for you</span>
+                    </div>
+                    <p className="text-gray-500 text-[9px] leading-tight mb-2">94% of shoppers with your profile kept this size.</p>
+                    <button className="w-full bg-gray-900 text-white font-bold py-1.5 rounded-lg text-[10px] uppercase tracking-wider hover:bg-gray-800 transition-colors">View 3D Fit Guide</button>
+                  </div>
+                </div>
+
+                {/* Product Details */}
+                <div className="p-4 bg-white h-full relative">
+                  <div className="flex justify-between items-start mb-1">
+                    <h2 className="text-gray-900 font-bold text-lg leading-tight">{mockProducts[simScenario].brand}</h2>
+                    <div className="bg-gray-100 text-gray-800 text-[9px] font-bold px-1.5 py-0.5 rounded">{mockProducts[simScenario].rating}</div>
+                  </div>
+                  
+                  <div className="relative">
+                    <p className="text-gray-500 text-xs mb-3 pr-8 leading-tight">{mockProducts[simScenario].title}</p>
+                    
+                    {/* Floating Widget: Style (Near Title) */}
+                    <div className={`absolute -top-1 right-0 bg-rose-50 border border-rose-100 p-2 rounded-xl shadow-lg z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] origin-top-right cursor-pointer ${
+                      simStatus === 'aura_active' && simScenario === 'style' ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-50 rotate-6 pointer-events-none'
+                    }`}>
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="material-symbols-outlined text-rose-500 text-[18px]">style</span>
+                        <span className="text-rose-700 text-[8px] font-bold uppercase whitespace-nowrap">View 3 Outfits</span>
+                      </div>
+                      {/* Triangle pointer */}
+                      <div className="absolute -left-1.5 top-3 w-3 h-3 bg-rose-50 border-l border-b border-rose-100 rotate-45"></div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-baseline gap-2 mb-4 relative">
+                    <span className="text-gray-900 font-bold text-xl">{mockProducts[simScenario].price}</span>
+                    <span className="text-gray-400 text-sm line-through">{mockProducts[simScenario].originalPrice}</span>
+                    <span className="text-orange-500 text-[10px] font-bold">{mockProducts[simScenario].discount}</span>
+
+                    {/* Floating Widget: Price (Near Price) */}
+                    <div className={`absolute top-full left-0 mt-2 bg-gray-900 text-white p-3 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.2)] z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] origin-top-left flex items-center gap-3 w-[260px] cursor-pointer ${
+                      simStatus === 'aura_active' && simScenario === 'price' ? 'opacity-100 scale-100' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                    }`}>
+                      <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 shrink-0">
+                        <span className="material-symbols-outlined text-[16px]">local_fire_department</span>
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-bold text-white mb-0.5">Lowest price in 30 days</div>
+                        <div className="text-[9px] text-gray-300 leading-tight">Stock is running low in your size</div>
+                      </div>
+                      <div className="absolute -top-1.5 left-6 w-3 h-3 bg-gray-900 rotate-45"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Fake Add to Cart Button (The target of hesitation) */}
-              <div className="absolute bottom-6 left-5 right-5">
-                <div className="bg-rose-500 text-white font-bold uppercase text-center py-4 rounded-xl tracking-wider text-sm shadow-lg">
+              <div className="absolute bottom-5 left-4 right-4 z-10 bg-white/80 backdrop-blur-sm pt-2">
+                <div className="bg-[#ff3f6c] text-white font-bold uppercase text-center py-3.5 rounded-lg tracking-wider text-sm shadow-md transition-transform active:scale-95 cursor-pointer">
                   Add to Bag
                 </div>
                 
                 {/* Simulated Mouse Cursor for Hesitation */}
-                <div className={`absolute top-1/2 left-1/2 w-6 h-6 transition-all duration-[2000ms] pointer-events-none z-20 ${
+                <div className={`absolute top-1/2 left-1/2 w-6 h-6 transition-all duration-[2000ms] pointer-events-none z-50 ${
                   simStatus === 'idle' ? 'opacity-0 scale-50' : 
-                  simStatus === 'hesitating' ? 'opacity-100 -translate-x-12 -translate-y-6 animate-bounce' : 
+                  simStatus === 'hesitating' ? 'opacity-100 -translate-x-12 -translate-y-8 animate-bounce' : 
                   'opacity-0'
                 }`}>
                   <svg viewBox="0 0 24 24" fill="black" stroke="white" strokeWidth="1" className="w-full h-full drop-shadow-md">
@@ -621,68 +717,6 @@ export default function AnalyticsDashboard() {
                   </svg>
                 </div>
               </div>
-            </div>
-
-            {/* AURA BOTTOM SHEET INTERVENTION */}
-            <div className={`absolute bottom-0 left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-gray-200 rounded-t-[2rem] p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.15)] transition-transform duration-500 ease-out z-30 ${
-              simStatus === 'aura_active' ? 'translate-y-0' : 'translate-y-full'
-            }`}>
-              <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-5" />
-              
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-6 h-6 rounded-md bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-md">
-                  <span className="material-symbols-outlined text-white text-[12px]">auto_awesome</span>
-                </div>
-                <span className="text-xs font-bold text-gray-900 uppercase tracking-widest">Myntra Aura</span>
-              </div>
-
-              {/* Dynamic Content based on Scenario */}
-              {simScenario === 'size' && (
-                <div className="space-y-3">
-                  <p className="text-gray-800 text-sm font-semibold leading-tight">We noticed you might be unsure about the fit.</p>
-                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="material-symbols-outlined text-green-500">check_circle</span>
-                      <span className="text-gray-900 text-sm font-bold">Size L is perfect for you.</span>
-                    </div>
-                    <p className="text-gray-500 text-xs">Based on your past purchases and 94% of shoppers with similar profiles, Large is the best fit.</p>
-                  </div>
-                  <button className="w-full bg-gray-900 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider">View 3D Fit Guide</button>
-                </div>
-              )}
-
-              {simScenario === 'style' && (
-                <div className="space-y-3">
-                  <p className="text-gray-800 text-sm font-semibold leading-tight">Not sure how to style this jacket?</p>
-                  <div className="flex gap-2 overflow-hidden">
-                    <div className="w-20 h-24 bg-gray-200 rounded-lg overflow-hidden relative">
-                      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200" className="w-full h-full object-cover"/>
-                    </div>
-                    <div className="w-20 h-24 bg-gray-200 rounded-lg overflow-hidden relative">
-                      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=200" className="w-full h-full object-cover"/>
-                    </div>
-                    <div className="flex-1 bg-rose-50 rounded-lg border border-rose-100 flex flex-col items-center justify-center p-2 text-center cursor-pointer">
-                      <span className="material-symbols-outlined text-rose-500 mb-1">style</span>
-                      <span className="text-rose-600 text-[9px] font-bold uppercase">View 3 Outfits</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {simScenario === 'price' && (
-                <div className="space-y-3">
-                  <p className="text-gray-800 text-sm font-semibold leading-tight">Waiting for a better price?</p>
-                  <div className="bg-rose-50 rounded-xl p-4 border border-rose-100 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-rose-500/10 rounded-full blur-xl"/>
-                    <div className="flex items-center gap-3 mb-1">
-                      <span className="material-symbols-outlined text-rose-500">local_fire_department</span>
-                      <span className="text-rose-900 text-sm font-bold">This is the lowest price in 30 days.</span>
-                    </div>
-                    <p className="text-rose-600/80 text-xs font-medium">Stock is running low in your size.</p>
-                  </div>
-                  <button className="w-full bg-rose-500 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg">Secure Price Now</button>
-                </div>
-              )}
 
             </div>
           </div>
