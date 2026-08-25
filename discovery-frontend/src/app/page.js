@@ -62,13 +62,24 @@ async function getSnippetCount() {
 async function getRecentSnippets() {
   try {
     const res = await axios.get(`${SUPABASE_URL}/rest/v1/raw_snippets`, {
-      params: { select: '*', order: 'scraped_at.desc', limit: 8 },
+      params: { select: '*', order: 'scraped_at.desc', limit: 200 },
       headers: {
         'apikey': SUPABASE_KEY,
         'Authorization': `Bearer ${SUPABASE_KEY}`
       }
     });
-    return res.data;
+    
+    // Filter for informative/useful reviews (min length, min words, no deleted/removed posts)
+    const informative = res.data.filter(s => {
+       const text = (s.text || "").trim();
+       if (text.length < 80) return false; // Must be substantial
+       if (text.split(' ').length < 15) return false;
+       const lower = text.toLowerCase();
+       if (lower === '[deleted]' || lower === '[removed]') return false;
+       return true;
+    });
+    
+    return informative;
   } catch (err) {
     console.error("Failed to fetch recent snippets", err);
     return [];
@@ -131,7 +142,8 @@ function CustomTooltip({ active, payload }) {
 export default function AnalyticsDashboard() {
   const [allOpportunities, setAllOpportunities] = useState([]);
   const [opportunities, setOpportunities] = useState([]);
-  const [recentSnippets, setRecentSnippets] = useState([]);
+  const [snippetPool, setSnippetPool] = useState([]);
+  const [displayedSnippets, setDisplayedSnippets] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [loading, setLoading] = useState(true);
   
@@ -155,7 +167,12 @@ export default function AnalyticsDashboard() {
       setAllOpportunities(oppsData);
       setOpportunities(oppsData);
       setTotalSnippets(countData);
-      setRecentSnippets(snipsData);
+      setSnippetPool(snipsData);
+      
+      // Select 10 random informative snippets for initial display
+      const shuffled = [...snipsData].sort(() => 0.5 - Math.random());
+      setDisplayedSnippets(shuffled.slice(0, 10));
+      
       setLoading(false);
     }).catch(() => setLoading(false));
   }, []);
@@ -227,11 +244,16 @@ export default function AnalyticsDashboard() {
         setActivePipelineStep(5); // Complete
         setTotalSnippets(currentCount > initialCount ? currentCount : currentCount + 150);
         
-        // Refresh dashboard data
-        Promise.all([getOpportunities(10), getRecentSnippets()]).then(([oppsData, snipsData]) => {
+        // Refresh dashboard data and generate 10 new fresh reviews from the pool
+        Promise.all([getOpportunities(10)]).then(([oppsData]) => {
            setAllOpportunities(oppsData);
            if (selectedCategory === 'All') setOpportunities(oppsData);
-           setRecentSnippets(snipsData);
+           
+           setSnippetPool(prevPool => {
+               const shuffled = [...prevPool].sort(() => 0.5 - Math.random());
+               setDisplayedSnippets(shuffled.slice(0, 10));
+               return prevPool;
+           });
         });
         
         setTimeout(() => {
@@ -432,7 +454,7 @@ export default function AnalyticsDashboard() {
              {loading ? (
                <div className="flex justify-center py-10"><span className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin"/></div>
              ) : (
-               recentSnippets.map((snippet, idx) => (
+               displayedSnippets.map((snippet, idx) => (
                  <div key={idx} className={`p-4 rounded-xl border border-white/5 bg-[#05070A]/40 hover:bg-[#05070A]/80 hover:border-white/15 transition-all group ${isPipelineRunning && idx === 0 ? 'animate-pulse bg-primary/5 border-primary/20' : ''}`}>
                    <div className="flex justify-between items-start mb-2">
                      <span className="text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded bg-white/5 text-white/60 group-hover:text-white/90">
