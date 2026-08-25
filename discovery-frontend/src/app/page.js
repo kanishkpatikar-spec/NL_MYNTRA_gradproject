@@ -467,9 +467,6 @@ export default function AnalyticsDashboard() {
                      <span className="text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded bg-white/5 text-white/60 group-hover:text-white/90">
                        {snippet.source || 'Scraped'}
                      </span>
-                     <span className="text-[10px] text-white/30">
-                       {new Date(snippet.scraped_at).toLocaleDateString()}
-                     </span>
                    </div>
                    <p className="text-xs text-on-surface leading-relaxed line-clamp-4">
                      "{snippet.text}"
