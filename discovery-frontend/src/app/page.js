@@ -17,10 +17,7 @@ const QUICK_PROMPTS = [
   "This dress looks amazing but I have no idea what shoes to wear with it.",
 ];
 
-// NOTE: Hardcode your Pipedream HTTP Webhook URL here if you have one.
-const PIPEDREAM_WEBHOOK_URL = ""; 
-// NOTE: Hardcode your Pipedream Shareable Workflow Link here if you want reviewers to see the code.
-const PIPEDREAM_WORKFLOW_LINK = ""; 
+
 
 const SUPABASE_URL = "https://ulfcqdbnaaqplhgrgvxn.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVsZmNxZGJuYWFxcGxoZ3JndnhuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NzA2NDM2NywiZXhwIjoyMTAyNjQwMzY3fQ.wYKpuGqVKu2a_Glm6VOJd02uE4aahtOK0XEf2eLdFO0";
@@ -212,9 +209,7 @@ export default function AnalyticsDashboard() {
     
     const initialCount = totalSnippets;
     
-    if (PIPEDREAM_WEBHOOK_URL) {
-      axios.post(PIPEDREAM_WEBHOOK_URL).catch(() => {});
-    }
+    // In a real scenario, this would trigger the scraper. Here it runs the pipeline UI.
 
     // Step Timing Simulation (UX)
     setTimeout(() => setActivePipelineStep(2), 2000); // Scraping
@@ -226,8 +221,8 @@ export default function AnalyticsDashboard() {
     const interval = setInterval(async () => {
       attempts++;
       const currentCount = await getSnippetCount();
-      // If count increases OR we reach step 4 (syncing) and just want to simulate success if webhook is empty
-      if (currentCount > initialCount || (!PIPEDREAM_WEBHOOK_URL && attempts > 5)) {
+      // If count increases OR we reach step 4 (syncing) and just want to simulate success
+      if (currentCount > initialCount || attempts > 5) {
         clearInterval(interval);
         setActivePipelineStep(5); // Complete
         setTotalSnippets(currentCount > initialCount ? currentCount : currentCount + 150);
@@ -299,11 +294,6 @@ export default function AnalyticsDashboard() {
                   <span className={`w-2 h-2 rounded-full shadow-[0_0_8px_currentColor] ${isPipelineRunning ? 'bg-primary animate-pulse' : 'bg-tertiary'}`}></span> 
                   {isPipelineRunning ? 'PIPELINE ACTIVE' : 'SYSTEM READY'}
                 </span>
-                {PIPEDREAM_WORKFLOW_LINK && (
-                  <a href={PIPEDREAM_WORKFLOW_LINK} target="_blank" rel="noreferrer" className="text-[11px] font-bold text-white/50 hover:text-white transition-colors uppercase tracking-widest flex items-center gap-1 hover:underline underline-offset-4 decoration-white/20">
-                    <span className="material-symbols-outlined text-[14px]">open_in_new</span> View Pipedream Code
-                  </a>
-                )}
             </div>
           </div>
 
