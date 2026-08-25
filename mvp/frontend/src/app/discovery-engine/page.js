@@ -221,28 +221,7 @@ export default function AnalyticsDashboard() {
                    The AI has identified <strong className="text-primary">{topDriver.driver_label}</strong> as the highest overall drop-off factor. By activating the <strong>Resolution Engine</strong>, the AI will automatically inject the optimal confidence module into the Wishlist for high-risk items (e.g., 'Fit Confidence' for clothing, or 'Price Context' for expensive items) to dynamically solve this customer hesitation and save the sale.
                  </p>
                </div>
-               <button 
-                 onClick={() => {
-                   setModuleEnabled(true);
-                   alert("Resolution Engine activated! AI confidence modules will now automatically resolve hesitations in the Wishlist.");
-                 }}
-                 disabled={moduleEnabled}
-                 className={`w-full font-bold text-xs uppercase tracking-[0.15em] py-3 rounded-lg transition-all flex items-center justify-center gap-2 ${
-                   moduleEnabled 
-                     ? 'bg-green-500/20 text-green-400 border border-green-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]' 
-                     : 'primary-gradient-bg text-white hover:scale-[1.02] shadow-[0_0_15px_rgba(255,178,186,0.3)]'
-                 }`}
-               >
-                 {moduleEnabled ? (
-                   <>
-                     <span className="material-symbols-outlined text-[16px]">check_circle</span>
-                     Engine Active
-                   </>
-                 ) : (
-                   'Activate Resolution Engine'
-                 )}
-               </button>
-             </div>
+              </div>
           ) : (
             <div className="text-on-surface-variant text-sm">No data available.</div>
           )}
