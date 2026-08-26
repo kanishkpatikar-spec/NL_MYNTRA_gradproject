@@ -145,6 +145,8 @@ export default function AnalyticsDashboard() {
 
   const [activeTab, setActiveTab] = useState('simulation');
   const [expandedRow, setExpandedRow] = useState(null);
+  const [currentSnippetIndex, setCurrentSnippetIndex] = useState(0);
+
 
   const toggleRow = (label) => {
     setExpandedRow(expandedRow === label ? null : label);
@@ -453,30 +455,57 @@ export default function AnalyticsDashboard() {
           </div>
         </div>
 
-        {/* Card 3: Active Streams */}
+        
+        {/* Card 3: Snippet Slider */}
         <div className="group relative rounded-3xl p-[1px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_30px_-10px_rgba(0,220,229,0.2)]">
           <div className="absolute inset-0 bg-gradient-to-br from-tertiary/50 via-transparent to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
-          <div className="relative h-full bg-[#05070A]/60 backdrop-blur-3xl rounded-3xl p-6 md:p-8 flex flex-col justify-between overflow-hidden border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
+          <div className="relative h-full bg-[#05070A]/60 backdrop-blur-3xl rounded-3xl p-6 flex flex-col overflow-hidden border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-tertiary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-tertiary/20 transition-colors duration-700" />
             
-            <div className="flex justify-between items-start mb-6 relative z-10">
-              <span className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em]">Active AI Classifiers</span>
-              <div className="w-6 h-6 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/10">
-                <span className="material-symbols-outlined text-white/80 text-[14px]">memory</span>
+            <div className="flex justify-between items-start mb-4 relative z-10">
+              <span className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em] flex items-center gap-2">
+                 <span className="material-symbols-outlined text-[14px]">forum</span>
+                 Raw Friction Streams
+              </span>
+              <div className="flex gap-1">
+                <button 
+                  onClick={() => setCurrentSnippetIndex(prev => Math.max(0, prev - 1))}
+                  disabled={currentSnippetIndex === 0}
+                  className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 disabled:opacity-30 transition-colors"
+                >
+                  <span className="material-symbols-outlined text-[14px] text-white">chevron_left</span>
+                </button>
+                <button 
+                  onClick={() => setCurrentSnippetIndex(prev => Math.min(displayedSnippets.length - 1, prev + 1))}
+                  disabled={currentSnippetIndex === displayedSnippets.length - 1}
+                  className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 disabled:opacity-30 transition-colors"
+                >
+                  <span className="material-symbols-outlined text-[14px] text-white">chevron_right</span>
+                </button>
               </div>
             </div>
             
-            <div className="relative z-10">
-              <div className="text-5xl font-bold text-white tracking-tight flex items-baseline gap-2 drop-shadow-md" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-                {loading ? '—' : opportunities.filter((d) => d.frequency > 0).length}
-                <span className="text-sm text-white/40 font-normal">/ 12</span>
-              </div>
-              <div className="mt-3 text-[10px] text-white/50 flex items-center gap-1 uppercase tracking-[0.15em] font-bold">
-                Taxonomy Categories Tracking
-              </div>
+            <div className="relative z-10 flex-1 flex flex-col justify-center">
+               {displayedSnippets.length > 0 && (
+                 <div className="animate-in fade-in slide-in-from-right-4 duration-300" key={currentSnippetIndex}>
+                   <div className="flex justify-between items-start mb-2">
+                     <span className="text-[8px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-md bg-white/5 text-white/60 border border-white/5">
+                       {displayedSnippets[currentSnippetIndex].source || 'Scraped'}
+                     </span>
+                     <span className="text-[9px] text-white/40">{currentSnippetIndex + 1} / {displayedSnippets.length}</span>
+                   </div>
+                   <p className="text-xs text-white/80 leading-relaxed font-light line-clamp-4 mt-2">
+                     &quot;{displayedSnippets[currentSnippetIndex].text}&quot;
+                   </p>
+                 </div>
+               )}
+               {displayedSnippets.length === 0 && !loading && (
+                 <div className="text-xs text-white/40 italic text-center">No snippets available</div>
+               )}
             </div>
           </div>
         </div>
+
       </div>
 
       {/* Chart and Live Feed Row */}
@@ -484,7 +513,7 @@ export default function AnalyticsDashboard() {
 
         {/* Bar Chart Column */}
         <div className="glass-card rounded-2xl p-8 flex flex-col relative overflow-hidden h-[540px]">
-           <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+           <h3 className="text-lg font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
               Driver Frequency
            </h3>
            <div className="flex-1 w-full">
@@ -504,115 +533,44 @@ export default function AnalyticsDashboard() {
            </div>
         </div>
 
-        
-        {/* Chart Column (Span 2) */}
-        <div className="glass-card rounded-2xl p-8 lg:col-span-1 flex flex-col relative overflow-hidden h-[540px]">
-          <div className="absolute top-0 right-0 p-8 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-          
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 z-10">
-            <div>
-              <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-                Opportunity Radar
-              </h3>
-              <p className="text-xs text-on-surface-variant mt-2 ml-4">
-                Mapping the multidimensional shape of consumer friction based on Final Opportunity Score.
-              </p>
-            </div>
-            <div className="flex gap-2 bg-[#05070A]/50 p-1.5 rounded-xl border border-white/10 backdrop-blur-sm">
-              {['All', 'Apparel', 'Footwear', 'Accessories'].map(cat => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-lg transition-all ${selectedCategory === cat ? 'bg-primary text-white shadow-[0_0_15px_rgba(255,51,102,0.4)]' : 'text-on-surface-variant hover:text-white hover:bg-white/5'}`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          {loading ? (
-            <div className="flex-1 min-h-[420px] flex items-center justify-center text-on-surface-variant">Plotting multidimensional metrics...</div>
-          ) : (
-            <div className="flex-1 min-h-[420px] z-10">
-              <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="55%" data={opportunities} margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
-                  <PolarGrid stroke="rgba(255,255,255,0.15)" strokeDasharray="3 3" />
-                  <PolarAngleAxis 
-                    dataKey="driver_label" 
-                    tick={{ fill: '#e5bdc0', fontSize: 11, fontWeight: 600 }} 
-                  />
-                  <PolarRadiusAxis 
-                    angle={30} 
-                    domain={[0, 'auto']} 
-                    tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 10 }} 
-                    axisLine={false} 
-                  />
-                  <Radar
-                    name="Opportunity Score"
-                    dataKey="opportunity_score"
-                    stroke="#ff3366"
-                    strokeWidth={2}
-                    fill="#ff3366"
-                    fillOpacity={0.4}
-                    className="transition-all hover:fill-opacity-60"
-                    isAnimationActive={false}
-                  />
-                  <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,51,102,0.05)' }} />
-                </RadarChart>
-              </ResponsiveContainer>
-            </div>
-          )}
-        </div>
-
-        {/* Live Snippet Feed Column (Span 1) */}
-        <div className="glass-card rounded-3xl p-0 flex flex-col overflow-hidden h-[540px] border border-white/5 shadow-2xl">
-          <div className="px-6 py-5 border-b border-white/5 bg-gradient-to-r from-white/[0.02] to-transparent flex justify-between items-center z-10 relative backdrop-blur-md">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shadow-[inset_0_1px_3px_rgba(255,255,255,0.1)]">
-                <span className="material-symbols-outlined text-white/80 text-[15px]">forum</span>
-              </div>
-              <h3 className="text-[12px] font-semibold text-white/90 uppercase tracking-[0.15em]">
-                Raw Friction Streams
-              </h3>
-            </div>
-          </div>
-          
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-4 relative bg-[#030303]/40">
-             {/* Fade overlay for top/bottom scrolling */}
-             <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-[#030303]/90 to-transparent z-10 pointer-events-none"/>
-             
-             {loading ? (
-               <div className="flex justify-center py-10"><span className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin"/></div>
-             ) : (
-               displayedSnippets.map((snippet, idx) => (
-                 <div key={idx} className={`p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 hover:shadow-lg transition-all duration-300 group relative overflow-hidden ${isPipelineRunning && idx === 0 ? 'animate-pulse bg-primary/5 border-primary/20' : ''}`}>
-                   {/* Subtle glass reflection */}
-                   <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
-                   
-                   <div className="flex justify-between items-start mb-3 relative z-10">
-                     <span className="text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-md bg-white/5 text-white/60 group-hover:bg-white/10 group-hover:text-white/90 transition-colors border border-white/5">
-                       {snippet.source || 'Scraped'}
-                     </span>
-                   </div>
-                   <p className="text-[13px] text-white/70 leading-relaxed font-light relative z-10">
-                     &quot;{snippet.text}&quot;
-                   </p>
+        {/* Co-occurrence Heatmap */}
+        <div className="glass-card rounded-2xl p-6 flex flex-col h-[540px]">
+          <h3 className="text-lg font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+            Co-occurrence Heatmap
+          </h3>
+          <p className="text-xs text-white/40 mb-4">Frequency of drivers appearing together in multi-label snippets.</p>
+          <div className="flex-1 overflow-auto custom-scrollbar flex items-center justify-center">
+             {/* Simple CSS Grid for Heatmap Visualization */}
+             <div className="grid gap-1">
+               <div className="flex gap-1">
+                 <div className="w-24 shrink-0"></div>
+                 {opportunities.slice(0, 6).map(o => (
+                   <div key={`h-`+o.driver_label} className="w-12 text-[8px] text-white/40 rotate-[-45deg] origin-bottom-left truncate">{o.driver_label}</div>
+                 ))}
+               </div>
+               {opportunities.slice(0, 6).map((row, i) => (
+                 <div key={`r-`+row.driver_label} className="flex gap-1 items-center">
+                   <div className="w-24 text-[10px] text-white/60 truncate pr-2 text-right">{row.driver_label}</div>
+                   {opportunities.slice(0, 6).map((col, j) => {
+                     const intensity = i === j ? 0 : Math.random();
+                     return (
+                       <div 
+                         key={`c-${i}-${j}`} 
+                         className="w-12 h-12 rounded-sm"
+                         style={{ backgroundColor: `rgba(255, 51, 102, ${intensity * 0.8})` }}
+                         title={`${row.driver_label} & ${col.driver_label}`}
+                       />
+                     );
+                   })}
                  </div>
-               ))
-             )}
+               ))}
+             </div>
           </div>
         </div>
 
-      </div>
-
-      
-      {/* HEATMAP AND OPPORTUNITY TABLE */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-10">
-        
         {/* Ranked Opportunity Table */}
-        <div className="glass-card rounded-2xl p-6 lg:p-8 overflow-hidden flex flex-col h-[500px]">
-          <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+        <div className="glass-card rounded-2xl p-6 overflow-hidden flex flex-col h-[540px]">
+          <h3 className="text-lg font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
             Ranked Opportunity Table
           </h3>
           <div className="flex-1 overflow-y-auto custom-scrollbar">
@@ -652,43 +610,10 @@ export default function AnalyticsDashboard() {
           </div>
         </div>
 
-        {/* Co-occurrence Heatmap */}
-        <div className="glass-card rounded-2xl p-6 lg:p-8 flex flex-col h-[500px]">
-          <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-            Co-occurrence Heatmap
-          </h3>
-          <p className="text-xs text-white/40 mb-4">Frequency of drivers appearing together in multi-label snippets.</p>
-          <div className="flex-1 overflow-auto custom-scrollbar flex items-center justify-center">
-             {/* Simple CSS Grid for Heatmap Visualization */}
-             <div className="grid gap-1">
-               <div className="flex gap-1">
-                 <div className="w-24 shrink-0"></div>
-                 {opportunities.slice(0, 6).map(o => (
-                   <div key={`h-`+o.driver_label} className="w-12 text-[8px] text-white/40 rotate-[-45deg] origin-bottom-left truncate">{o.driver_label}</div>
-                 ))}
-               </div>
-               {opportunities.slice(0, 6).map((row, i) => (
-                 <div key={`r-`+row.driver_label} className="flex gap-1 items-center">
-                   <div className="w-24 text-[10px] text-white/60 truncate pr-2 text-right">{row.driver_label}</div>
-                   {opportunities.slice(0, 6).map((col, j) => {
-                     const intensity = i === j ? 0 : Math.random();
-                     return (
-                       <div 
-                         key={`c-${i}-${j}`} 
-                         className="w-12 h-12 rounded-sm"
-                         style={{ backgroundColor: `rgba(255, 51, 102, ${intensity * 0.8})` }}
-                         title={`${row.driver_label} & ${col.driver_label}`}
-                       />
-                     );
-                   })}
-                 </div>
-               ))}
-             </div>
-          </div>
-        </div>
-
       </div>
-      </>
+
+      
+            </>
       )}
 
       {activeTab === 'simulation' && (
