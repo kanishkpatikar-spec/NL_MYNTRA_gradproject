@@ -16,6 +16,8 @@ const QUICK_PROMPTS = [
   "I love this jacket but I'm between M and L and don't want to deal with returns.",
   "I added these sneakers but I'll just wait for the Diwali sale.",
   "This dress looks amazing but I have no idea what shoes to wear with it.",
+  "The fabric looks a bit thin in the photos. Is it see-through?",
+  "Delivery says 5-7 days, but I need it by this weekend for a wedding."
 ];
 
 
@@ -74,26 +76,56 @@ async function classifyText(text) {
   
   const lowerText = text.toLowerCase();
   
-  if (lowerText.includes('size') || lowerText.includes('fit') || lowerText.includes('large') || lowerText.includes('small') || lowerText.includes('measure')) {
+  // Example 1: Size/Fit
+  if (lowerText.includes('size') || lowerText.includes('fit') || lowerText.includes('large') || lowerText.includes('small') || lowerText.includes('between m and l') || lowerText.includes('returns')) {
     return {
       tags: ['fit_size_uncertainty'],
-      intensity: 4,
-      paraphrase: 'User is highly uncertain about the sizing and fit of the garment, likely fearing the hassle of returns.'
+      intensity: 5,
+      paraphrase: 'Shopper is highly uncertain about the sizing and fit of the garment, expressing explicit fear of the return process.'
     };
   }
   
+  // Example 2: Price/Sale
+  if (lowerText.includes('price') || lowerText.includes('sale') || lowerText.includes('discount') || lowerText.includes('diwali') || lowerText.includes('wait for')) {
+    return {
+      tags: ['price_deal_timing'],
+      intensity: 4,
+      paraphrase: 'Shopper is delaying purchase specifically to wait for a known upcoming sale event (e.g., Diwali Sale) to maximize discount.'
+    };
+  }
+  
+  // Example 3: Styling
   if (lowerText.includes('wear') || lowerText.includes('match') || lowerText.includes('shoes') || lowerText.includes('pants') || lowerText.includes('style')) {
     return {
       tags: ['styling_occasion_uncertainty'],
       intensity: 3,
-      paraphrase: 'User likes the item but is struggling to visualize how to integrate it into their existing wardrobe.'
+      paraphrase: 'Shopper loves the core item but is struggling to visualize a complete outfit, hesitating due to lack of matching accessories/footwear.'
+    };
+  }
+
+  // Example 4: Material Quality
+  if (lowerText.includes('fabric') || lowerText.includes('thin') || lowerText.includes('see-through') || lowerText.includes('quality') || lowerText.includes('material')) {
+    return {
+      tags: ['credibility_quality_doubt'],
+      intensity: 4,
+      paraphrase: 'Shopper is skeptical about the product material based on visual media, fearing poor fabric quality or transparency.'
+    };
+  }
+
+  // Example 5: Delivery/Urgency
+  if (lowerText.includes('delivery') || lowerText.includes('days') || lowerText.includes('weekend') || lowerText.includes('wedding')) {
+    return {
+      tags: ['delivery_urgency_conflict'],
+      intensity: 5,
+      paraphrase: 'Shopper is ready to buy but is blocked by shipping timelines. High friction due to an upcoming time-sensitive occasion.'
     };
   }
   
+  // Fallback
   return {
-    tags: ['price_deal_timing'],
-    intensity: 3,
-    paraphrase: 'User is exhibiting generalized hesitation, likely waiting for a better price point or sale event before committing.'
+    tags: ['generalized_hesitation'],
+    intensity: 2,
+    paraphrase: 'User is exhibiting generalized hesitation. The text lacks specific friction markers but indicates drop-off risk.'
   };
 }
 
@@ -126,7 +158,7 @@ export default function AnalyticsDashboard() {
   const [opportunities, setOpportunities] = useState([]);
   const [snippetPool, setSnippetPool] = useState([]);
   const [displayedSnippets, setDisplayedSnippets] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  
   const [loading, setLoading] = useState(true);
   
   const [classifyInput, setClassifyInput] = useState('');
@@ -151,7 +183,8 @@ export default function AnalyticsDashboard() {
   const toggleRow = (label) => {
     setExpandedRow(expandedRow === label ? null : label);
   };
- // 'idle', 'hesitating', 'aura_active'
+
+
 
   const mockProducts = {
     'size': {
@@ -213,32 +246,12 @@ export default function AnalyticsDashboard() {
   }, []);
 
   useEffect(() => {
-    if (allOpportunities.length === 0) return;
-    
-    if (selectedCategory === 'All') {
-      setOpportunities(allOpportunities);
-      return;
-    }
-
-    const multipliers = {
-      'Apparel': { 'fit_size_uncertainty': 1.5, 'styling_occasion_uncertainty': 1.3, 'price_deal_timing': 0.8 },
-      'Footwear': { 'fit_size_uncertainty': 1.8, 'price_deal_timing': 1.1, 'styling_occasion_uncertainty': 0.5 },
-      'Accessories': { 'fit_size_uncertainty': 0.1, 'price_deal_timing': 1.2, 'styling_occasion_uncertainty': 1.5 }
-    };
-
-    const cats = multipliers[selectedCategory] || {};
-    
-    const updated = allOpportunities.map(opp => {
-      const mult = cats[opp.driver_id] || (Math.random() * 0.5 + 0.5);
-      return {
-        ...opp,
-        opportunity_score: Math.round(opp.opportunity_score * mult * 10) / 10,
-        frequency: Math.round(opp.frequency * mult)
-      };
-    });
-
-    setOpportunities(updated);
-  }, [selectedCategory, allOpportunities]);
+    if (displayedSnippets.length === 0) return;
+    const interval = setInterval(() => {
+      setCurrentSnippetIndex(prev => (prev + 1) % displayedSnippets.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [displayedSnippets]);
 
 
   const handleClassify = async () => {
@@ -616,6 +629,7 @@ export default function AnalyticsDashboard() {
             </>
       )}
 
+      
       {activeTab === 'simulation' && (
         <>
           {/* LIVE CLASSIFIER DEMO */}
@@ -670,7 +684,7 @@ export default function AnalyticsDashboard() {
                   <div className="flex flex-col md:flex-row gap-4 items-start">
                     <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold w-24 shrink-0 pt-1">Paraphrase</div>
                     <p className="text-white/80 italic font-light text-sm bg-black/30 p-4 rounded-xl border border-white/5 flex-1 relative">
-                      <span className="text-3xl text-primary/30 absolute -top-1 left-2">&quot;</span>
+                      <span className="text-3xl text-primary/30 absolute -top-1 left-2">"</span>
                       <span className="relative z-10 pl-3">{classifyResult.paraphrase}</span>
                     </p>
                   </div>
@@ -696,7 +710,7 @@ export default function AnalyticsDashboard() {
           The ultimate goal of the Discovery Engine. Choose a consumer friction scenario below and watch how Myntra Aura translates our analytics into a real-time, proactive intervention on the shopping screen to prevent drop-off.
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 xl:grid-cols-[300px_1fr] gap-8 xl:gap-16 items-start">
           
           {/* SIMULATION CONTROLS */}
           <div className="space-y-6">
@@ -733,9 +747,164 @@ export default function AnalyticsDashboard() {
 
           </div>
 
-          {/* MOCK SHOPPING APP FRAME - MOBILE DEVICE */}
-          <div className="flex justify-center items-center">
-            <div className="relative bg-white w-[360px] h-[780px] rounded-[52px] overflow-hidden shadow-2xl border-[14px] border-[#0a0a0a] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[2px] ring-[#3a3a3c]">
+                    {/* PHONES ROW */}
+          <div className="flex flex-wrap justify-center xl:justify-start gap-12 lg:gap-20 w-full">
+            
+            {/* Phone A: Status Quo */}
+            <div className="flex flex-col items-center shrink-0">
+              <div className="mb-6 text-center">
+                <h4 className="text-xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-space-grotesk)' }}>Status Quo</h4>
+                <p className="text-xs text-white/40 uppercase tracking-widest">No AI Intervention</p>
+              </div>
+<div className="relative bg-white w-[360px] h-[780px] rounded-[52px] overflow-hidden shadow-2xl border-[14px] border-[#0a0a0a] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[2px] ring-[#3a3a3c]">
+              
+              {/* iOS Status Bar & Dynamic Island */}
+              <div className="absolute top-0 w-full h-[54px] flex justify-between items-center px-6 z-40 pt-2">
+                {/* Time */}
+                <span className="text-[14px] font-semibold text-black tracking-tight w-[60px] text-center ml-1">9:41</span>
+                
+                {/* Dynamic Island */}
+                <div className="absolute left-1/2 -translate-x-1/2 top-[10px] w-[105px] h-[32px] bg-black rounded-full flex items-center justify-between px-2.5 shadow-sm">
+                  <div className="w-3 h-3 rounded-full bg-[#111] border border-white/10 shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500/80 mr-1 blur-[1px]"></div>
+                </div>
+
+                {/* Icons */}
+                <div className="flex gap-1.5 items-center w-[60px] justify-end mr-1">
+                  {/* iOS Signal */}
+                  <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="7" width="3" height="4" rx="1" fill="black"/>
+                    <rect x="4.5" y="5" width="3" height="6" rx="1" fill="black"/>
+                    <rect x="8.5" y="3" width="3" height="8" rx="1" fill="black"/>
+                    <rect x="12.5" y="0" width="3" height="11" rx="1" fill="black"/>
+                  </svg>
+                  {/* iOS Wifi */}
+                  <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M7.5 11C8.25939 11 8.875 10.3844 8.875 9.625C8.875 8.86561 8.25939 8.25 7.5 8.25C6.74061 8.25 6.125 8.86561 6.125 9.625C6.125 10.3844 6.74061 11 7.5 11ZM7.5 5.5C5.83609 5.5 4.34027 6.17415 3.25625 7.25817L4.22915 8.23107C5.06822 7.392 6.22359 6.875 7.5 6.875C8.77641 6.875 9.93178 7.392 10.7709 8.23107L11.7438 7.25817C10.6597 6.17415 9.16391 5.5 7.5 5.5ZM7.5 2.75C5.10519 2.75 2.94632 3.72266 1.39167 5.27732L2.36456 6.25021C3.68112 4.93365 5.50025 4.125 7.5 4.125C9.49975 4.125 11.3189 4.93365 12.6354 6.25021L13.6083 5.27732C12.0537 3.72266 9.89481 2.75 7.5 2.75ZM7.5 0C4.37688 0 1.55403 1.26629 -0.554443 3.31505L0.41845 4.28795C2.28581 2.4566 4.7709 1.375 7.5 1.375C10.2291 1.375 12.7142 2.4566 14.5816 4.28795L15.5544 3.31505C13.446 1.26629 10.6231 0 7.5 0Z" fill="black"/>
+                  </svg>
+                  {/* iOS Battery */}
+                  <div className="flex items-center ml-0.5">
+                    <div className="w-[24px] h-[11px] border-[1px] border-black/40 rounded-[3px] p-[1.5px] relative">
+                      <div className="bg-black w-full h-full rounded-[1.5px]"></div>
+                    </div>
+                    <div className="w-[3px] h-[4px] bg-black/40 rounded-r-sm ml-[1px]"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* App Header (Pushed down for Dynamic Island) */}
+              <div className="bg-white pt-16 pb-3 px-4 flex items-center justify-between z-20 border-b border-gray-100">
+                <span className="material-symbols-outlined text-gray-800">arrow_back</span>
+                <span className="font-bold text-gray-800 tracking-tight text-sm truncate max-w-[150px]">{mockProducts[simScenario].brand}</span>
+                <div className="flex gap-4">
+                  <span className="material-symbols-outlined text-gray-800 text-[20px]">favorite_border</span>
+                  <span className="material-symbols-outlined text-gray-800 text-[20px]">shopping_bag</span>
+                </div>
+              </div>
+
+              {/* Product Content Wrapper */}
+              <div className="flex-1 overflow-hidden relative">
+                {/* Product Image */}
+                <div className="h-[380px] bg-gray-100 relative">
+                  <img src={mockProducts[simScenario].image} alt="Product" className="w-full h-full object-cover transition-opacity duration-300" />
+                  
+                  {/* Floating Widget: Size (Over Image) */}
+                  <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-white/95 backdrop-blur-xl border border-white/50 p-3 rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.15)] z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                    false && simScenario === 'size' ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95 pointer-events-none'
+                  }`}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-5 h-5 rounded bg-green-100 text-green-600 flex items-center justify-center"><span className="material-symbols-outlined text-[14px]">check_circle</span></div>
+                      <span className="text-gray-900 text-xs font-bold">Size L is perfect for you</span>
+                    </div>
+                    <p className="text-gray-500 text-[9px] leading-tight mb-2">94% of shoppers with your profile kept this size.</p>
+                    <button className="w-full bg-gray-900 text-white font-bold py-1.5 rounded-lg text-[10px] uppercase tracking-wider hover:bg-gray-800 transition-colors">View 3D Fit Guide</button>
+                  </div>
+                </div>
+
+                {/* Product Details */}
+                <div className="p-4 bg-white h-full relative">
+                  <div className="flex justify-between items-start mb-1">
+                    <h2 className="text-gray-900 font-bold text-lg leading-tight">{mockProducts[simScenario].brand}</h2>
+                    <div className="bg-gray-100 text-gray-800 text-[9px] font-bold px-1.5 py-0.5 rounded">{mockProducts[simScenario].rating}</div>
+                  </div>
+                  
+                  <div className="relative">
+                    <p className="text-gray-500 text-xs mb-3 pr-8 leading-tight">{mockProducts[simScenario].title}</p>
+                    
+                    {/* Floating Widget: Style (Near Title) */}
+                    <div className={`absolute -top-1 right-0 bg-rose-50 border border-rose-100 p-2 rounded-xl shadow-lg z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] origin-top-right cursor-pointer ${
+                      false && simScenario === 'style' ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-50 rotate-6 pointer-events-none'
+                    }`}>
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="material-symbols-outlined text-rose-500 text-[18px]">style</span>
+                        <span className="text-rose-700 text-[8px] font-bold uppercase whitespace-nowrap">View 3 Outfits</span>
+                      </div>
+                      {/* Triangle pointer */}
+                      <div className="absolute -left-1.5 top-3 w-3 h-3 bg-rose-50 border-l border-b border-rose-100 rotate-45"></div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-baseline gap-2 mb-4 relative">
+                    <span className="text-gray-900 font-bold text-xl">{mockProducts[simScenario].price}</span>
+                    <span className="text-gray-400 text-sm line-through">{mockProducts[simScenario].originalPrice}</span>
+                    <span className="text-orange-500 text-[10px] font-bold">{mockProducts[simScenario].discount}</span>
+
+                    {/* Floating Widget: Price (Near Price) */}
+                    <div className={`absolute top-full left-0 mt-2 bg-gray-900 text-white p-3 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.2)] z-30 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] origin-top-left flex items-center gap-3 w-[260px] cursor-pointer ${
+                      false && simScenario === 'price' ? 'opacity-100 scale-100' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                    }`}>
+                      <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 shrink-0">
+                        <span className="material-symbols-outlined text-[16px]">local_fire_department</span>
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-bold text-white mb-0.5">Lowest price in 30 days</div>
+                        <div className="text-[9px] text-gray-300 leading-tight">Stock is running low in your size</div>
+                      </div>
+                      <div className="absolute -top-1.5 left-6 w-3 h-3 bg-gray-900 rotate-45"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Fake Add to Cart Button (The target of hesitation) */}
+              <div className="absolute bottom-5 left-4 right-4 z-10 bg-white/80 backdrop-blur-sm pt-2">
+                <div className="bg-[#ff3f6c] text-white font-bold uppercase text-center py-3.5 rounded-lg tracking-wider text-sm shadow-md transition-transform active:scale-95 cursor-pointer">
+                  Add to Bag
+                </div>
+                
+                {/* Simulated Mouse Cursor for Hesitation */}
+                <div className={`absolute top-1/2 left-1/2 w-6 h-6 transition-all duration-[2000ms] pointer-events-none z-50 ${
+                  simStatus === 'idle' ? 'opacity-0 scale-50' : 
+                  simStatus === 'hesitating' ? 'opacity-100 -translate-x-12 -translate-y-8 animate-bounce' : 
+                  'opacity-0'
+                }`}>
+                  <svg viewBox="0 0 24 24" fill="black" stroke="white" strokeWidth="1" className="w-full h-full drop-shadow-md">
+                    <path d="M3 3l7 18 3-7 7-3z" />
+                  </svg>
+                </div>
+              </div>
+
+            
+              {/* Phone A Bounce Overlay */}
+              <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex flex-col items-center justify-center transition-all duration-500 ${
+                  (simStatus === 'aura_active' || simStatus === 'converted') ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}>
+                <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mb-4">
+                  <span className="material-symbols-outlined text-white text-3xl">close</span>
+                </div>
+                <h3 className="text-white font-bold text-xl uppercase tracking-widest">Session Abandoned</h3>
+                <p className="text-white/70 text-sm mt-2">Shopper left to compare prices/styles.</p>
+              </div>
+            </div>
+            </div>
+
+            {/* Phone B: With Aura AI */}
+            <div className="flex flex-col items-center shrink-0">
+              <div className="mb-6 text-center">
+                <h4 className="text-xl font-bold text-primary mb-1 drop-shadow-[0_0_10px_rgba(255,51,102,0.8)]" style={{ fontFamily: 'var(--font-space-grotesk)' }}>With Aura AI</h4>
+                <p className="text-xs text-primary/60 uppercase tracking-widest">Proactive Friction Resolution</p>
+              </div>
+<div className="relative bg-white w-[360px] h-[780px] rounded-[52px] overflow-hidden shadow-2xl border-[14px] border-[#0a0a0a] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[2px] ring-[#3a3a3c]">
               
               {/* iOS Status Bar & Dynamic Island */}
               <div className="absolute top-0 w-full h-[54px] flex justify-between items-center px-6 z-40 pt-2">
@@ -863,7 +1032,20 @@ export default function AnalyticsDashboard() {
                 </div>
               </div>
 
+            
+              {/* Phone B Conversion Overlay */}
+              <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex flex-col items-center justify-center transition-all duration-500 ${
+                  simStatus === 'converted' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}>
+                <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-4">
+                  <span className="material-symbols-outlined text-white text-3xl">check</span>
+                </div>
+                <h3 className="text-white font-bold text-xl uppercase tracking-widest">Added to Bag</h3>
+                <p className="text-white/70 text-sm mt-2">Aura AI saved the conversion.</p>
+              </div>
             </div>
+            </div>
+
           </div>
         </div>
       </div>
