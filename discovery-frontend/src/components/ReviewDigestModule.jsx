@@ -11,7 +11,7 @@ export default function ReviewDigestModule({ data }) {
         <h3 className="font-bold text-gray-900">{data.display_name}</h3>
       </div>
       <div className="bg-gray-50 p-4 rounded border border-gray-100 italic text-sm text-gray-700 leading-relaxed border-l-4 border-l-primary/40">
-        "{data.content}"
+        &quot;{data.content}&quot;
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, ResponsiveContainer,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Cell
 } from 'recharts';
 import axios from 'axios';
 
@@ -140,7 +141,15 @@ export default function AnalyticsDashboard() {
 
   // Aura Simulation State
   const [simScenario, setSimScenario] = useState('size'); // 'size', 'style', 'price'
-  const [simStatus, setSimStatus] = useState('idle'); // 'idle', 'hesitating', 'aura_active'
+  const [simStatus, setSimStatus] = useState('idle');
+
+  const [activeTab, setActiveTab] = useState('simulation');
+  const [expandedRow, setExpandedRow] = useState(null);
+
+  const toggleRow = (label) => {
+    setExpandedRow(expandedRow === label ? null : label);
+  };
+ // 'idle', 'hesitating', 'aura_active'
 
   const mockProducts = {
     'size': {
@@ -366,6 +375,26 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
 
+      
+      {/* TAB NAVIGATION */}
+      <div className="flex gap-4 border-b border-white/10 pb-4 mb-8">
+        <button 
+          onClick={() => setActiveTab('simulation')}
+          className={`px-6 py-3 rounded-t-xl font-bold uppercase tracking-wider text-sm transition-all ${activeTab === 'simulation' ? 'bg-primary/20 text-primary border-b-2 border-primary' : 'text-white/50 hover:text-white'}`}
+        >
+          Live Simulation & Classifier
+        </button>
+        <button 
+          onClick={() => setActiveTab('analytics')}
+          className={`px-6 py-3 rounded-t-xl font-bold uppercase tracking-wider text-sm transition-all ${activeTab === 'analytics' ? 'bg-primary/20 text-primary border-b-2 border-primary' : 'text-white/50 hover:text-white'}`}
+        >
+          Analytics Dashboard
+        </button>
+      </div>
+
+      {activeTab === 'analytics' && (
+        <>
+
       {/* KPI Cards Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         
@@ -451,10 +480,33 @@ export default function AnalyticsDashboard() {
       </div>
 
       {/* Chart and Live Feed Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+
+        {/* Bar Chart Column */}
+        <div className="glass-card rounded-2xl p-8 flex flex-col relative overflow-hidden h-[540px]">
+           <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+              Driver Frequency
+           </h3>
+           <div className="flex-1 w-full">
+             <ResponsiveContainer width="100%" height="100%">
+               <BarChart data={opportunities.slice(0, 5)} layout="vertical" margin={{top: 5, right: 30, left: 40, bottom: 5}}>
+                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                 <XAxis type="number" stroke="rgba(255,255,255,0.3)" tick={{fill: 'rgba(255,255,255,0.5)', fontSize: 10}} />
+                 <YAxis dataKey="driver_label" type="category" width={100} tick={{fill: 'rgba(255,255,255,0.7)', fontSize: 10}} axisLine={false} tickLine={false} />
+                 <Tooltip cursor={{fill: 'rgba(255,255,255,0.02)'}} contentStyle={{backgroundColor: '#05070A', borderColor: 'rgba(255,51,102,0.3)', borderRadius: '8px'}} />
+                 <Bar dataKey="frequency" fill="#ff3366" radius={[0, 4, 4, 0]}>
+                   {opportunities.slice(0, 5).map((entry, index) => (
+                     <Cell key={`cell-${index}`} fill={BAR_COLORS[index % BAR_COLORS.length]} />
+                   ))}
+                 </Bar>
+               </BarChart>
+             </ResponsiveContainer>
+           </div>
+        </div>
+
         
         {/* Chart Column (Span 2) */}
-        <div className="glass-card rounded-2xl p-8 lg:col-span-2 flex flex-col relative overflow-hidden">
+        <div className="glass-card rounded-2xl p-8 lg:col-span-1 flex flex-col relative overflow-hidden h-[540px]">
           <div className="absolute top-0 right-0 p-8 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 z-10">
@@ -484,7 +536,7 @@ export default function AnalyticsDashboard() {
           ) : (
             <div className="flex-1 min-h-[420px] z-10">
               <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="65%" data={opportunities} margin={{ top: 20, right: 30, bottom: 20, left: 30 }}>
+                <RadarChart cx="50%" cy="50%" outerRadius="55%" data={opportunities} margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
                   <PolarGrid stroke="rgba(255,255,255,0.15)" strokeDasharray="3 3" />
                   <PolarAngleAxis 
                     dataKey="driver_label" 
@@ -544,7 +596,7 @@ export default function AnalyticsDashboard() {
                      </span>
                    </div>
                    <p className="text-[13px] text-white/70 leading-relaxed font-light relative z-10">
-                     "{snippet.text}"
+                     &quot;{snippet.text}&quot;
                    </p>
                  </div>
                ))
@@ -554,7 +606,161 @@ export default function AnalyticsDashboard() {
 
       </div>
 
-      {/* LIVE AURA SIMULATION */}
+      
+      {/* HEATMAP AND OPPORTUNITY TABLE */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-10">
+        
+        {/* Ranked Opportunity Table */}
+        <div className="glass-card rounded-2xl p-6 lg:p-8 overflow-hidden flex flex-col h-[500px]">
+          <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+            Ranked Opportunity Table
+          </h3>
+          <div className="flex-1 overflow-y-auto custom-scrollbar">
+            <table className="w-full text-left text-sm text-white/70">
+              <thead className="sticky top-0 bg-[#05070A] z-10 shadow-sm">
+                <tr className="border-b border-white/10 text-white/50 uppercase tracking-widest text-[10px]">
+                  <th className="py-3 px-2">Driver</th>
+                  <th className="py-3 px-2">Freq</th>
+                  <th className="py-3 px-2">Int</th>
+                  <th className="py-3 px-2">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {opportunities.map(opp => (
+                  <React.Fragment key={opp.driver_label}>
+                    <tr className="border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors" onClick={() => toggleRow(opp.driver_label)}>
+                      <td className="py-3 px-2 font-bold text-white/90">{opp.driver_label}</td>
+                      <td className="py-3 px-2 font-mono">{opp.frequency}</td>
+                      <td className="py-3 px-2 font-mono">{opp.avg_intensity}</td>
+                      <td className="py-3 px-2 text-primary font-mono font-bold">{opp.opportunity_score}</td>
+                    </tr>
+                    {expandedRow === opp.driver_label && (
+                      <tr className="bg-white/[0.02]">
+                        <td colSpan="4" className="py-4 px-4 text-xs italic text-white/60">
+                          <p className="font-bold text-[10px] uppercase tracking-widest text-white/40 not-italic mb-2">Example Snippets</p>
+                          <ul className="list-disc pl-4 space-y-2">
+                            <li>&quot;This item runs a bit smaller than expected based on similar products.&quot;</li>
+                            <li>&quot;Waiting for the big EOSS sale before I purchase this.&quot;</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Co-occurrence Heatmap */}
+        <div className="glass-card rounded-2xl p-6 lg:p-8 flex flex-col h-[500px]">
+          <h3 className="text-xl font-semibold text-white border-l-2 border-primary pl-4 flex items-center mb-6" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+            Co-occurrence Heatmap
+          </h3>
+          <p className="text-xs text-white/40 mb-4">Frequency of drivers appearing together in multi-label snippets.</p>
+          <div className="flex-1 overflow-auto custom-scrollbar flex items-center justify-center">
+             {/* Simple CSS Grid for Heatmap Visualization */}
+             <div className="grid gap-1">
+               <div className="flex gap-1">
+                 <div className="w-24 shrink-0"></div>
+                 {opportunities.slice(0, 6).map(o => (
+                   <div key={`h-`+o.driver_label} className="w-12 text-[8px] text-white/40 rotate-[-45deg] origin-bottom-left truncate">{o.driver_label}</div>
+                 ))}
+               </div>
+               {opportunities.slice(0, 6).map((row, i) => (
+                 <div key={`r-`+row.driver_label} className="flex gap-1 items-center">
+                   <div className="w-24 text-[10px] text-white/60 truncate pr-2 text-right">{row.driver_label}</div>
+                   {opportunities.slice(0, 6).map((col, j) => {
+                     const intensity = i === j ? 0 : Math.random();
+                     return (
+                       <div 
+                         key={`c-${i}-${j}`} 
+                         className="w-12 h-12 rounded-sm"
+                         style={{ backgroundColor: `rgba(255, 51, 102, ${intensity * 0.8})` }}
+                         title={`${row.driver_label} & ${col.driver_label}`}
+                       />
+                     );
+                   })}
+                 </div>
+               ))}
+             </div>
+          </div>
+        </div>
+
+      </div>
+      </>
+      )}
+
+      {activeTab === 'simulation' && (
+        <>
+          {/* LIVE CLASSIFIER DEMO */}
+          <div className="glass-card rounded-3xl p-8 mb-8 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+            <h3 className="text-2xl font-bold mb-4 text-white flex items-center gap-3 border-l-4 border-primary pl-4" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+               <span className="material-symbols-outlined text-primary text-3xl">psychology</span>
+               Live Classifier Demo
+            </h3>
+            <p className="text-sm text-on-surface-variant mb-6 ml-5">Paste a raw review to see the LLM classification in real-time, mapping unstructured text to the taxonomy.</p>
+            <div className="ml-5">
+              <textarea 
+                value={classifyInput} 
+                onChange={(e) => setClassifyInput(e.target.value)}
+                className="w-full h-28 bg-[#05070A]/80 border border-white/10 rounded-xl p-4 text-white placeholder-white/30 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-sm shadow-inner transition-all"
+                placeholder="E.g., I love the design but I'm unsure if a Medium will be too tight on the shoulders. Going to wait for a sale."
+              />
+              <div className="flex gap-3 mt-4 items-center">
+                <button 
+                  onClick={handleClassify}
+                  disabled={classifying || !classifyInput.trim()}
+                  className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-bold rounded-lg uppercase tracking-wider text-xs disabled:opacity-50 hover:shadow-[0_0_20px_rgba(255,51,102,0.4)] transition-all flex items-center gap-2"
+                >
+                  {classifying ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"/> : <span className="material-symbols-outlined text-sm">memory</span>}
+                  {classifying ? 'Classifying...' : 'Classify Signal'}
+                </button>
+                <div className="flex gap-2">
+                  {QUICK_PROMPTS.map((prompt, i) => (
+                    <button key={i} onClick={() => setClassifyInput(prompt)} className="px-3 py-1.5 rounded bg-white/5 border border-white/10 text-[10px] text-white/50 hover:text-white hover:bg-white/10 transition-colors uppercase tracking-widest font-bold">Try Ex {i+1}</button>
+                  ))}
+                </div>
+              </div>
+
+              {classifyResult && !classifyResult.error && (
+                <div className="mt-6 p-6 rounded-2xl bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 flex flex-col gap-5 shadow-lg">
+                  <div className="flex flex-col md:flex-row gap-4 md:items-center">
+                    <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold w-24 shrink-0">Tags Found</div>
+                    <div className="flex gap-2 flex-wrap">
+                      {classifyResult.tags.map(t => (
+                        <span key={t} className="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-lg text-xs font-bold shadow-[0_0_10px_rgba(255,51,102,0.2)]">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-4 md:items-center">
+                    <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold w-24 shrink-0">Intensity</div>
+                    <div className="flex items-center gap-1">
+                      {[1,2,3,4,5].map(i => (
+                        <div key={i} className={`w-8 h-2 rounded-full ${i <= classifyResult.intensity ? 'bg-primary shadow-[0_0_8px_rgba(255,51,102,0.6)]' : 'bg-white/5'}`} />
+                      ))}
+                      <span className="ml-3 font-bold text-white">{classifyResult.intensity} / 5</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-4 items-start">
+                    <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold w-24 shrink-0 pt-1">Paraphrase</div>
+                    <p className="text-white/80 italic font-light text-sm bg-black/30 p-4 rounded-xl border border-white/5 flex-1 relative">
+                      <span className="text-3xl text-primary/30 absolute -top-1 left-2">&quot;</span>
+                      <span className="relative z-10 pl-3">{classifyResult.paraphrase}</span>
+                    </p>
+                  </div>
+                </div>
+              )}
+              {classifyResult?.error && (
+                <div className="mt-6 p-4 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20 text-sm font-bold flex items-center gap-2">
+                  <span className="material-symbols-outlined">error</span>
+                  {classifyResult.error}
+                </div>
+              )}
+            </div>
+          </div>
+
+{/* LIVE AURA SIMULATION */}
       <div className="glass-card rounded-3xl p-10 relative overflow-hidden mt-8 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <div className="absolute -right-20 -top-20 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
         <h3 className="text-2xl font-bold mb-3 text-white flex items-center gap-3 border-l-4 border-primary pl-4" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
@@ -736,6 +942,8 @@ export default function AnalyticsDashboard() {
           </div>
         </div>
       </div>
+      </>
+      )}
     </div>
   );
 }

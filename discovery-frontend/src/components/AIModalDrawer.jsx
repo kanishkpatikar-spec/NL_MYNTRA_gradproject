@@ -111,7 +111,7 @@ export default function AIModalDrawer({ itemId, onClose }) {
               </h4>
               <div className="glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 relative overflow-hidden min-h-[80px] flex items-center justify-center shadow-[0_0_10px_rgba(255,178,186,0.05)]">
                 <p className="font-body-sm text-body-sm text-on-surface text-center italic animate-in fade-in zoom-in duration-500" key={currentReviewIndex}>
-                  "{positiveReviews[currentReviewIndex]}"
+                  &quot;{positiveReviews[currentReviewIndex]}&quot;
                 </p>
                 
                 {/* Dots indicator */}
