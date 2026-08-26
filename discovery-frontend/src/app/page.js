@@ -886,7 +886,7 @@ export default function AnalyticsDashboard() {
 
             
               {/* Phone A Bounce Overlay */}
-              <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex flex-col items-center justify-center transition-all duration-500 ${
+              <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm rounded-[38px] z-50 flex flex-col items-center justify-center transition-all duration-500 ${
                   (simStatus === 'aura_active' || simStatus === 'converted') ? 'opacity-100' : 'opacity-0 pointer-events-none'
                 }`}>
                 <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mb-4">
