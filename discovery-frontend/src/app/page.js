@@ -218,20 +218,33 @@ export default function AnalyticsDashboard() {
   };
 
   const handleSimulate = () => {
-    // Phone B Logic
+    // Phone B Logic (Now fully automated till conversion)
     if (simStatus !== 'idle') {
       setSimStatus('idle');
       setTimeout(() => setSimStatus('hesitating'), 300);
       setTimeout(() => setSimStatus('aura_active'), 2500);
+      setTimeout(() => setSimStatus('converted'), 5000); // Auto-click Add to Bag
     } else {
       setSimStatus('hesitating');
       setTimeout(() => setSimStatus('aura_active'), 2200);
+      setTimeout(() => setSimStatus('converted'), 4700); // Auto-click Add to Bag
     }
 
-    // Phone A Logic
+    // Phone A Logic (Now fully automated till conversion)
     setSimStateA('homescreen');
     setTimeout(() => {
       setSimStateA('notification');
+      
+      // Auto-click notification to open wishlist
+      setTimeout(() => {
+        setSimStateA('wishlist');
+        
+        // Auto-click 'Add to Bag' to convert
+        setTimeout(() => {
+          setSimStateA('converted');
+        }, 2500);
+      }, 2500);
+      
     }, 800);
   };
 
@@ -513,22 +526,28 @@ export default function AnalyticsDashboard() {
               </div>
             </div>
             
-            <div className="relative z-10 flex-1 flex flex-col justify-center">
-               {displayedSnippets.length > 0 && (
-                 <div className="animate-in fade-in slide-in-from-right-4 duration-300" key={currentSnippetIndex}>
-                   <div className="flex justify-between items-start mb-2">
-                     <span className="text-[8px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-md bg-white/5 text-white/60 border border-white/5">
-                       {displayedSnippets[currentSnippetIndex].source || 'Scraped'}
-                     </span>
-                     <span className="text-[9px] text-white/40">{currentSnippetIndex + 1} / {displayedSnippets.length}</span>
-                   </div>
-                   <p className="text-xs text-white/80 leading-relaxed font-light line-clamp-4 mt-2">
-                     &quot;{displayedSnippets[currentSnippetIndex].text}&quot;
-                   </p>
+            <div className="relative z-10 flex-1 flex flex-col justify-center overflow-hidden min-h-[100px]">
+               {displayedSnippets.length > 0 ? (
+                 <div 
+                   className="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-row h-full items-center w-full"
+                   style={{ transform: `translateX(-${currentSnippetIndex * 100}%)` }}
+                 >
+                   {displayedSnippets.map((snippet, idx) => (
+                     <div key={idx} className="h-full w-full shrink-0 flex flex-col justify-center">
+                       <div className="flex justify-between items-start mb-2">
+                         <span className="text-[8px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-md bg-white/5 text-white/60 border border-white/5">
+                           {snippet.source || 'Scraped'}
+                         </span>
+                         <span className="text-[9px] text-white/40">{idx + 1} / {displayedSnippets.length}</span>
+                       </div>
+                       <p className="text-xs text-white/80 leading-relaxed font-light line-clamp-4 mt-2">
+                         &quot;{snippet.text}&quot;
+                       </p>
+                     </div>
+                   ))}
                  </div>
-               )}
-               {displayedSnippets.length === 0 && !loading && (
-                 <div className="text-xs text-white/40 italic text-center">No snippets available</div>
+               ) : (
+                 !loading && <div className="text-xs text-white/40 italic text-center">No snippets available</div>
                )}
             </div>
           </div>
@@ -579,17 +598,17 @@ export default function AnalyticsDashboard() {
                {opportunities.slice(0, 6).map((row, i) => (
                  <div key={`r-`+row.driver_label} className="flex gap-1 items-center">
                    <div className="w-24 text-[10px] text-white/60 truncate pr-2 text-right">{row.driver_label}</div>
-                   {opportunities.slice(0, 6).map((col, j) => {
-                     const intensity = i === j ? 0 : Math.random();
-                     return (
-                       <div 
-                         key={`c-${i}-${j}`} 
-                         className="w-12 h-12 rounded-sm"
-                         style={{ backgroundColor: `rgba(255, 51, 102, ${intensity * 0.8})` }}
-                         title={`${row.driver_label} & ${col.driver_label}`}
-                       />
-                     );
-                   })}
+                    {opportunities.slice(0, 6).map((col, j) => {
+                      const intensity = i === j ? 0 : (Math.sin(i * 3 + j * 7 + currentSnippetIndex) * 0.5 + 0.5);
+                      return (
+                        <div 
+                          key={`c-${i}-${j}`} 
+                          className="w-12 h-12 rounded-sm transition-colors duration-1000 ease-in-out"
+                          style={{ backgroundColor: `rgba(255, 51, 102, ${intensity * 0.8})` }}
+                          title={`${row.driver_label} & ${col.driver_label}`}
+                        />
+                      );
+                    })}
                  </div>
                ))}
              </div>
@@ -763,7 +782,7 @@ export default function AnalyticsDashboard() {
           </div>
 
                     {/* PHONES ROW */}
-          <div className="flex flex-wrap justify-center xl:justify-start gap-12 lg:gap-20 w-full">
+          <div className="flex flex-col lg:flex-row-reverse justify-center xl:justify-start gap-12 lg:gap-20 w-full items-center lg:items-start">
             
             {/* Phone A: 30-Day Conversion */}
             <div className="flex flex-col items-center shrink-0">
@@ -773,47 +792,68 @@ export default function AnalyticsDashboard() {
               </div>
               <div className="relative bg-black w-[360px] h-[780px] rounded-[52px] overflow-hidden shadow-2xl border-[14px] border-[#0a0a0a] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[2px] ring-[#3a3a3c]">
                 
-                {/* ===== LAYER 1: Homescreen (User's real iPhone screenshot) ===== */}
-                <div className={`absolute inset-0 z-20 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                {/* ===== LAYER 1: Homescreen (Clean Generic iOS Layout) ===== */}
+                <div className={`absolute inset-0 z-10 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] bg-[#0f172a] ${
                   simStateA === 'wishlist' || simStateA === 'converted' 
                     ? 'scale-[2.5] opacity-0 pointer-events-none blur-[12px]' 
                     : 'scale-100 opacity-100'
                 }`}>
-                  {/* Solid fallback + screenshot as background */}
-                  <div 
-                    className="absolute inset-0 bg-[#2c3e3e] bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('/panda_homescreen.png')" }}
-                  />
+                  {/* Clean Background Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1e293b] to-[#0f172a]" />
                   
-                  {/* Clickable Myntra icon hotspot (bottom-right area of grid, row 5 col 4) */}
-                  <div 
-                    className="absolute cursor-pointer hover:bg-white/10 rounded-[14px] transition-colors"
-                    style={{ top: '72%', right: '8%', width: '60px', height: '72px' }} 
-                    onClick={handlePhoneALaunch}
-                    title="Myntra"
-                  ></div>
+                  {/* iOS Status Bar */}
+                  <div className="absolute top-0 w-full h-[54px] flex justify-between items-center px-6 z-40 pt-2">
+                    <span className="text-[14px] font-semibold text-white tracking-tight w-[60px] text-center ml-1">9:41</span>
+                    <div className="flex gap-1.5 items-center w-[60px] justify-end mr-1 text-white">
+                      <span className="material-symbols-outlined text-[14px]">signal_cellular_4_bar</span>
+                      <span className="material-symbols-outlined text-[14px]">wifi</span>
+                      <span className="material-symbols-outlined text-[14px]">battery_full</span>
+                    </div>
+                  </div>
+
+                  {/* App Grid */}
+                  <div className="absolute top-16 left-0 w-full px-6 grid grid-cols-4 gap-4">
+                    {[1,2,3,4,5,6,7].map(i => (
+                      <div key={i} className="flex flex-col items-center gap-1">
+                        <div className="w-[60px] h-[60px] bg-white/10 rounded-[14px] shadow-sm"></div>
+                      </div>
+                    ))}
+                    {/* Myntra App */}
+                    <div className="flex flex-col items-center gap-1 cursor-pointer" onClick={handlePhoneALaunch}>
+                      <div className="w-[60px] h-[60px] bg-gradient-to-br from-[#ff3e6c] to-[#ee5a24] rounded-[14px] shadow-sm flex items-center justify-center">
+                        <span className="text-white font-bold text-[32px] font-serif leading-none">M</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* iOS Dock */}
+                  <div className="absolute bottom-[16px] left-4 right-4 h-[86px] rounded-[30px] bg-white/10 backdrop-blur-xl flex items-center justify-around px-2 pb-2 pt-2 border border-white/10">
+                     {[1,2,3,4].map(i => (
+                       <div key={`dock-${i}`} className="w-[60px] h-[60px] bg-white/20 rounded-[14px]"></div>
+                     ))}
+                  </div>
 
                   {/* iOS Push Notification Banner */}
                   <div 
-                    className={`absolute left-[6px] right-[6px] z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    className={`absolute left-[8px] right-[8px] z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                       simStateA === 'notification' 
-                        ? 'top-[6px] opacity-100 scale-100' 
+                        ? 'top-[12px] opacity-100 scale-100' 
                         : '-top-[120px] opacity-0 scale-95 pointer-events-none'
                     }`}
                     onClick={handlePhoneALaunch}
                   >
-                    <div className="bg-white/[0.82] backdrop-blur-[25px] rounded-[22px] p-[14px] shadow-[0_8px_30px_rgba(0,0,0,0.18)] cursor-pointer flex gap-3 items-start border border-white/60">
+                    <div className="bg-white/95 backdrop-blur-2xl rounded-[24px] p-4 shadow-[0_10px_40px_rgba(0,0,0,0.3)] cursor-pointer flex gap-3.5 items-start border border-white/20">
                       {/* Myntra App Icon */}
-                      <div className="w-[38px] h-[38px] rounded-[9px] bg-gradient-to-br from-[#ff3e6c] to-[#ee5a24] flex items-center justify-center shrink-0 mt-[1px]">
-                        <span className="text-white font-bold text-[20px] font-serif leading-none" style={{ fontFamily: 'Georgia, serif' }}>M</span>
+                      <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-[#ff3e6c] to-[#ee5a24] flex items-center justify-center shrink-0 shadow-sm">
+                        <span className="text-white font-bold text-[22px] font-serif leading-none">M</span>
                       </div>
-                      <div className="flex-1 min-w-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>
-                        <div className="flex justify-between items-center mb-[2px]">
-                          <span className="font-semibold text-[#1c1c1e] text-[13px] tracking-[-0.08px]">Myntra</span>
-                          <span className="text-[#8e8e93] text-[12px] font-normal">now</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="font-semibold text-gray-900 text-[13px]">Myntra</span>
+                          <span className="text-gray-500 text-[11px]">now</span>
                         </div>
-                        <p className="font-semibold text-[#1c1c1e] text-[14px] leading-[18px] mb-[1px] tracking-[-0.15px]">Price Drop Alert! 🌟</p>
-                        <p className="text-[#3c3c43]/60 text-[14px] leading-[18px] tracking-[-0.15px]">Items in your wishlist are selling fast. Tap to claim them!</p>
+                        <p className="font-bold text-gray-900 text-[14px] leading-snug mb-0.5">Low Stock Alert! 🔥</p>
+                        <p className="text-gray-600 text-[13px] leading-snug">Items in your wishlist are selling out fast. Tap to secure them before they're gone!</p>
                       </div>
                     </div>
                   </div>
@@ -893,7 +933,7 @@ export default function AnalyticsDashboard() {
                             </div>
                             <span className="text-[11px] font-bold text-[#ff3e6c] uppercase tracking-wider">Aura Style Sandbox</span>
                           </div>
-                          <p className="text-[11px] text-[#535766] leading-relaxed">This item matches your style profile perfectly. Price dropped 23% since you wishlisted it!</p>
+                          <p className="text-[11px] text-[#535766] leading-relaxed">This item matches your style profile perfectly. Selling out fast in your size!</p>
                         </div>
                         
                         {/* Add to Bag Button */}
