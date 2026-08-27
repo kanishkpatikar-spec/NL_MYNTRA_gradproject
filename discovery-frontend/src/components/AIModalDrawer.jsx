@@ -7,7 +7,6 @@ export default function AIModalDrawer({ itemId, onClose }) {
   const [modules, setModules] = useState(null);
   const [itemData, setItemData] = useState(null);
   const [itemDetails, setItemDetails] = useState(null);
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   useEffect(() => {
     if (!itemId) return;
@@ -32,29 +31,6 @@ export default function AIModalDrawer({ itemId, onClose }) {
     fetchData();
   }, [itemId]);
 
-  const positiveReviews = React.useMemo(() => {
-    if (!itemData) return [];
-    const brand = itemData.brand || 'This brand';
-    const category = itemData.category || 'item';
-    const color = itemData.attributes?.color?.toLowerCase() || 'design';
-    const material = itemData.attributes?.material?.toLowerCase() || 'material';
-    
-    return [
-      `Absolutely love the fit and quality of this ${category}! Highly recommend.`,
-      `Best purchase I've made this year. ${brand} never disappoints.`,
-      `The ${material} is incredibly soft and comfortable for all-day wear.`,
-      `Got so many compliments wearing this ${color} ${category}! Fits perfectly.`,
-      `Exceeded my expectations. Great value for the price, looks exactly like the pictures.`
-    ];
-  }, [itemData]);
-
-  useEffect(() => {
-    if (!positiveReviews.length) return;
-    const interval = setInterval(() => {
-      setCurrentReviewIndex((prev) => (prev + 1) % positiveReviews.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [positiveReviews]);
 
   const getStockCount = (id) => {
     if (!id) return 0;
@@ -103,25 +79,35 @@ export default function AIModalDrawer({ itemId, onClose }) {
            <p className="text-on-surface-variant text-center font-body-sm">No insights available.</p>
         ) : (
           <>
-            {/* Verified Reviews Slider */}
-            <div className="space-y-4">
-              <h4 className="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-surface flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-[20px]">star</span>
-                Customer Highlights
-              </h4>
-              <div className="glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 relative overflow-hidden min-h-[80px] flex items-center justify-center shadow-[0_0_10px_rgba(255,178,186,0.05)]">
-                <p className="font-body-sm text-body-sm text-on-surface text-center italic animate-in fade-in zoom-in duration-500" key={currentReviewIndex}>
-                  &quot;{positiveReviews[currentReviewIndex]}&quot;
-                </p>
-                
-                {/* Dots indicator */}
-                <div className="absolute bottom-1 left-0 right-0 flex justify-center gap-1">
-                  {positiveReviews.map((_, i) => (
-                    <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentReviewIndex ? 'bg-primary w-3' : 'bg-white/20'}`} />
-                  ))}
+            {/* Review Digest */}
+            {modules.review_digest && (
+              <div className="space-y-4">
+                <h4 className="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-surface flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary text-[20px]">forum</span>
+                  Review Digest
+                </h4>
+                <div className="glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 relative overflow-hidden flex items-center justify-center shadow-[0_0_10px_rgba(255,178,186,0.05)] border-l-4 border-l-primary/40">
+                  <p className="font-body-sm text-body-sm text-on-surface leading-relaxed text-center italic">
+                    "{modules.review_digest.content}"
+                  </p>
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Price Context */}
+            {modules.price_context && (
+              <div className="space-y-4">
+                <h4 className="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-surface flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[#ffb596] text-[20px]">sell</span>
+                  Price Context
+                </h4>
+                <div className="glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 shadow-[0_0_15px_rgba(255,181,150,0.05)]">
+                  <p className="font-body-sm text-body-sm text-on-surface leading-relaxed">
+                    {modules.price_context.content}
+                  </p>
+                </div>
+              </div>
+            )}
 
             {/* Glowing Stock Counter */}
             <div className="flex items-center justify-between glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 shadow-[0_0_15px_rgba(255,178,186,0.15)] transition-all hover:shadow-[0_0_20px_rgba(255,178,186,0.25)]">
