@@ -5,8 +5,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
 
 export default function CartDropdown() {
-  const { cartItems, cartTotal, removeFromCart, clearCart } = useCart();
-  const [isOpen, setIsOpen] = useState(false);
+  const { cartItems, cartTotal, removeFromCart, clearCart, isCartOpen, setIsCartOpen } = useCart();
   const dropdownRef = useRef(null);
 
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -15,7 +14,7 @@ export default function CartDropdown() {
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
+        setIsCartOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -25,13 +24,13 @@ export default function CartDropdown() {
   const handleCheckout = () => {
     alert(`Checking out ${itemCount} items for ₹${cartTotal}!`);
     clearCart();
-    setIsOpen(false);
+    setIsCartOpen(false);
   };
 
   return (
     <div className="relative" ref={dropdownRef}>
       <button 
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsCartOpen(!isCartOpen)}
         className="relative p-2 rounded-full text-on-surface-variant hover:text-white transition-colors hover:bg-white/10"
       >
         <span className="material-symbols-outlined text-[24px]">shopping_cart</span>
@@ -42,7 +41,7 @@ export default function CartDropdown() {
         )}
       </button>
 
-      {isOpen && (
+      {isCartOpen && (
         <div className="absolute right-0 mt-3 w-[400px] discovery-panel border border-white/5 rounded-2xl shadow-2xl z-50 animate-in slide-in-from-top-2 fade-in duration-200 overflow-hidden">
           <div className="p-6 border-b border-white/5 flex justify-between items-end">
             <div>

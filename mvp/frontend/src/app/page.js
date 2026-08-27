@@ -10,7 +10,7 @@ import { useCart } from '@/context/CartContext';
 
 export default function WishlistHome() {
   const router = useRouter();
-  const { addToCart } = useCart();
+  const { addToCart, isCartOpen, setIsCartOpen } = useCart();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,6 +20,13 @@ export default function WishlistHome() {
   const [sandboxItems, setSandboxItems] = useState([]);
   const [sandboxResult, setSandboxResult] = useState(null);
   const [analyzingSandbox, setAnalyzingSandbox] = useState(false);
+
+  // Close Confidence Assistant when Cart opens
+  useEffect(() => {
+    if (isCartOpen) {
+      setActiveItemId(null);
+    }
+  }, [isCartOpen]);
 
   useEffect(() => {
     const fetchWishlist = async () => {
@@ -97,7 +104,8 @@ export default function WishlistHome() {
       addToCart(item.product || item);
     });
     logEvent('sandbox_added_to_cart', { item_ids: sandboxItems.map(i => (i.product?.id || i.id)) });
-    alert("Items added to cart!");
+    setIsCartOpen(true);
+    setActiveItemId(null);
   };
 
   if (loading) {
