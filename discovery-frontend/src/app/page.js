@@ -176,7 +176,7 @@ export default function AnalyticsDashboard() {
   const [simStatus, setSimStatus] = useState('idle'); // Phone B
   const [simStateA, setSimStateA] = useState('homescreen'); // Phone A
 
-  const [activeTab, setActiveTab] = useState('simulation');
+  const [activeTab, setActiveTab] = useState('analytics');
   const [expandedRow, setExpandedRow] = useState(null);
   const [currentSnippetIndex, setCurrentSnippetIndex] = useState(0);
 
@@ -422,16 +422,16 @@ export default function AnalyticsDashboard() {
       {/* TAB NAVIGATION */}
       <div className="flex gap-4 border-b border-white/10 pb-4 mb-8">
         <button 
-          onClick={() => setActiveTab('simulation')}
-          className={`px-6 py-3 rounded-t-xl font-bold uppercase tracking-wider text-sm transition-all ${activeTab === 'simulation' ? 'bg-primary/20 text-primary border-b-2 border-primary' : 'text-white/50 hover:text-white'}`}
-        >
-          Live Simulation & Classifier
-        </button>
-        <button 
           onClick={() => setActiveTab('analytics')}
           className={`px-6 py-3 rounded-t-xl font-bold uppercase tracking-wider text-sm transition-all ${activeTab === 'analytics' ? 'bg-primary/20 text-primary border-b-2 border-primary' : 'text-white/50 hover:text-white'}`}
         >
           Analytics Dashboard
+        </button>
+        <button 
+          onClick={() => setActiveTab('simulation')}
+          className={`px-6 py-3 rounded-t-xl font-bold uppercase tracking-wider text-sm transition-all ${activeTab === 'simulation' ? 'bg-primary/20 text-primary border-b-2 border-primary' : 'text-white/50 hover:text-white'}`}
+        >
+          Live Simulation & Classifier
         </button>
       </div>
 
