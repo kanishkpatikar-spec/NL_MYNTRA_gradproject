@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 
+
+
 export default function ItemCard({ item, onClick, isSelected, draggable, onDragStart, onAddToSandbox, isInSandbox }) {
   // Fix the mapping: data is inside item.product if it's the wrapper format
   const product = item.product || item;
@@ -86,7 +88,9 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
       <div className="p-5 relative z-20 flex-grow flex flex-col justify-between">
         <div>
           <div className="flex justify-between items-start gap-2 mb-1.5">
-            <p className="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest truncate">{product.brand}</p>
+            <div className="flex items-center gap-2">
+              <p className="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest truncate">{product.brand}</p>
+            </div>
             {product.size && (
               <span className="bg-white/5 backdrop-blur-md text-white/80 border border-white/10 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest whitespace-nowrap shadow-sm">
                 Size: <span className="text-white">{product.size}</span>

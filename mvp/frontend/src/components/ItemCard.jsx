@@ -2,27 +2,7 @@
 import React, { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 
-const BRAND_DOMAINS = {
-  "Levi's": "levi.com",
-  "H&M": "hm.com",
-  "Nike": "nike.com",
-  "Mango": "shop.mango.com",
-  "Zara": "zara.com",
-  "Puma": "puma.com",
-  "Ray-Ban": "ray-ban.com",
-  "Fossil": "fossil.com",
-  "U.S. Polo Assn.": "uspoloassn.com",
-  "W": "wforwoman.com",
-  "ONLY": "only.com",
-  "Adidas": "adidas.com",
-  "HRX by Hrithik Roshan": "hrxbrand.com",
-  "Guess": "guess.com",
-  "Steve Madden": "stevemadden.com",
-  "Highlander": "highlander.in",
-  "Allen Solly": "allensolly.abfrl.in",
-  "Tokyo Talkies": "tokyotalkies.com",
-  "Biba": "biba.in"
-};
+
 
 export default function ItemCard({ item, onClick, isSelected, draggable, onDragStart, onAddToSandbox, isInSandbox }) {
   // Fix the mapping: data is inside item.product if it's the wrapper format
@@ -109,20 +89,6 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
         <div>
           <div className="flex justify-between items-start gap-2 mb-1.5">
             <div className="flex items-center gap-2">
-              {product.brand && (
-                <img 
-                  src={
-                    ["Nike", "Puma", "Adidas", "Zara", "H&M"].includes(product.brand)
-                      ? `https://cdn.simpleicons.org/${product.brand === 'H&M' ? 'handm' : product.brand.toLowerCase()}/white`
-                      : `https://logo.clearbit.com/${BRAND_DOMAINS[product.brand] || 'myntra.com'}`
-                  }
-                  alt={`${product.brand} logo`}
-                  className={`w-6 h-6 object-contain ${["ONLY", "Allen Solly"].includes(product.brand) ? "brightness-0 invert opacity-90" : "opacity-90"}`}
-                  onError={(e) => {
-                    e.target.style.display = 'none'; // Just hide the broken image, no imaginary logos!
-                  }}
-                />
-              )}
               <p className="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest truncate">{product.brand}</p>
             </div>
             {product.size && (
