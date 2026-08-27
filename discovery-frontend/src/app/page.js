@@ -774,17 +774,15 @@ export default function AnalyticsDashboard() {
               <div className="relative bg-black w-[360px] h-[780px] rounded-[52px] overflow-hidden shadow-2xl border-[14px] border-[#0a0a0a] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[2px] ring-[#3a3a3c]">
                 
                 {/* ===== LAYER 1: Homescreen (User's real iPhone screenshot) ===== */}
-                <div className={`absolute inset-0 z-10 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                <div className={`absolute inset-0 z-20 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   simStateA === 'wishlist' || simStateA === 'converted' 
                     ? 'scale-[2.5] opacity-0 pointer-events-none blur-[12px]' 
                     : 'scale-100 opacity-100'
                 }`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img 
-                    src="/panda_homescreen.png" 
-                    alt="iPhone Homescreen" 
-                    className="w-full h-full object-cover"
-                    style={{ imageRendering: 'auto' }}
+                  {/* Solid fallback + screenshot as background */}
+                  <div 
+                    className="absolute inset-0 bg-[#2c3e3e] bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url('/panda_homescreen.png')" }}
                   />
                   
                   {/* Clickable Myntra icon hotspot (bottom-right area of grid, row 5 col 4) */}
@@ -822,7 +820,7 @@ export default function AnalyticsDashboard() {
                 </div>
 
                 {/* ===== LAYER 2: Myntra App View (visible after homescreen animates away) ===== */}
-                <div className={`absolute inset-0 z-5 bg-[#fafafa] flex flex-col transition-all duration-500 delay-200 ${
+                <div className={`absolute inset-0 z-10 bg-[#fafafa] flex flex-col transition-all duration-500 delay-200 ${
                   simStateA === 'wishlist' || simStateA === 'converted' 
                     ? 'opacity-100' 
                     : 'opacity-0 pointer-events-none'
