@@ -7,6 +7,30 @@ export default function AIModalDrawer({ itemId, onClose }) {
   const [modules, setModules] = useState(null);
   const [itemData, setItemData] = useState(null);
   const [itemDetails, setItemDetails] = useState(null);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+
+  const displayReviews = React.useMemo(() => {
+    const reviews = [];
+    if (modules?.review_digest) {
+      reviews.push(modules.review_digest.content);
+    }
+    if (itemDetails?.reviews?.length > 0) {
+      const realReviews = itemDetails.reviews.map(r => r.paraphrase || "").filter(Boolean).slice(0, 3);
+      reviews.push(...realReviews);
+    }
+    if (reviews.length === 0) {
+      reviews.push("General consensus is positive.");
+    }
+    return reviews;
+  }, [modules?.review_digest, itemDetails?.reviews]);
+
+  useEffect(() => {
+    if (displayReviews.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentReviewIndex((prev) => (prev + 1) % displayReviews.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [displayReviews]);
 
   useEffect(() => {
     if (!itemId) return;
@@ -69,7 +93,7 @@ export default function AIModalDrawer({ itemId, onClose }) {
       </div>
 
       {/* Drawer Scrollable Content */}
-      <div className="flex-grow overflow-y-auto p-6 space-y-8">
+      <div className="flex-grow overflow-y-auto p-6 space-y-5">
         {loading ? (
           <div className="flex flex-col items-center justify-center h-40">
             <span className="material-symbols-outlined text-primary text-4xl animate-spin">sync</span>
@@ -81,22 +105,31 @@ export default function AIModalDrawer({ itemId, onClose }) {
           <>
             {/* Review Digest */}
             {modules.review_digest && (
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h4 className="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-surface flex items-center gap-2">
                   <span className="material-symbols-outlined text-primary text-[20px]">forum</span>
                   Review Digest
                 </h4>
-                <div className="glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 relative overflow-hidden flex items-center justify-center shadow-[0_0_10px_rgba(255,178,186,0.05)] border-l-4 border-l-primary/40">
-                  <p className="font-body-sm text-body-sm text-on-surface leading-relaxed text-center italic">
-                    "{modules.review_digest.content}"
+                <div className="glass-panel p-4 rounded-xl ai-insight-border bg-surface-container-low/50 relative overflow-hidden min-h-[80px] flex items-center justify-center shadow-[0_0_10px_rgba(255,178,186,0.05)] border-l-4 border-l-primary/40">
+                  <p className="font-body-sm text-body-sm text-on-surface leading-relaxed text-center italic animate-in fade-in zoom-in duration-500" key={currentReviewIndex}>
+                    "{displayReviews[currentReviewIndex]}"
                   </p>
+                  
+                  {/* Dots indicator */}
+                  {displayReviews.length > 1 && (
+                    <div className="absolute bottom-1 left-0 right-0 flex justify-center gap-1">
+                      {displayReviews.map((_, i) => (
+                        <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentReviewIndex ? 'bg-primary w-3' : 'bg-white/20'}`} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
 
             {/* Price Context */}
             {modules.price_context && (
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h4 className="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-surface flex items-center gap-2">
                   <span className="material-symbols-outlined text-[#ffb596] text-[20px]">sell</span>
                   Price Context
@@ -122,7 +155,7 @@ export default function AIModalDrawer({ itemId, onClose }) {
 
             {/* Fit Predictor */}
             {modules.fit_confidence && (
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <h4 className="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-surface flex items-center gap-2">
                     <span className="material-symbols-outlined text-tertiary text-[20px]">straighten</span>
@@ -177,7 +210,7 @@ export default function AIModalDrawer({ itemId, onClose }) {
 
             {/* Styling Assist */}
             {modules.styling_assist && (
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h4 className="font-label-lg text-label-lg font-bold uppercase tracking-wider text-on-surface flex items-center gap-2">
                   <span className="material-symbols-outlined text-secondary text-[20px] hover:text-primary hover:shadow-[0_0_8px_rgba(255,178,186,0.4)] cursor-pointer transition-colors">style</span>
                   Wardrobe Match
