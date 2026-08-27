@@ -8,9 +8,96 @@ import AIModalDrawer from '@/components/AIModalDrawer';
 import { logEvent } from '@/services/events';
 import { useCart } from '@/context/CartContext';
 
+function Homescreen({ onLaunch }) {
+  const [launching, setLaunching] = useState(false);
+
+  const handleLaunch = () => {
+    setLaunching(true);
+    setTimeout(() => {
+      onLaunch();
+    }, 800);
+  };
+
+  return (
+    <div className={`fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden transition-all ${launching ? 'animate-app-launch pointer-events-none' : ''}`}>
+       <div 
+         className="absolute inset-0 bg-cover bg-center opacity-80" 
+         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')" }}
+       ></div>
+       
+       {/* Status Bar Mock (Time, Battery, Wifi) */}
+       <div className="absolute top-0 left-0 w-full h-12 flex justify-between items-center px-8 z-10 text-white drop-shadow-md">
+         <span className="font-bold text-sm tracking-tight">9:41</span>
+         <div className="flex gap-2 items-center">
+            <span className="material-symbols-outlined text-sm">signal_cellular_4_bar</span>
+            <span className="material-symbols-outlined text-sm">wifi</span>
+            <span className="material-symbols-outlined text-sm">battery_full</span>
+         </div>
+       </div>
+
+       {/* Animated Notification */}
+       <div 
+         className="absolute top-12 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-white/90 backdrop-blur-xl rounded-[24px] p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-notification-slide cursor-pointer z-50 flex gap-4 items-start border border-white/20 hover:bg-white transition-colors"
+         onClick={handleLaunch}
+       >
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shrink-0 shadow-sm">
+             <span className="material-symbols-outlined text-white text-2xl font-bold">shopping_bag</span>
+          </div>
+          <div className="flex-1">
+            <div className="flex justify-between items-center mb-0.5">
+              <span className="font-bold text-black/80 text-[13px] tracking-tight">Myntra</span>
+              <span className="text-black/50 text-[11px]">now</span>
+            </div>
+            <p className="font-bold text-black text-[14px] leading-tight mb-0.5">Price Drop Alert! 🌟</p>
+            <p className="text-black/70 text-[13px] leading-tight pr-2">Items in your wishlist are selling out fast. Open your Style Sandbox now to claim them!</p>
+          </div>
+       </div>
+
+       {/* App Grid */}
+       <div className="absolute top-32 left-0 w-full px-6 md:px-8">
+         <div className="grid grid-cols-4 gap-x-4 gap-y-8 max-w-md mx-auto">
+            {/* Dummy App 1 */}
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-[60px] h-[60px] rounded-[14px] bg-[#4cd964] flex items-center justify-center shadow-sm">
+                <span className="material-symbols-outlined text-white text-3xl">chat</span>
+              </div>
+              <span className="text-white text-[11px] font-medium drop-shadow-md">Messages</span>
+            </div>
+            {/* Dummy App 2 */}
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex flex-col items-center justify-center shadow-sm relative">
+                <span className="text-red-500 font-bold text-[10px] absolute top-1 uppercase">Tue</span>
+                <span className="text-black font-medium text-[26px] leading-none mt-2">27</span>
+              </div>
+              <span className="text-white text-[11px] font-medium drop-shadow-md">Calendar</span>
+            </div>
+            {/* Dummy App 3 */}
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-[60px] h-[60px] rounded-[14px] bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-sm">
+                <span className="material-symbols-outlined text-white text-3xl">cloud</span>
+              </div>
+              <span className="text-white text-[11px] font-medium drop-shadow-md">Weather</span>
+            </div>
+            {/* Myntra App */}
+            <div className="flex flex-col items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 transition-transform group" onClick={handleLaunch}>
+              <div className="w-[60px] h-[60px] rounded-[14px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] shadow-[0_5px_15px_rgba(255,62,108,0.4)] flex items-center justify-center group-hover:shadow-[0_8px_20px_rgba(255,62,108,0.6)] transition-all">
+                <span className="text-white font-bold text-[32px] font-serif leading-none tracking-tighter">M</span>
+              </div>
+              <span className="text-white text-[11px] font-medium drop-shadow-md">Myntra</span>
+            </div>
+         </div>
+       </div>
+
+       {/* iPhone Home Indicator */}
+       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/80 rounded-full"></div>
+    </div>
+  );
+}
+
 export default function WishlistHome() {
   const router = useRouter();
   const { addToCart, isCartOpen, setIsCartOpen } = useCart();
+  const [simulationStep, setSimulationStep] = useState('homescreen');
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -107,6 +194,10 @@ export default function WishlistHome() {
     setIsCartOpen(true);
     setActiveItemId(null);
   };
+
+  if (simulationStep === 'homescreen') {
+    return <Homescreen onLaunch={() => setSimulationStep('app')} />;
+  }
 
   if (loading) {
     return (
