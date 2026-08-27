@@ -1,290 +1,578 @@
 [
-  {
-    "id": "SKU-001",
-    "name": "Floral Printed Anarkali Kurta",
-    "brand": "Anouk",
-    "category": "kurta",
-    "price": 1299,
-    "sizes": ["S", "M", "L", "XL"],
-    "image_url": "/images/kurta_set.jpg",
-    "attributes": { "material": "Cotton", "pattern": "Floral", "fit": "Regular", "sleeve": "3/4 Sleeve", "occasion": "Festive" },
-    "rating": 4.2,
-    "review_count": 187
-  },
-  {
-    "id": "SKU-002",
-    "name": "Slim Fit Casual Shirt",
-    "brand": "Roadster",
-    "category": "shirt",
-    "price": 899,
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "image_url": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=520&fit=crop",
-    "attributes": { "material": "Cotton Blend", "pattern": "Solid", "fit": "Slim", "sleeve": "Full Sleeve", "occasion": "Casual" },
-    "rating": 4.0,
-    "review_count": 342
-  },
-  {
-    "id": "SKU-003",
-    "name": "511 Slim Fit Stretchable Jeans",
-    "brand": "Levi's",
-    "category": "jeans",
-    "price": 2799,
-    "sizes": ["28", "30", "32", "34", "36"],
-    "image_url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=520&fit=crop",
-    "attributes": { "material": "Denim (Cotton + Elastane)", "pattern": "Solid", "fit": "Slim", "sleeve": "", "occasion": "Casual" },
-    "rating": 4.4,
-    "review_count": 1203
-  },
-  {
-    "id": "SKU-004",
-    "name": "Oversized Fleece Hoodie",
-    "brand": "H&M",
-    "category": "hoodie",
-    "price": 1499,
-    "sizes": ["S", "M", "L", "XL"],
-    "image_url": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=520&fit=crop",
-    "attributes": { "material": "Cotton Fleece", "pattern": "Solid", "fit": "Oversized", "sleeve": "Full Sleeve", "occasion": "Casual" },
-    "rating": 4.3,
-    "review_count": 567
-  },
-  {
-    "id": "SKU-005",
-    "name": "Air Max 270 React Sneakers",
-    "brand": "Nike",
-    "category": "footwear",
-    "price": 12995,
-    "sizes": ["UK 6", "UK 7", "UK 8", "UK 9", "UK 10"],
-    "image_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=520&fit=crop",
-    "attributes": { "material": "Synthetic Mesh + React Foam", "pattern": "Colorblock", "fit": "Regular (runs half-size small)", "sleeve": "", "occasion": "Sport / Casual" },
-    "rating": 4.5,
-    "review_count": 891
-  },
-  {
-    "id": "SKU-006",
-    "name": "Tailored Linen Blazer",
-    "brand": "Mango",
-    "category": "blazer",
-    "price": 5990,
-    "sizes": ["XS", "S", "M", "L"],
-    "image_url": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=520&fit=crop",
-    "attributes": { "material": "Linen", "pattern": "Solid", "fit": "Tailored", "sleeve": "Full Sleeve", "occasion": "Formal / Semi-Formal" },
-    "rating": 4.1,
-    "review_count": 98
-  },
-  {
-    "id": "SKU-007",
-    "name": "Satin Slip Midi Dress",
-    "brand": "Zara",
-    "category": "dress",
-    "price": 2990,
-    "sizes": ["XS", "S", "M", "L"],
-    "image_url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=520&fit=crop",
-    "attributes": { "material": "Satin", "pattern": "Solid", "fit": "Regular (no stretch)", "sleeve": "Spaghetti Strap", "occasion": "Party / Evening" },
-    "rating": 4.0,
-    "review_count": 214
-  },
-  {
-    "id": "SKU-008",
-    "name": "RS-X Reinvention Sneakers",
-    "brand": "Puma",
-    "category": "footwear",
-    "price": 8999,
-    "sizes": ["UK 6", "UK 7", "UK 8", "UK 9", "UK 10", "UK 11"],
-    "image_url": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=520&fit=crop",
-    "attributes": { "material": "Synthetic + Mesh", "pattern": "Colorblock", "fit": "True to size", "sleeve": "", "occasion": "Casual / Streetwear" },
-    "rating": 4.3,
-    "review_count": 456
-  },
-  {
-    "id": "SKU-009",
-    "name": "Classic Aviator Polarized Sunglasses",
-    "brand": "Ray-Ban",
-    "category": "accessory",
-    "price": 9490,
-    "sizes": ["Standard"],
-    "image_url": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=520&fit=crop",
-    "attributes": { "material": "Metal Frame + Glass Lens", "pattern": "", "fit": "Universal", "sleeve": "", "occasion": "Outdoor / Daily" },
-    "rating": 4.6,
-    "review_count": 2340
-  },
-  {
-    "id": "SKU-010",
-    "name": "Minimalist Chronograph Watch",
-    "brand": "Fossil",
-    "category": "accessory",
-    "price": 12495,
-    "sizes": ["One Size"],
-    "image_url": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=520&fit=crop",
-    "attributes": { "material": "Stainless Steel + Leather Strap", "pattern": "", "fit": "Adjustable", "sleeve": "", "occasion": "Formal / Daily" },
-    "rating": 4.4,
-    "review_count": 789
-  },
-  {
-    "id": "SKU-011",
-    "name": "Striped Polo T-Shirt",
-    "brand": "U.S. Polo Assn.",
-    "category": "tshirt",
-    "price": 1199,
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "image_url": "/images/striped_polo.jpg",
-    "attributes": { "material": "100% Cotton", "pattern": "Striped", "fit": "Regular", "sleeve": "Short Sleeve", "occasion": "Casual" },
-    "rating": 4.1,
-    "review_count": 678
-  },
-  {
-    "id": "SKU-012",
-    "name": "Embroidered Straight Fit Kurta Set",
-    "brand": "W",
-    "category": "kurta",
-    "price": 2499,
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "image_url": "/images/embroidered_kurta.jpg",
-    "attributes": { "material": "Viscose Rayon", "pattern": "Embroidered", "fit": "Straight", "sleeve": "3/4 Sleeve", "occasion": "Festive / Ethnic" },
-    "rating": 4.3,
-    "review_count": 345
-  },
-  {
-    "id": "SKU-013",
-    "name": "High-Waist Skinny Jeans",
-    "brand": "ONLY",
-    "category": "jeans",
-    "price": 1899,
-    "sizes": ["26", "28", "30", "32", "34"],
-    "image_url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=520&fit=crop",
-    "attributes": { "material": "Denim (Cotton + Spandex)", "pattern": "Solid", "fit": "Skinny", "sleeve": "", "occasion": "Casual / Smart Casual" },
-    "rating": 3.9,
-    "review_count": 512
-  },
-  {
-    "id": "SKU-014",
-    "name": "Printed Chiffon Saree",
-    "brand": "Saree Mall",
-    "category": "saree",
-    "price": 999,
-    "sizes": ["Free Size"],
-    "image_url": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&h=520&fit=crop",
-    "attributes": { "material": "Chiffon", "pattern": "Printed", "fit": "Free Size", "sleeve": "", "occasion": "Festive / Traditional" },
-    "rating": 3.8,
-    "review_count": 267
-  },
-  {
-    "id": "SKU-015",
-    "name": "Lightweight Running Shoes",
-    "brand": "Adidas",
-    "category": "footwear",
-    "price": 5999,
-    "sizes": ["UK 6", "UK 7", "UK 8", "UK 9", "UK 10", "UK 11"],
-    "image_url": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=520&fit=crop",
-    "attributes": { "material": "Primeknit Upper + Boost Midsole", "pattern": "Solid", "fit": "Regular", "sleeve": "", "occasion": "Running / Gym" },
-    "rating": 4.5,
-    "review_count": 1567
-  },
-  {
-    "id": "SKU-016",
-    "name": "Fleece-Lined Cargo Joggers",
-    "brand": "HRX by Hrithik Roshan",
-    "category": "joggers",
-    "price": 1699,
-    "sizes": ["S", "M", "L", "XL"],
-    "image_url": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400&h=520&fit=crop",
-    "attributes": { "material": "Cotton Fleece", "pattern": "Solid", "fit": "Regular (Tapered Leg)", "sleeve": "", "occasion": "Casual / Athleisure" },
-    "rating": 4.2,
-    "review_count": 890
-  },
-  {
-    "id": "SKU-017",
-    "name": "Vintage Denim Trucker Jacket",
-    "brand": "Levi's",
-    "category": "jacket",
-    "price": 4599,
-    "sizes": ["S", "M", "L", "XL"],
-    "image_url": "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400&h=520&fit=crop",
-    "attributes": { "material": "100% Cotton Denim", "pattern": "Solid", "fit": "Regular", "sleeve": "Full Sleeve", "occasion": "Casual / Layering" },
-    "rating": 4.6,
-    "review_count": 423
-  },
-  {
-    "id": "SKU-018",
-    "name": "Quilted Crossbody Bag",
-    "brand": "Guess",
-    "category": "bag",
-    "price": 7999,
-    "sizes": ["One Size"],
-    "image_url": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&h=520&fit=crop",
-    "attributes": { "material": "Faux Leather + Gold Hardware", "pattern": "Quilted", "fit": "", "sleeve": "", "occasion": "Evening / Daily" },
-    "rating": 4.0,
-    "review_count": 156
-  },
-  {
-    "id": "SKU-019",
-    "name": "Classic Stiletto Heels",
-    "brand": "Steve Madden",
-    "category": "footwear",
-    "price": 6999,
-    "sizes": ["UK 4", "UK 5", "UK 6", "UK 7"],
-    "image_url": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=520&fit=crop",
-    "attributes": { "material": "Vegan Leather", "pattern": "Solid", "fit": "Pointed Toe", "sleeve": "", "occasion": "Party / Formal" },
-    "rating": 4.5,
-    "review_count": 892
-  },
-  {
-    "id": "SKU-020",
-    "name": "Checkered Flannel Shirt",
-    "brand": "Highlander",
-    "category": "shirt",
-    "price": 1099,
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "image_url": "https://images.unsplash.com/photo-1598032895397-b9472444bf93?w=400&h=520&fit=crop",
-    "attributes": { "material": "100% Cotton", "pattern": "Checkered", "fit": "Slim", "sleeve": "Full Sleeve", "occasion": "Casual" },
-    "rating": 4.2,
-    "review_count": 412
-  },
-  {
-    "id": "SKU-021",
-    "name": "Smart Fit Chino Pants",
-    "brand": "Allen Solly",
-    "category": "trousers",
-    "price": 2299,
-    "sizes": ["28", "30", "32", "34", "36"],
-    "image_url": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=520&fit=crop",
-    "attributes": { "material": "Cotton Blend", "pattern": "Solid", "fit": "Smart", "sleeve": "", "occasion": "Smart Casual / Office" },
-    "rating": 4.3,
-    "review_count": 560
-  },
-  {
-    "id": "SKU-022",
-    "name": "Vegan Leather Biker Jacket",
-    "brand": "ONLY",
-    "category": "jacket",
-    "price": 3499,
-    "sizes": ["XS", "S", "M", "L"],
-    "image_url": "https://images.unsplash.com/photo-1559551409-dadc959f76b8?w=400&h=520&fit=crop",
-    "attributes": { "material": "PU Leather", "pattern": "Solid", "fit": "Cropped", "sleeve": "Full Sleeve", "occasion": "Casual / Party" },
-    "rating": 4.6,
-    "review_count": 210
-  },
-  {
-    "id": "SKU-023",
-    "name": "Pleated Midi Skirt",
-    "brand": "Tokyo Talkies",
-    "category": "skirt",
-    "price": 1499,
-    "sizes": ["26", "28", "30", "32"],
-    "image_url": "/images/pleated_skirt.jpg",
-    "attributes": { "material": "Polyester", "pattern": "Solid", "fit": "Flared", "sleeve": "", "occasion": "Casual / Daywear" },
-    "rating": 4.1,
-    "review_count": 345
-  },
-  {
-    "id": "SKU-024",
-    "name": "Floral Maxi Dress",
-    "brand": "Biba",
-    "category": "dress",
-    "price": 3199,
-    "sizes": ["S", "M", "L", "XL"],
-    "image_url": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=520&fit=crop",
-    "attributes": { "material": "Georgette", "pattern": "Floral", "fit": "Flowy", "sleeve": "Sleeveless", "occasion": "Resort / Brunch" },
-    "rating": 4.4,
-    "review_count": 678
-  }
+    {
+        "id": "SKU-001",
+        "name": "Floral Printed Anarkali Kurta",
+        "brand": "Anouk",
+        "category": "kurta",
+        "price": 1299,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image_url": "/images/kurta_set.jpg",
+        "attributes": {
+            "material": "Cotton",
+            "pattern": "Floral",
+            "fit": "Regular",
+            "sleeve": "3/4 Sleeve",
+            "occasion": "Festive"
+        },
+        "rating": 4.2,
+        "review_count": 187,
+        "size": "M"
+    },
+    {
+        "id": "SKU-002",
+        "name": "Slim Fit Casual Shirt",
+        "brand": "Roadster",
+        "category": "shirt",
+        "price": 899,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Cotton Blend",
+            "pattern": "Solid",
+            "fit": "Slim",
+            "sleeve": "Full Sleeve",
+            "occasion": "Casual"
+        },
+        "rating": 4.0,
+        "review_count": 342,
+        "size": "M"
+    },
+    {
+        "id": "SKU-003",
+        "name": "511 Slim Fit Stretchable Jeans",
+        "brand": "Levi's",
+        "category": "jeans",
+        "price": 2799,
+        "sizes": [
+            "28",
+            "30",
+            "32",
+            "34",
+            "36"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Denim (Cotton + Elastane)",
+            "pattern": "Solid",
+            "fit": "Slim",
+            "sleeve": "",
+            "occasion": "Casual"
+        },
+        "rating": 4.4,
+        "review_count": 1203,
+        "size": "30"
+    },
+    {
+        "id": "SKU-004",
+        "name": "Oversized Fleece Hoodie",
+        "brand": "H&M",
+        "category": "hoodie",
+        "price": 1499,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Cotton Fleece",
+            "pattern": "Solid",
+            "fit": "Oversized",
+            "sleeve": "Full Sleeve",
+            "occasion": "Casual"
+        },
+        "rating": 4.3,
+        "review_count": 567,
+        "size": "M"
+    },
+    {
+        "id": "SKU-005",
+        "name": "Air Max 270 React Sneakers",
+        "brand": "Nike",
+        "category": "footwear",
+        "price": 12995,
+        "sizes": [
+            "UK 6",
+            "UK 7",
+            "UK 8",
+            "UK 9",
+            "UK 10"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Synthetic Mesh + React Foam",
+            "pattern": "Colorblock",
+            "fit": "Regular (runs half-size small)",
+            "sleeve": "",
+            "occasion": "Sport / Casual"
+        },
+        "rating": 4.5,
+        "review_count": 891,
+        "size": "UK 7"
+    },
+    {
+        "id": "SKU-006",
+        "name": "Tailored Linen Blazer",
+        "brand": "Mango",
+        "category": "blazer",
+        "price": 5990,
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Linen",
+            "pattern": "Solid",
+            "fit": "Tailored",
+            "sleeve": "Full Sleeve",
+            "occasion": "Formal / Semi-Formal"
+        },
+        "rating": 4.1,
+        "review_count": 98,
+        "size": "S"
+    },
+    {
+        "id": "SKU-007",
+        "name": "Satin Slip Midi Dress",
+        "brand": "Zara",
+        "category": "dress",
+        "price": 2990,
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Satin",
+            "pattern": "Solid",
+            "fit": "Regular (no stretch)",
+            "sleeve": "Spaghetti Strap",
+            "occasion": "Party / Evening"
+        },
+        "rating": 4.0,
+        "review_count": 214,
+        "size": "S"
+    },
+    {
+        "id": "SKU-008",
+        "name": "RS-X Reinvention Sneakers",
+        "brand": "Puma",
+        "category": "footwear",
+        "price": 8999,
+        "sizes": [
+            "UK 6",
+            "UK 7",
+            "UK 8",
+            "UK 9",
+            "UK 10",
+            "UK 11"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Synthetic + Mesh",
+            "pattern": "Colorblock",
+            "fit": "True to size",
+            "sleeve": "",
+            "occasion": "Casual / Streetwear"
+        },
+        "rating": 4.3,
+        "review_count": 456,
+        "size": "UK 7"
+    },
+    {
+        "id": "SKU-009",
+        "name": "Classic Aviator Polarized Sunglasses",
+        "brand": "Ray-Ban",
+        "category": "accessory",
+        "price": 9490,
+        "sizes": [
+            "Standard"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Metal Frame + Glass Lens",
+            "pattern": "",
+            "fit": "Universal",
+            "sleeve": "",
+            "occasion": "Outdoor / Daily"
+        },
+        "rating": 4.6,
+        "review_count": 2340,
+        "size": "Standard"
+    },
+    {
+        "id": "SKU-010",
+        "name": "Minimalist Chronograph Watch",
+        "brand": "Fossil",
+        "category": "accessory",
+        "price": 12495,
+        "sizes": [
+            "One Size"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Stainless Steel + Leather Strap",
+            "pattern": "",
+            "fit": "Adjustable",
+            "sleeve": "",
+            "occasion": "Formal / Daily"
+        },
+        "rating": 4.4,
+        "review_count": 789,
+        "size": "One Size"
+    },
+    {
+        "id": "SKU-011",
+        "name": "Striped Polo T-Shirt",
+        "brand": "U.S. Polo Assn.",
+        "category": "tshirt",
+        "price": 1199,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image_url": "/images/striped_polo.jpg",
+        "attributes": {
+            "material": "100% Cotton",
+            "pattern": "Striped",
+            "fit": "Regular",
+            "sleeve": "Short Sleeve",
+            "occasion": "Casual"
+        },
+        "rating": 4.1,
+        "review_count": 678,
+        "size": "M"
+    },
+    {
+        "id": "SKU-012",
+        "name": "Embroidered Straight Fit Kurta Set",
+        "brand": "W",
+        "category": "kurta",
+        "price": 2499,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image_url": "/images/embroidered_kurta.jpg",
+        "attributes": {
+            "material": "Viscose Rayon",
+            "pattern": "Embroidered",
+            "fit": "Straight",
+            "sleeve": "3/4 Sleeve",
+            "occasion": "Festive / Ethnic"
+        },
+        "rating": 4.3,
+        "review_count": 345,
+        "size": "M"
+    },
+    {
+        "id": "SKU-013",
+        "name": "High-Waist Skinny Jeans",
+        "brand": "ONLY",
+        "category": "jeans",
+        "price": 1899,
+        "sizes": [
+            "26",
+            "28",
+            "30",
+            "32",
+            "34"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Denim (Cotton + Spandex)",
+            "pattern": "Solid",
+            "fit": "Skinny",
+            "sleeve": "",
+            "occasion": "Casual / Smart Casual"
+        },
+        "rating": 3.9,
+        "review_count": 512,
+        "size": "28"
+    },
+    {
+        "id": "SKU-014",
+        "name": "Printed Chiffon Saree",
+        "brand": "Saree Mall",
+        "category": "saree",
+        "price": 999,
+        "sizes": [
+            "Free Size"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Chiffon",
+            "pattern": "Printed",
+            "fit": "Free Size",
+            "sleeve": "",
+            "occasion": "Festive / Traditional"
+        },
+        "rating": 3.8,
+        "review_count": 267,
+        "size": "Free Size"
+    },
+    {
+        "id": "SKU-015",
+        "name": "Lightweight Running Shoes",
+        "brand": "Adidas",
+        "category": "footwear",
+        "price": 5999,
+        "sizes": [
+            "UK 6",
+            "UK 7",
+            "UK 8",
+            "UK 9",
+            "UK 10",
+            "UK 11"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Primeknit Upper + Boost Midsole",
+            "pattern": "Solid",
+            "fit": "Regular",
+            "sleeve": "",
+            "occasion": "Running / Gym"
+        },
+        "rating": 4.5,
+        "review_count": 1567,
+        "size": "UK 7"
+    },
+    {
+        "id": "SKU-016",
+        "name": "Fleece-Lined Cargo Joggers",
+        "brand": "HRX by Hrithik Roshan",
+        "category": "joggers",
+        "price": 1699,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Cotton Fleece",
+            "pattern": "Solid",
+            "fit": "Regular (Tapered Leg)",
+            "sleeve": "",
+            "occasion": "Casual / Athleisure"
+        },
+        "rating": 4.2,
+        "review_count": 890,
+        "size": "M"
+    },
+    {
+        "id": "SKU-017",
+        "name": "Vintage Denim Trucker Jacket",
+        "brand": "Levi's",
+        "category": "jacket",
+        "price": 4599,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "100% Cotton Denim",
+            "pattern": "Solid",
+            "fit": "Regular",
+            "sleeve": "Full Sleeve",
+            "occasion": "Casual / Layering"
+        },
+        "rating": 4.6,
+        "review_count": 423,
+        "size": "M"
+    },
+    {
+        "id": "SKU-018",
+        "name": "Quilted Crossbody Bag",
+        "brand": "Guess",
+        "category": "bag",
+        "price": 7999,
+        "sizes": [
+            "One Size"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Faux Leather + Gold Hardware",
+            "pattern": "Quilted",
+            "fit": "",
+            "sleeve": "",
+            "occasion": "Evening / Daily"
+        },
+        "rating": 4.0,
+        "review_count": 156,
+        "size": "One Size"
+    },
+    {
+        "id": "SKU-019",
+        "name": "Classic Stiletto Heels",
+        "brand": "Steve Madden",
+        "category": "footwear",
+        "price": 6999,
+        "sizes": [
+            "UK 4",
+            "UK 5",
+            "UK 6",
+            "UK 7"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Vegan Leather",
+            "pattern": "Solid",
+            "fit": "Pointed Toe",
+            "sleeve": "",
+            "occasion": "Party / Formal"
+        },
+        "rating": 4.5,
+        "review_count": 892,
+        "size": "UK 5"
+    },
+    {
+        "id": "SKU-020",
+        "name": "Checkered Flannel Shirt",
+        "brand": "Highlander",
+        "category": "shirt",
+        "price": 1099,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1598032895397-b9472444bf93?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "100% Cotton",
+            "pattern": "Checkered",
+            "fit": "Slim",
+            "sleeve": "Full Sleeve",
+            "occasion": "Casual"
+        },
+        "rating": 4.2,
+        "review_count": 412,
+        "size": "M"
+    },
+    {
+        "id": "SKU-021",
+        "name": "Smart Fit Chino Pants",
+        "brand": "Allen Solly",
+        "category": "trousers",
+        "price": 2299,
+        "sizes": [
+            "28",
+            "30",
+            "32",
+            "34",
+            "36"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Cotton Blend",
+            "pattern": "Solid",
+            "fit": "Smart",
+            "sleeve": "",
+            "occasion": "Smart Casual / Office"
+        },
+        "rating": 4.3,
+        "review_count": 560,
+        "size": "30"
+    },
+    {
+        "id": "SKU-022",
+        "name": "Vegan Leather Biker Jacket",
+        "brand": "ONLY",
+        "category": "jacket",
+        "price": 3499,
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1559551409-dadc959f76b8?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "PU Leather",
+            "pattern": "Solid",
+            "fit": "Cropped",
+            "sleeve": "Full Sleeve",
+            "occasion": "Casual / Party"
+        },
+        "rating": 4.6,
+        "review_count": 210,
+        "size": "S"
+    },
+    {
+        "id": "SKU-023",
+        "name": "Pleated Midi Skirt",
+        "brand": "Tokyo Talkies",
+        "category": "skirt",
+        "price": 1499,
+        "sizes": [
+            "26",
+            "28",
+            "30",
+            "32"
+        ],
+        "image_url": "/images/pleated_skirt.jpg",
+        "attributes": {
+            "material": "Polyester",
+            "pattern": "Solid",
+            "fit": "Flared",
+            "sleeve": "",
+            "occasion": "Casual / Daywear"
+        },
+        "rating": 4.1,
+        "review_count": 345,
+        "size": "28"
+    },
+    {
+        "id": "SKU-024",
+        "name": "Floral Maxi Dress",
+        "brand": "Biba",
+        "category": "dress",
+        "price": 3199,
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image_url": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=520&fit=crop",
+        "attributes": {
+            "material": "Georgette",
+            "pattern": "Floral",
+            "fit": "Flowy",
+            "sleeve": "Sleeveless",
+            "occasion": "Resort / Brunch"
+        },
+        "rating": 4.4,
+        "review_count": 678,
+        "size": "M"
+    }
 ]

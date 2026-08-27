@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 
@@ -18,7 +19,7 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
     <div 
       draggable={draggable}
       onDragStart={onDragStart}
-      className={`glass-panel rounded-xl overflow-hidden group relative flex flex-col h-[420px] cursor-pointer transition-all duration-300 ${isSelected ? 'ring-2 ring-primary shadow-[0_0_20px_rgba(255,178,186,0.2)]' : 'hover:ring-1 hover:ring-primary/50'}`}
+      className={`discovery-panel rounded-3xl overflow-hidden group relative flex flex-col h-[420px] cursor-pointer ${isSelected ? 'ring-1 ring-primary shadow-[0_0_30px_rgba(216,180,254,0.3)] z-10' : ''}`}
       onClick={() => onClick(item.id || product.id)}
     >
       <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent z-10"></div>
@@ -32,13 +33,26 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
       </div>
       
       {/* Image */}
-      <div className="h-[280px] w-full relative overflow-hidden bg-surface-container-low">
+      <div className="h-[280px] w-full relative overflow-hidden bg-black/20 flex items-center justify-center">
         {product.image_url ? (
-          <img 
-            src={product.image_url} 
-            alt={product.name} 
-            className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105 p-2" 
-          />
+          <>
+            {/* Premium ambient blurred background to seamlessly fill gaps */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+              <img 
+                src={product.image_url} 
+                alt="" 
+                className="w-full h-full object-cover opacity-60 blur-2xl scale-125 saturate-150" 
+              />
+              <div className="absolute inset-0 bg-[#05070A]/30 backdrop-blur-[2px]"></div>
+            </div>
+            
+            {/* Scaled down un-cropped main image */}
+            <img 
+              src={product.image_url} 
+              alt={product.name} 
+              className="relative z-10 w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-2xl" 
+            />
+          </>
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-on-surface-variant font-label-bold text-label-bold uppercase">No Image</div>
         )}
@@ -71,8 +85,15 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
       {/* Details */}
       <div className="p-5 relative z-20 flex-grow flex flex-col justify-between">
         <div>
-          <p className="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest mb-1 truncate">{product.brand}</p>
-          <h3 className="font-headline-sm text-headline-sm text-on-surface line-clamp-2">{product.name}</h3>
+          <div className="flex justify-between items-start gap-2 mb-1.5">
+            <p className="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest truncate">{product.brand}</p>
+            {product.size && (
+              <span className="bg-white/5 backdrop-blur-md text-white/80 border border-white/10 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest whitespace-nowrap shadow-sm">
+                Size: <span className="text-white">{product.size}</span>
+              </span>
+            )}
+          </div>
+          <h3 className="font-headline-sm text-headline-sm text-on-surface line-clamp-2 leading-tight">{product.name}</h3>
         </div>
         
         <div className="flex items-center justify-between mt-4 gap-2">

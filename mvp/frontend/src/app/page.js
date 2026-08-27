@@ -147,96 +147,188 @@ export default function WishlistHome() {
           </div>
         </div>
 
-        {/* Style Sandbox Drop Zone */}
+        {/* Hybrid Style Sandbox */}
+        
+        {/* 1. Static Onboarding Drop Zone */}
+        {/* We use grid transition to smoothly collapse the height when it becomes active, preventing a harsh layout jump */}
         <div 
-          className={`mb-10 rounded-2xl border-2 border-dashed transition-all duration-300 p-6 ${sandboxItems.length > 0 ? 'border-primary/50 bg-primary/5' : 'border-white/20 bg-surface-container-low/50'}`}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
+          className={`grid transition-all duration-700 ease-in-out ${sandboxItems.length === 0 ? 'grid-rows-[1fr] mb-10 opacity-100' : 'grid-rows-[0fr] opacity-0 mb-0'}`}
         >
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            
-            <div className="w-full md:w-1/3 text-center md:text-left">
-              <h3 className="text-xl text-primary font-bold mb-2 flex items-center justify-center md:justify-start gap-2">
-                <span className="material-symbols-outlined">style</span> Style Sandbox
-              </h3>
-              <p className="text-sm text-on-surface-variant">
-                Drag and drop 2 or 3 items here, or click the + button on items, to see if they work together.
-              </p>
-            </div>
-
-            <div className="flex-grow flex items-center justify-center gap-4">
-              {/* Item Slots */}
-              {[0, 1, 2].map((index) => {
-                const item = sandboxItems[index];
-                if (item) {
-                  const product = item.product || item;
-                  return (
-                    <div key={product.id} className="relative w-24 h-24 rounded-lg overflow-hidden border border-white/20 shadow-lg group">
-                      <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
-                      <button 
-                        onClick={() => handleRemoveFromSandbox(product.id)}
-                        className="absolute top-1 right-1 bg-black/50 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <span className="material-symbols-outlined text-[16px]">close</span>
-                      </button>
+          <div className="overflow-hidden">
+            <div 
+              className="relative rounded-3xl border border-white/10 bg-gradient-to-r from-surface-container-low to-surface-container-lowest p-8 overflow-hidden group hover:border-primary/30 transition-all duration-500 shadow-lg"
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+            >
+              {/* Decorative background glow */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/10 transition-colors duration-700" />
+              <div className="absolute bottom-0 left-20 w-64 h-64 bg-secondary/5 rounded-full blur-3xl pointer-events-none group-hover:bg-secondary/10 transition-colors duration-700" />
+              
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+                <div className="flex flex-col md:flex-row items-center text-center md:text-left gap-6 lg:w-1/2">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-primary/20 to-secondary/20 p-[1px] shrink-0">
+                    <div className="w-full h-full bg-[#0a0a0c] rounded-2xl flex items-center justify-center">
+                      <span className="material-symbols-outlined text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">style</span>
                     </div>
-                  );
-                } else {
-                  return (
-                    <div key={`empty-${index}`} className="w-24 h-24 rounded-lg border border-dashed border-white/20 flex items-center justify-center text-on-surface-variant/50">
-                      <span className="material-symbols-outlined text-3xl">add_box</span>
-                    </div>
-                  );
-                }
-              })}
-            </div>
-
-            <div className="w-full md:w-1/3 flex flex-col items-center md:items-end justify-center">
-              {sandboxItems.length >= 2 && !sandboxResult && !analyzingSandbox && (
-                <button 
-                  onClick={handleAnalyzeSandbox}
-                  className="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-on-primary-fixed font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,178,186,0.3)] neon-glow animate-pulse"
-                >
-                  Analyze Compatibility
-                </button>
-              )}
-              {analyzingSandbox && (
-                <div className="flex items-center gap-2 text-primary">
-                  <span className="material-symbols-outlined animate-spin">sync</span> Analyzing...
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">AI Style Sandbox</h3>
+                    <p className="text-sm text-on-surface-variant leading-relaxed">
+                      Build your perfect outfit before you buy. <strong className="text-white">Click the (+) button</strong> on any product below, or drag and drop up to 3 items. Our AI will analyze their compatibility, color harmony, and occasion fit.
+                    </p>
+                  </div>
                 </div>
-              )}
+
+                <div className="lg:w-1/2 flex justify-center lg:justify-end gap-3 w-full">
+                  {/* Visual Hint Slots */}
+                  <div className="flex items-center gap-2 w-full max-w-[28rem]">
+                    <div className="flex-1 aspect-[3/4] rounded-xl border-2 border-dashed border-white/10 bg-white/5 flex flex-col items-center justify-center gap-1.5 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all">
+                      <span className="material-symbols-outlined text-white/30 text-xl">checkroom</span>
+                      <span className="text-[9px] uppercase tracking-widest text-white/30 font-bold">Item 1</span>
+                    </div>
+                    <span className="material-symbols-outlined text-white/20 text-sm">add</span>
+                    <div className="flex-1 aspect-[3/4] rounded-xl border-2 border-dashed border-white/10 bg-white/5 flex flex-col items-center justify-center gap-1.5 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all" style={{ transitionDelay: '75ms' }}>
+                      <span className="material-symbols-outlined text-white/30 text-xl">checkroom</span>
+                      <span className="text-[9px] uppercase tracking-widest text-white/30 font-bold">Item 2</span>
+                    </div>
+                    <span className="material-symbols-outlined text-white/20 text-sm">add</span>
+                    <div className="flex-1 aspect-[3/4] rounded-xl border-2 border-dashed border-white/10 bg-white/5 flex flex-col items-center justify-center gap-1.5 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all" style={{ transitionDelay: '150ms' }}>
+                      <span className="material-symbols-outlined text-white/30 text-xl">checkroom</span>
+                      <span className="text-[9px] uppercase tracking-widest text-white/30 font-bold">Item 3</span>
+                    </div>
+                    <span className="material-symbols-outlined text-white/20 text-sm">equal</span>
+                    <div className="flex-1 aspect-[3/4] rounded-xl border border-white/10 bg-white/5 flex flex-col items-center justify-center gap-1.5 group-hover:bg-gradient-to-br group-hover:from-primary/10 group-hover:to-secondary/10 transition-all shadow-inner" style={{ transitionDelay: '225ms' }}>
+                      <span className="material-symbols-outlined text-primary/50 text-xl group-hover:text-primary transition-colors">auto_awesome</span>
+                      <span className="text-[9px] uppercase tracking-widest text-white/50 font-bold">Verdict</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Sandbox Results */}
-          {sandboxResult && !sandboxResult.error && (
-            <div className="mt-6 p-4 rounded-xl border border-primary/30 bg-primary/10 animate-[fadeIn_0.4s_ease-out]">
-              <div className="flex justify-between items-center mb-3">
-                <h4 className="text-primary font-bold text-lg uppercase tracking-wide">AI Style Verdict</h4>
-                <div className="text-secondary font-bold bg-secondary/20 px-3 py-1 rounded-full text-sm">
-                  {sandboxResult.compatibility_score}% Match
+        {/* 2. Floating Action Dock (Slides up when active) */}
+        <div 
+          className={`fixed bottom-0 left-0 w-full z-50 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${sandboxItems.length > 0 ? 'translate-y-0' : 'translate-y-[120%]'}`}
+        >
+          {/* Gradient shadow for depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none -z-10 h-[150%] -top-[50%]" />
+          
+          <div className="max-w-[1400px] mx-auto px-4 md:px-margin-desktop pb-6">
+            <div 
+              className="discovery-panel border border-white/10 backdrop-blur-2xl bg-[#0a0a0c]/80 rounded-2xl p-4 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] ring-1 ring-white/5"
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+            >
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+                
+                {/* Header & Status */}
+                <div className="flex items-center gap-4 lg:w-1/4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-secondary p-[1px] shrink-0 shadow-[0_0_15px_rgba(255,51,102,0.3)]">
+                    <div className="w-full h-full bg-black rounded-full flex items-center justify-center">
+                      <span className="material-symbols-outlined text-primary text-xl">auto_awesome</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold tracking-wide">Style Sandbox</h3>
+                    <p className="text-xs text-on-surface-variant font-medium uppercase tracking-widest mt-0.5">
+                      {sandboxItems.length} / 3 Items Added
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <p className="text-on-surface leading-relaxed whitespace-pre-line text-sm mb-4">
-                {sandboxResult.analysis}
-              </p>
-              <div className="flex justify-end border-t border-primary/20 pt-3 mt-3">
-                <button 
-                  onClick={handleAddAllToCart}
-                  className="px-4 py-2 flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-on-primary-fixed text-sm font-bold rounded-lg hover:scale-105 transition-transform shadow-md"
-                >
-                  <span className="material-symbols-outlined text-[18px]">shopping_cart_checkout</span>
-                  Add All to Cart
-                </button>
-              </div>
-            </div>
-          )}
-          {sandboxResult?.error && (
-            <div className="mt-6 p-4 rounded-xl border border-error/30 bg-error/10 text-error text-sm">
-              {sandboxResult.error}
-            </div>
-          )}
 
+                {/* Horizontal Item Slots */}
+                <div className="flex-grow flex justify-center gap-4">
+                  {[0, 1, 2].map((index) => {
+                    const item = sandboxItems[index];
+                    if (item) {
+                      const product = item.product || item;
+                      return (
+                        <div key={product.id} className="relative w-16 h-20 md:w-20 md:h-24 rounded-xl overflow-hidden bg-black/50 border border-white/10 shadow-inner group">
+                          {/* Ambient background trick */}
+                          <div 
+                            className="absolute inset-0 bg-cover bg-center blur-md opacity-40 scale-150 saturate-150"
+                            style={{ backgroundImage: `url(${product.image_url})` }}
+                          />
+                          <img src={product.image_url} alt={product.name} className="relative w-full h-full object-contain z-10" />
+                          <button 
+                            onClick={() => handleRemoveFromSandbox(product.id)}
+                            className="absolute -top-2 -right-2 bg-black/80 backdrop-blur text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all z-20 hover:text-primary"
+                          >
+                            <span className="material-symbols-outlined text-[14px]">close</span>
+                          </button>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div key={`empty-${index}`} className="w-16 h-20 md:w-20 md:h-24 rounded-xl border border-dashed border-white/20 flex flex-col items-center justify-center text-on-surface-variant/40 bg-white/5 transition-colors hover:bg-white/10">
+                          <span className="material-symbols-outlined text-xl mb-1">add</span>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="lg:w-1/4 flex justify-end shrink-0">
+                  {sandboxItems.length >= 2 && !sandboxResult && !analyzingSandbox && (
+                    <button 
+                      onClick={handleAnalyzeSandbox}
+                      className="px-6 py-3.5 bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm uppercase tracking-widest rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_20px_rgba(255,51,102,0.4)] flex items-center gap-2"
+                    >
+                      <span className="material-symbols-outlined text-[18px]">psychology</span>
+                      Analyze Outfit
+                    </button>
+                  )}
+                  
+                  {analyzingSandbox && (
+                    <div className="px-6 py-3.5 bg-white/5 border border-white/10 rounded-xl flex items-center gap-3 text-primary font-bold text-sm tracking-widest uppercase shadow-inner">
+                      <span className="material-symbols-outlined animate-spin text-[18px]">sync</span> 
+                      Computing...
+                    </div>
+                  )}
+
+                  {/* Sandbox Results Popover (Appears directly above the dock) */}
+                  {sandboxResult && !sandboxResult.error && (
+                    <div className="absolute bottom-[calc(100%+16px)] right-4 md:right-margin-desktop w-[400px] max-w-[calc(100vw-32px)] discovery-panel border border-primary/30 rounded-2xl p-6 shadow-[0_20px_60px_rgba(0,0,0,0.8)] animate-in slide-in-from-bottom-4 fade-in duration-300">
+                      <div className="flex justify-between items-center mb-4">
+                        <h4 className="text-white font-bold text-lg tracking-tight">Style Verdict</h4>
+                        <div className="text-black font-bold bg-gradient-to-r from-primary to-secondary px-3 py-1 rounded-full text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(255,51,102,0.5)]">
+                          {sandboxResult.compatibility_score}% Match
+                        </div>
+                      </div>
+                      <p className="text-on-surface-variant leading-relaxed text-sm mb-6 bg-black/20 p-4 rounded-xl border border-white/5">
+                        {sandboxResult.analysis}
+                      </p>
+                      <div className="flex gap-3">
+                        <button 
+                          onClick={() => { setSandboxResult(null); setSandboxItems([]); }}
+                          className="flex-1 py-2.5 rounded-xl border border-white/10 text-white text-sm font-bold hover:bg-white/5 transition-colors"
+                        >
+                          Clear
+                        </button>
+                        <button 
+                          onClick={handleAddAllToCart}
+                          className="flex-1 py-2.5 bg-white text-black font-bold rounded-xl text-sm shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:bg-gray-200 transition-colors flex justify-center items-center gap-2"
+                        >
+                          <span className="material-symbols-outlined text-[18px]">shopping_cart_checkout</span>
+                          Buy Look
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {sandboxResult?.error && (
+                    <div className="absolute bottom-[calc(100%+16px)] right-4 md:right-margin-desktop w-[400px] bg-error/10 border border-error/30 text-error p-4 rounded-xl backdrop-blur-md shadow-2xl">
+                      {sandboxResult.error}
+                    </div>
+                  )}
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Bento Grid of Products */}
