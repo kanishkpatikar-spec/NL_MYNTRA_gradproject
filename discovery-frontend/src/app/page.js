@@ -777,8 +777,18 @@ export default function AnalyticsDashboard() {
                 <div className={`absolute inset-0 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   simStateA === 'wishlist' || simStateA === 'converted' ? 'scale-[3] opacity-0 pointer-events-none filter blur-[20px]' : 'scale-100 opacity-100'
                 }`}>
-                  {/* Authentic iOS 17 Wallpaper */}
-                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1695502693822-1d59664db335?q=80&w=800&auto=format&fit=crop')" }}></div>
+                  {/* CSS Mesh Gradient Wallpaper (100% Reliable & Authentic) */}
+                  <div className="absolute inset-0" style={{
+                    background: 'radial-gradient(circle at 50% 0%, #4facfe 0%, #00f2fe 50%, #000 100%)',
+                    backgroundColor: '#0a0a0a'
+                  }}>
+                    <div className="absolute inset-0 opacity-60 mix-blend-screen" style={{
+                      background: 'radial-gradient(circle at 80% 80%, #ff0844 0%, #ffb199 50%, transparent 100%)'
+                    }}></div>
+                    <div className="absolute inset-0 opacity-50 mix-blend-screen" style={{
+                      background: 'radial-gradient(circle at 20% 80%, #b224ef 0%, #7579ff 50%, transparent 100%)'
+                    }}></div>
+                  </div>
                   
                   {/* Authentic iOS Status Bar & Dynamic Island */}
                   <div className="absolute top-0 w-full h-[54px] flex justify-between items-center px-6 z-40 pt-2 text-white">
@@ -818,7 +828,7 @@ export default function AnalyticsDashboard() {
                       {/* FaceTime Mock */}
                       <div className="flex flex-col items-center gap-1.5">
                         <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
-                          <span className="material-symbols-outlined text-white text-3xl">videocam</span>
+                          <span className="material-symbols-outlined text-white text-[32px]">videocam</span>
                         </div>
                         <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">FaceTime</span>
                       </div>
@@ -826,35 +836,36 @@ export default function AnalyticsDashboard() {
                       <div className="flex flex-col items-center gap-1.5">
                         <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex flex-col items-center justify-center shadow-sm relative">
                           <span className="text-[#FF3B30] font-semibold text-[9px] absolute top-1.5 uppercase tracking-wide font-sans">Tue</span>
-                          <span className="text-black font-normal text-[32px] leading-none mt-2 font-sans tracking-tight">27</span>
+                          <span className="text-black font-normal text-[34px] leading-none mt-2 font-sans tracking-tight">27</span>
                         </div>
                         <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Calendar</span>
                       </div>
                       {/* Photos Mock */}
                       <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex items-center justify-center shadow-sm p-1.5">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Photos_icon_%28iOS%29.png" alt="Photos" className="w-full h-full object-cover" />
+                        <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex items-center justify-center shadow-sm overflow-hidden relative">
+                          <div className="absolute inset-0 bg-gradient-to-tr from-yellow-300 via-red-500 to-purple-600 opacity-20"></div>
+                          <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-[36px]">filter_vintage</span>
                         </div>
                         <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Photos</span>
                       </div>
                       {/* Camera Mock */}
                       <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[60px] h-[60px] rounded-[14px] bg-gray-200 flex items-center justify-center shadow-sm overflow-hidden">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Camera_Icon_%28iOS%29.svg" alt="Camera" className="w-[120%] h-[120%] object-cover" />
+                        <div className="w-[60px] h-[60px] rounded-[14px] bg-[#e5e5ea] flex items-center justify-center shadow-sm">
+                           <span className="material-symbols-outlined text-[#1c1c1e] text-[32px]">photo_camera</span>
                         </div>
                         <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Camera</span>
                       </div>
                       {/* Weather Mock */}
                       <div className="flex flex-col items-center gap-1.5">
                         <div className="w-[60px] h-[60px] rounded-[14px] bg-[#0A84FF] flex items-center justify-center shadow-sm">
-                          <span className="material-symbols-outlined text-white text-3xl">cloud</span>
+                          <span className="material-symbols-outlined text-white text-[32px]">cloud</span>
                         </div>
                         <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Weather</span>
                       </div>
                       {/* Myntra */}
                       <div className="flex flex-col items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 transition-transform" onClick={handlePhoneALaunch}>
                         <div className="w-[60px] h-[60px] rounded-[14px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shadow-[0_5px_15px_rgba(255,62,108,0.4)]">
-                           <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Myntra_logo.png" alt="Myntra" className="w-[80%] h-[80%] object-contain drop-shadow-md brightness-[0] invert" />
+                          <span className="text-white font-bold text-[34px] font-serif leading-none tracking-tighter shadow-sm">M</span>
                         </div>
                         <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Myntra</span>
                       </div>
@@ -868,22 +879,22 @@ export default function AnalyticsDashboard() {
                   </div>
 
                   {/* iOS Dock */}
-                  <div className="absolute bottom-[16px] left-4 right-4 h-[86px] rounded-[30px] bg-white/25 backdrop-blur-[30px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)] flex items-center justify-around px-2 pb-2 pt-2">
+                  <div className="absolute bottom-[16px] left-4 right-4 h-[86px] rounded-[30px] bg-white/20 backdrop-blur-[40px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] flex items-center justify-around px-2 pb-2 pt-2 border border-white/10">
                     {/* Phone */}
                     <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
-                      <span className="material-symbols-outlined text-white text-3xl">call</span>
+                      <span className="material-symbols-outlined text-white text-[32px]">call</span>
                     </div>
                     {/* Safari */}
-                    <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex items-center justify-center shadow-sm p-1.5">
-                       <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Safari_browser_logo.svg" alt="Safari" className="w-full h-full object-cover" />
+                    <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex items-center justify-center shadow-sm relative overflow-hidden">
+                       <span className="material-symbols-outlined text-[#0A84FF] text-[40px]">explore</span>
                     </div>
                     {/* Messages */}
                     <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
-                      <span className="material-symbols-outlined text-white text-3xl">chat_bubble</span>
+                      <span className="material-symbols-outlined text-white text-[32px]">chat_bubble</span>
                     </div>
                     {/* Music */}
                     <div className="w-[60px] h-[60px] rounded-[14px] bg-[#FF2D55] flex items-center justify-center shadow-sm">
-                      <span className="material-symbols-outlined text-white text-3xl">music_note</span>
+                      <span className="material-symbols-outlined text-white text-[32px]">music_note</span>
                     </div>
                   </div>
 
@@ -895,7 +906,7 @@ export default function AnalyticsDashboard() {
                     onClick={handlePhoneALaunch}
                   >
                     <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shrink-0 shadow-[0_2px_10px_rgba(255,62,108,0.2)] mt-0.5">
-                       <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Myntra_logo.png" alt="Myntra" className="w-[65%] h-[65%] object-contain drop-shadow-sm brightness-[0] invert" />
+                       <span className="text-white font-bold text-[24px] font-serif leading-none tracking-tighter">M</span>
                     </div>
                     <div className="flex-1 overflow-hidden font-sans">
                       <div className="flex justify-between items-center mb-0.5">
