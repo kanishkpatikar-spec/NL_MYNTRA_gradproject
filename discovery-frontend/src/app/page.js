@@ -777,30 +777,14 @@ export default function AnalyticsDashboard() {
                 <div className={`absolute inset-0 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   simStateA === 'wishlist' || simStateA === 'converted' ? 'scale-[3] opacity-0 pointer-events-none filter blur-[20px]' : 'scale-100 opacity-100'
                 }`}>
-                  {/* CSS Mesh Gradient Wallpaper (100% Reliable & Authentic) */}
-                  <div className="absolute inset-0" style={{
-                    background: 'radial-gradient(circle at 50% 0%, #4facfe 0%, #00f2fe 50%, #000 100%)',
-                    backgroundColor: '#0a0a0a'
-                  }}>
-                    <div className="absolute inset-0 opacity-60 mix-blend-screen" style={{
-                      background: 'radial-gradient(circle at 80% 80%, #ff0844 0%, #ffb199 50%, transparent 100%)'
-                    }}></div>
-                    <div className="absolute inset-0 opacity-50 mix-blend-screen" style={{
-                      background: 'radial-gradient(circle at 20% 80%, #b224ef 0%, #7579ff 50%, transparent 100%)'
-                    }}></div>
-                  </div>
+                  {/* Panda Wallpaper */}
+                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?q=80&w=800&auto=format&fit=crop')" }}></div>
+                  <div className="absolute inset-0 bg-black/10"></div>
                   
-                  {/* Authentic iOS Status Bar & Dynamic Island */}
+                  {/* Authentic iOS Status Bar (Notch Style) */}
                   <div className="absolute top-0 w-full h-[54px] flex justify-between items-center px-6 z-40 pt-2 text-white">
-                    <span className="text-[15px] font-semibold tracking-tight w-[60px] text-center ml-1 drop-shadow-md font-sans">9:41</span>
-                    
-                    {/* Dynamic Island */}
-                    <div className="absolute left-1/2 -translate-x-1/2 top-[10px] w-[105px] h-[32px] bg-black rounded-full flex items-center justify-between px-2.5 shadow-md">
-                      <div className="w-3 h-3 rounded-full bg-[#111] border border-white/10 shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]"></div>
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500/80 mr-1 blur-[1px]"></div>
-                    </div>
-
-                    <div className="flex gap-1.5 items-center w-[60px] justify-end mr-1 drop-shadow-md">
+                    <span className="text-[15px] font-semibold tracking-tight w-[60px] text-center ml-1 drop-shadow-md font-sans">10:12</span>
+                    <div className="flex gap-1.5 items-center w-[70px] justify-end mr-1 drop-shadow-md">
                       {/* iOS Signal (White) */}
                       <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.5" y="7" width="3" height="4" rx="1" fill="white"/>
@@ -812,101 +796,229 @@ export default function AnalyticsDashboard() {
                       <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" clipRule="evenodd" d="M7.5 11C8.25939 11 8.875 10.3844 8.875 9.625C8.875 8.86561 8.25939 8.25 7.5 8.25C6.74061 8.25 6.125 8.86561 6.125 9.625C6.125 10.3844 6.74061 11 7.5 11ZM7.5 5.5C5.83609 5.5 4.34027 6.17415 3.25625 7.25817L4.22915 8.23107C5.06822 7.392 6.22359 6.875 7.5 6.875C8.77641 6.875 9.93178 7.392 10.7709 8.23107L11.7438 7.25817C10.6597 6.17415 9.16391 5.5 7.5 5.5ZM7.5 2.75C5.10519 2.75 2.94632 3.72266 1.39167 5.27732L2.36456 6.25021C3.68112 4.93365 5.50025 4.125 7.5 4.125C9.49975 4.125 11.3189 4.93365 12.6354 6.25021L13.6083 5.27732C12.0537 3.72266 9.89481 2.75 7.5 2.75ZM7.5 0C4.37688 0 1.55403 1.26629 -0.554443 3.31505L0.41845 4.28795C2.28581 2.4566 4.7709 1.375 7.5 1.375C10.2291 1.375 12.7142 2.4566 14.5816 4.28795L15.5544 3.31505C13.446 1.26629 10.6231 0 7.5 0Z" fill="white"/>
                       </svg>
-                      {/* iOS Battery (White) */}
+                      {/* iOS Battery (White with 15) */}
                       <div className="flex items-center ml-0.5">
-                        <div className="w-[24px] h-[11px] border-[1px] border-white/40 rounded-[3px] p-[1px] relative">
-                          <div className="bg-white w-full h-full rounded-[1.5px]"></div>
+                        <div className="w-[24px] h-[12px] border-[1px] border-white/40 rounded-[3px] p-[1px] relative flex justify-center items-center">
+                          <div className="bg-white h-[9px] w-[5px] rounded-[1px] absolute left-[1px]"></div>
                         </div>
                         <div className="w-[3px] h-[4px] bg-white/40 rounded-r-sm ml-[1px]"></div>
                       </div>
                     </div>
                   </div>
 
-                  {/* App Grid */}
-                  <div className="absolute top-16 left-0 w-full px-6 pt-4">
-                    <div className="grid grid-cols-4 gap-x-4 gap-y-6 max-w-md mx-auto">
-                      {/* FaceTime Mock */}
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
-                          <span className="material-symbols-outlined text-white text-[32px]">videocam</span>
+                  {/* App Grid (5 Rows x 4 Cols) */}
+                  <div className="absolute top-12 left-0 w-full px-5 pt-3">
+                    <div className="grid grid-cols-4 gap-x-3 gap-y-4 max-w-md mx-auto">
+                      {/* ROW 1 */}
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#313338] flex items-center justify-center shadow-sm relative overflow-hidden">
+                          <span className="material-symbols-outlined text-[#0A84FF] text-[36px]">folder</span>
                         </div>
-                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">FaceTime</span>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Files</span>
                       </div>
-                      {/* Calendar Mock */}
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex flex-col items-center justify-center shadow-sm relative">
-                          <span className="text-[#FF3B30] font-semibold text-[9px] absolute top-1.5 uppercase tracking-wide font-sans">Tue</span>
-                          <span className="text-black font-normal text-[34px] leading-none mt-2 font-sans tracking-tight">27</span>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#313338] flex flex-col items-center justify-center shadow-sm gap-[2px]">
+                          <div className="flex gap-[2px]"><div className="w-2.5 h-2.5 bg-gray-400 rounded-full"></div><div className="w-2.5 h-2.5 bg-gray-400 rounded-full"></div><div className="w-2.5 h-2.5 bg-[#FF9F0A] rounded-full"></div></div>
+                          <div className="flex gap-[2px]"><div className="w-2.5 h-2.5 bg-gray-400 rounded-full"></div><div className="w-2.5 h-2.5 bg-gray-400 rounded-full"></div><div className="w-2.5 h-2.5 bg-[#FF9F0A] rounded-full"></div></div>
                         </div>
-                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Calendar</span>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Calculator</span>
                       </div>
-                      {/* Photos Mock */}
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex items-center justify-center shadow-sm overflow-hidden relative">
-                          <div className="absolute inset-0 bg-gradient-to-tr from-yellow-300 via-red-500 to-purple-600 opacity-20"></div>
-                          <span className="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-[36px]">filter_vintage</span>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center p-2 shadow-sm">
+                          <div className="grid grid-cols-3 gap-1 w-full h-full">
+                            <div className="bg-[#4285F4] rounded-[3px]"></div><div className="bg-[#DB4437] rounded-[3px]"></div><div className="bg-[#F4B400] rounded-[3px]"></div>
+                            <div className="bg-[#0F9D58] rounded-[3px]"></div><div className="bg-white rounded-[3px]"></div><div className="bg-[#4285F4] rounded-[3px]"></div>
+                          </div>
                         </div>
-                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Photos</span>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Google</span>
+                        <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm">1,731</div>
                       </div>
-                      {/* Camera Mock */}
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[60px] h-[60px] rounded-[14px] bg-[#e5e5ea] flex items-center justify-center shadow-sm">
-                           <span className="material-symbols-outlined text-[#1c1c1e] text-[32px]">photo_camera</span>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#222] flex items-center justify-center shadow-sm">
+                          <span className="text-[#00A8E1] font-bold text-[14px] font-sans tracking-tighter">music</span>
                         </div>
-                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Camera</span>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans truncate w-full text-center">Amazon Music</span>
                       </div>
-                      {/* Weather Mock */}
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[60px] h-[60px] rounded-[14px] bg-[#0A84FF] flex items-center justify-center shadow-sm">
-                          <span className="material-symbols-outlined text-white text-[32px]">cloud</span>
+
+                      {/* ROW 2 */}
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center p-2 shadow-sm">
+                          <div className="grid grid-cols-3 gap-1 w-full h-full">
+                            <div className="bg-[#FF007F] rounded-[3px]"></div><div className="bg-[#000] rounded-[3px]"></div><div className="bg-[#673AB7] rounded-[3px]"></div>
+                            <div className="bg-white rounded-[3px]"></div>
+                          </div>
                         </div>
-                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Weather</span>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Finance</span>
                       </div>
-                      {/* Myntra */}
-                      <div className="flex flex-col items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 transition-transform" onClick={handlePhoneALaunch}>
-                        <div className="w-[60px] h-[60px] rounded-[14px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shadow-[0_5px_15px_rgba(255,62,108,0.4)]">
-                          <span className="text-white font-bold text-[34px] font-serif leading-none tracking-tighter shadow-sm">M</span>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-white flex items-center justify-center shadow-sm overflow-hidden border-2 border-[#8A2BE2]">
+                           <div className="w-full h-full bg-[#8A2BE2] rounded-full flex items-center justify-center m-1">
+                              <span className="material-symbols-outlined text-white text-[24px]">train</span>
+                           </div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans truncate w-full text-center">AamarKolkata...</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center p-2 shadow-sm">
+                          <div className="grid grid-cols-3 gap-1 w-full h-full">
+                            <div className="bg-[#1877F2] rounded-[3px]"></div><div className="bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-[3px]"></div><div className="bg-[#25D366] rounded-[3px]"></div>
+                            <div className="bg-[#FFFC00] rounded-[3px]"></div>
+                          </div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Social Media</span>
+                        <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm">31</div>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center p-2 shadow-sm">
+                          <div className="grid grid-cols-3 gap-1 w-full h-full">
+                            <div className="bg-black rounded-[3px]"></div><div className="bg-[#FFCC00] rounded-[3px]"></div><div className="bg-black rounded-[3px]"></div>
+                            <div className="bg-[#FF5A5F] rounded-[3px]"></div>
+                          </div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Travel</span>
+                        <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm">1</div>
+                      </div>
+
+                      {/* ROW 3 */}
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center p-2 shadow-sm">
+                          <div className="grid grid-cols-3 gap-1 w-full h-full">
+                            <div className="bg-[#000] rounded-[3px]"></div><div className="bg-[#E50914] rounded-[3px]"></div>
+                          </div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans truncate w-full text-center">Entertainment</span>
+                        <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm">1</div>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center p-2 shadow-sm">
+                          <div className="grid grid-cols-3 gap-1 w-full h-full">
+                            <div className="bg-[#FFC200] rounded-[3px]"></div><div className="bg-[#222] rounded-[3px]"></div>
+                          </div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Shopping</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#222] flex items-center justify-center shadow-sm">
+                          <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-[#0A84FF] stroke-[1.5]"><path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8H4v-8z"/></svg>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">RailOne</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#E60023] flex items-center justify-center shadow-sm">
+                          <span className="text-white font-bold text-[32px] font-serif">P</span>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Pinterest</span>
+                        <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm">242</div>
+                      </div>
+
+                      {/* ROW 4 */}
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#1a1a1a] flex items-center justify-center shadow-sm">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00d2ff] to-[#3a7bd5]"></div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Groww</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#0A66C2] flex items-center justify-center shadow-sm">
+                          <span className="text-white font-bold text-[28px] font-sans tracking-tighter">in</span>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">LinkedIn</span>
+                        <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm">28</div>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-black/30 backdrop-blur-md border border-white/10 flex items-center justify-center p-2 shadow-sm">
+                          <div className="grid grid-cols-3 gap-1 w-full h-full">
+                            <div className="bg-[#E23744] rounded-[3px]"></div><div className="bg-[#FC8019] rounded-[3px]"></div><div className="bg-[#000] rounded-[3px]"></div>
+                            <div className="bg-[#E23744] rounded-[3px]"></div>
+                          </div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Food</span>
+                        <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm">3</div>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#222] flex items-center justify-center shadow-sm">
+                          <svg viewBox="0 0 24 24" className="w-8 h-8 fill-[#EB0029]"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Riot Mobile</span>
+                      </div>
+
+                      {/* ROW 5 */}
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#1a1a1a] flex items-center justify-center shadow-sm">
+                          <div className="w-10 h-10 rounded-full bg-[#E31837] flex items-center justify-center">
+                            <span className="text-white font-bold text-[14px]">Jio</span>
+                          </div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">MyJio</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#1a1a1a] flex items-center justify-center shadow-sm">
+                          <span className="material-symbols-outlined text-[#5865F2] text-[36px]">sports_esports</span>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Discord</span>
+                        <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm">1,704</div>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative">
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-white flex items-center justify-center shadow-sm border border-gray-200">
+                          <div className="w-10 h-10 bg-red-600 rounded-[8px] flex items-center justify-center">
+                            <span className="material-symbols-outlined text-white text-[20px]">directions_car</span>
+                          </div>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans truncate w-full text-center">NextGenmPari...</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 relative cursor-pointer hover:scale-105 active:scale-95 transition-transform" onClick={handlePhoneALaunch}>
+                        <div className="w-[58px] h-[58px] rounded-[14px] bg-[#222] flex items-center justify-center shadow-sm">
+                          <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] font-bold text-[34px] font-serif leading-none tracking-tighter shadow-sm">M</span>
                         </div>
                         <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Myntra</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* iOS Page Indicator Dots */}
-                  <div className="absolute bottom-[115px] left-1/2 -translate-x-1/2 flex gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+                  {/* Search Pill & Dots */}
+                  <div className="absolute bottom-[110px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30">
+                    <div className="flex gap-2 mb-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+                    </div>
+                    <div className="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1 border border-white/10 shadow-sm cursor-pointer">
+                      <span className="material-symbols-outlined text-white/90 text-[14px]">search</span>
+                      <span className="text-white/90 text-[11px] font-medium">Search</span>
+                    </div>
                   </div>
 
-                  {/* iOS Dock */}
-                  <div className="absolute bottom-[16px] left-4 right-4 h-[86px] rounded-[30px] bg-white/20 backdrop-blur-[40px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.15)] flex items-center justify-around px-2 pb-2 pt-2 border border-white/10">
+                  {/* Authentic iOS Dock (Matched to user screenshot) */}
+                  <div className="absolute bottom-[16px] left-4 right-4 h-[86px] rounded-[30px] bg-white/10 backdrop-blur-[40px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] flex items-center justify-around px-2 pb-2 pt-2 border border-white/5">
                     {/* Phone */}
-                    <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
+                    <div className="w-[58px] h-[58px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm relative">
                       <span className="material-symbols-outlined text-white text-[32px]">call</span>
-                    </div>
-                    {/* Safari */}
-                    <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex items-center justify-center shadow-sm relative overflow-hidden">
-                       <span className="material-symbols-outlined text-[#0A84FF] text-[40px]">explore</span>
+                      <div className="absolute -top-1.5 -right-1 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm z-10">9</div>
                     </div>
                     {/* Messages */}
-                    <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
+                    <div className="w-[58px] h-[58px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm relative">
                       <span className="material-symbols-outlined text-white text-[32px]">chat_bubble</span>
+                      <div className="absolute -top-1.5 -right-1.5 bg-[#FF3B30] text-white text-[11px] font-bold px-1.5 rounded-full border-2 border-transparent shadow-sm z-10">8,970</div>
                     </div>
-                    {/* Music */}
-                    <div className="w-[60px] h-[60px] rounded-[14px] bg-[#FF2D55] flex items-center justify-center shadow-sm">
-                      <span className="material-symbols-outlined text-white text-[32px]">music_note</span>
+                    {/* Safari */}
+                    <div className="w-[58px] h-[58px] rounded-[14px] bg-white flex items-center justify-center shadow-sm relative overflow-hidden">
+                       <span className="material-symbols-outlined text-[#0A84FF] text-[40px]">explore</span>
+                    </div>
+                    {/* Camera */}
+                    <div className="w-[58px] h-[58px] rounded-[14px] bg-[#1c1c1e] flex items-center justify-center shadow-sm border border-gray-600">
+                       <span className="material-symbols-outlined text-gray-300 text-[32px]">camera_lens</span>
                     </div>
                   </div>
 
                   {/* Authentic iOS Push Notification */}
                   <div 
                     className={`absolute left-2 right-2 bg-[rgba(250,250,250,0.85)] backdrop-blur-[40px] rounded-[24px] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.25)] cursor-pointer flex gap-3.5 items-start border border-white/50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-50 ${
-                      simStateA === 'notification' ? 'top-14 opacity-100 scale-100' : '-top-32 opacity-0 scale-95 pointer-events-none'
+                      simStateA === 'notification' ? 'top-12 opacity-100 scale-100' : '-top-32 opacity-0 scale-95 pointer-events-none'
                     }`}
                     onClick={handlePhoneALaunch}
                   >
-                    <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shrink-0 shadow-[0_2px_10px_rgba(255,62,108,0.2)] mt-0.5">
-                       <span className="text-white font-bold text-[24px] font-serif leading-none tracking-tighter">M</span>
+                    <div className="w-10 h-10 rounded-[10px] bg-[#222] flex items-center justify-center shrink-0 shadow-[0_2px_10px_rgba(0,0,0,0.2)] mt-0.5">
+                       <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] font-bold text-[24px] font-serif leading-none tracking-tighter">M</span>
                     </div>
                     <div className="flex-1 overflow-hidden font-sans">
                       <div className="flex justify-between items-center mb-0.5">
