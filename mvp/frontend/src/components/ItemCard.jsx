@@ -113,7 +113,7 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
                 <img 
                   src={`https://www.google.com/s2/favicons?domain=${BRAND_DOMAINS[product.brand] || 'myntra.com'}&sz=64`} 
                   alt={`${product.brand} logo`}
-                  className="w-5 h-5 rounded-full object-contain bg-white shadow-sm"
+                  className={`w-5 h-5 object-contain ${["Adidas", "ONLY", "Allen Solly", "Zara", "Nike", "Puma"].includes(product.brand) ? "brightness-0 invert opacity-90" : "opacity-90"}`}
                   onError={(e) => {
                     e.target.onerror = null; 
                     e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(product.brand)}&background=random&color=fff&size=64&font-size=0.5`;
