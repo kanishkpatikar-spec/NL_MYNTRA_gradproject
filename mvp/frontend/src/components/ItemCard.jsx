@@ -111,12 +111,15 @@ export default function ItemCard({ item, onClick, isSelected, draggable, onDragS
             <div className="flex items-center gap-2">
               {product.brand && (
                 <img 
-                  src={`https://www.google.com/s2/favicons?domain=${BRAND_DOMAINS[product.brand] || 'myntra.com'}&sz=64`} 
+                  src={
+                    ["Nike", "Puma", "Adidas", "Zara", "H&M"].includes(product.brand)
+                      ? `https://cdn.simpleicons.org/${product.brand === 'H&M' ? 'handm' : product.brand.toLowerCase()}/white`
+                      : `https://logo.clearbit.com/${BRAND_DOMAINS[product.brand] || 'myntra.com'}`
+                  }
                   alt={`${product.brand} logo`}
-                  className={`w-5 h-5 object-contain ${["Adidas", "ONLY", "Allen Solly", "Zara", "Nike", "Puma"].includes(product.brand) ? "brightness-0 invert opacity-90" : "opacity-90"}`}
+                  className={`w-6 h-6 object-contain ${["ONLY", "Allen Solly"].includes(product.brand) ? "brightness-0 invert opacity-90" : "opacity-90"}`}
                   onError={(e) => {
-                    e.target.onerror = null; 
-                    e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(product.brand)}&background=random&color=fff&size=64&font-size=0.5`;
+                    e.target.style.display = 'none'; // Just hide the broken image, no imaginary logos!
                   }}
                 />
               )}
