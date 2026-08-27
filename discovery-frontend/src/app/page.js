@@ -774,69 +774,136 @@ export default function AnalyticsDashboard() {
               <div className="relative bg-black w-[360px] h-[780px] rounded-[52px] overflow-hidden shadow-2xl border-[14px] border-[#0a0a0a] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[2px] ring-[#3a3a3c]">
                 
                 {/* 1. Homescreen View */}
-                <div className={`absolute inset-0 transition-all duration-700 ${
-                  simStateA === 'wishlist' || simStateA === 'converted' ? 'scale-[2.5] opacity-0 pointer-events-none filter blur-xl' : 'scale-100 opacity-100'
+                <div className={`absolute inset-0 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  simStateA === 'wishlist' || simStateA === 'converted' ? 'scale-[3] opacity-0 pointer-events-none filter blur-[20px]' : 'scale-100 opacity-100'
                 }`}>
-                  <div className="absolute inset-0 bg-cover bg-center opacity-80" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop')" }}></div>
+                  {/* Authentic iOS 17 Wallpaper */}
+                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1695502693822-1d59664db335?q=80&w=800&auto=format&fit=crop')" }}></div>
                   
-                  {/* Mock Status Bar */}
+                  {/* Authentic iOS Status Bar & Dynamic Island */}
                   <div className="absolute top-0 w-full h-[54px] flex justify-between items-center px-6 z-40 pt-2 text-white">
-                    <span className="text-[14px] font-semibold tracking-tight w-[60px] ml-1 drop-shadow-md">9:41</span>
+                    <span className="text-[15px] font-semibold tracking-tight w-[60px] text-center ml-1 drop-shadow-md font-sans">9:41</span>
+                    
+                    {/* Dynamic Island */}
+                    <div className="absolute left-1/2 -translate-x-1/2 top-[10px] w-[105px] h-[32px] bg-black rounded-full flex items-center justify-between px-2.5 shadow-md">
+                      <div className="w-3 h-3 rounded-full bg-[#111] border border-white/10 shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-500/80 mr-1 blur-[1px]"></div>
+                    </div>
+
                     <div className="flex gap-1.5 items-center w-[60px] justify-end mr-1 drop-shadow-md">
-                      <span className="material-symbols-outlined text-[14px]">signal_cellular_4_bar</span>
-                      <span className="material-symbols-outlined text-[14px]">wifi</span>
-                      <span className="material-symbols-outlined text-[14px]">battery_full</span>
+                      {/* iOS Signal (White) */}
+                      <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="7" width="3" height="4" rx="1" fill="white"/>
+                        <rect x="4.5" y="5" width="3" height="6" rx="1" fill="white"/>
+                        <rect x="8.5" y="3" width="3" height="8" rx="1" fill="white"/>
+                        <rect x="12.5" y="0" width="3" height="11" rx="1" fill="white"/>
+                      </svg>
+                      {/* iOS Wifi (White) */}
+                      <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M7.5 11C8.25939 11 8.875 10.3844 8.875 9.625C8.875 8.86561 8.25939 8.25 7.5 8.25C6.74061 8.25 6.125 8.86561 6.125 9.625C6.125 10.3844 6.74061 11 7.5 11ZM7.5 5.5C5.83609 5.5 4.34027 6.17415 3.25625 7.25817L4.22915 8.23107C5.06822 7.392 6.22359 6.875 7.5 6.875C8.77641 6.875 9.93178 7.392 10.7709 8.23107L11.7438 7.25817C10.6597 6.17415 9.16391 5.5 7.5 5.5ZM7.5 2.75C5.10519 2.75 2.94632 3.72266 1.39167 5.27732L2.36456 6.25021C3.68112 4.93365 5.50025 4.125 7.5 4.125C9.49975 4.125 11.3189 4.93365 12.6354 6.25021L13.6083 5.27732C12.0537 3.72266 9.89481 2.75 7.5 2.75ZM7.5 0C4.37688 0 1.55403 1.26629 -0.554443 3.31505L0.41845 4.28795C2.28581 2.4566 4.7709 1.375 7.5 1.375C10.2291 1.375 12.7142 2.4566 14.5816 4.28795L15.5544 3.31505C13.446 1.26629 10.6231 0 7.5 0Z" fill="white"/>
+                      </svg>
+                      {/* iOS Battery (White) */}
+                      <div className="flex items-center ml-0.5">
+                        <div className="w-[24px] h-[11px] border-[1px] border-white/40 rounded-[3px] p-[1px] relative">
+                          <div className="bg-white w-full h-full rounded-[1.5px]"></div>
+                        </div>
+                        <div className="w-[3px] h-[4px] bg-white/40 rounded-r-sm ml-[1px]"></div>
+                      </div>
                     </div>
                   </div>
 
                   {/* App Grid */}
-                  <div className="absolute top-28 left-0 w-full px-6">
+                  <div className="absolute top-16 left-0 w-full px-6 pt-4">
                     <div className="grid grid-cols-4 gap-x-4 gap-y-6 max-w-md mx-auto">
+                      {/* FaceTime Mock */}
                       <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[56px] h-[56px] rounded-[14px] bg-[#4cd964] flex items-center justify-center shadow-sm">
-                          <span className="material-symbols-outlined text-white text-2xl">chat</span>
+                        <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
+                          <span className="material-symbols-outlined text-white text-3xl">videocam</span>
                         </div>
-                        <span className="text-white text-[10px] font-medium drop-shadow-md">Messages</span>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">FaceTime</span>
                       </div>
+                      {/* Calendar Mock */}
+                      <div className="flex flex-col items-center gap-1.5">
+                        <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex flex-col items-center justify-center shadow-sm relative">
+                          <span className="text-[#FF3B30] font-semibold text-[9px] absolute top-1.5 uppercase tracking-wide font-sans">Tue</span>
+                          <span className="text-black font-normal text-[32px] leading-none mt-2 font-sans tracking-tight">27</span>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Calendar</span>
+                      </div>
+                      {/* Photos Mock */}
+                      <div className="flex flex-col items-center gap-1.5">
+                        <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex items-center justify-center shadow-sm p-1.5">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Photos_icon_%28iOS%29.png" alt="Photos" className="w-full h-full object-cover" />
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Photos</span>
+                      </div>
+                      {/* Camera Mock */}
+                      <div className="flex flex-col items-center gap-1.5">
+                        <div className="w-[60px] h-[60px] rounded-[14px] bg-gray-200 flex items-center justify-center shadow-sm overflow-hidden">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Camera_Icon_%28iOS%29.svg" alt="Camera" className="w-[120%] h-[120%] object-cover" />
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Camera</span>
+                      </div>
+                      {/* Weather Mock */}
+                      <div className="flex flex-col items-center gap-1.5">
+                        <div className="w-[60px] h-[60px] rounded-[14px] bg-[#0A84FF] flex items-center justify-center shadow-sm">
+                          <span className="material-symbols-outlined text-white text-3xl">cloud</span>
+                        </div>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Weather</span>
+                      </div>
+                      {/* Myntra */}
                       <div className="flex flex-col items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95 transition-transform" onClick={handlePhoneALaunch}>
-                        <div className="w-[56px] h-[56px] rounded-[14px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shadow-[0_5px_15px_rgba(255,62,108,0.4)]">
-                          <span className="text-white font-bold text-[30px] font-serif leading-none tracking-tighter">M</span>
+                        <div className="w-[60px] h-[60px] rounded-[14px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shadow-[0_5px_15px_rgba(255,62,108,0.4)]">
+                           <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Myntra_logo.png" alt="Myntra" className="w-[80%] h-[80%] object-contain drop-shadow-md brightness-[0] invert" />
                         </div>
-                        <span className="text-white text-[10px] font-medium drop-shadow-md">Myntra</span>
-                      </div>
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[56px] h-[56px] rounded-[14px] bg-white flex flex-col items-center justify-center shadow-sm relative">
-                          <span className="text-red-500 font-bold text-[8px] absolute top-1 uppercase">Tue</span>
-                          <span className="text-black font-medium text-[24px] leading-none mt-1.5">27</span>
-                        </div>
-                        <span className="text-white text-[10px] font-medium drop-shadow-md">Calendar</span>
-                      </div>
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-[56px] h-[56px] rounded-[14px] bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-sm">
-                          <span className="material-symbols-outlined text-white text-2xl">cloud</span>
-                        </div>
-                        <span className="text-white text-[10px] font-medium drop-shadow-md">Weather</span>
+                        <span className="text-white text-[11px] font-medium drop-shadow-md font-sans">Myntra</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Animated Push Notification */}
+                  {/* iOS Page Indicator Dots */}
+                  <div className="absolute bottom-[115px] left-1/2 -translate-x-1/2 flex gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
+                  </div>
+
+                  {/* iOS Dock */}
+                  <div className="absolute bottom-[16px] left-4 right-4 h-[86px] rounded-[30px] bg-white/25 backdrop-blur-[30px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)] flex items-center justify-around px-2 pb-2 pt-2">
+                    {/* Phone */}
+                    <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
+                      <span className="material-symbols-outlined text-white text-3xl">call</span>
+                    </div>
+                    {/* Safari */}
+                    <div className="w-[60px] h-[60px] rounded-[14px] bg-white flex items-center justify-center shadow-sm p-1.5">
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Safari_browser_logo.svg" alt="Safari" className="w-full h-full object-cover" />
+                    </div>
+                    {/* Messages */}
+                    <div className="w-[60px] h-[60px] rounded-[14px] bg-[#34C759] flex items-center justify-center shadow-sm">
+                      <span className="material-symbols-outlined text-white text-3xl">chat_bubble</span>
+                    </div>
+                    {/* Music */}
+                    <div className="w-[60px] h-[60px] rounded-[14px] bg-[#FF2D55] flex items-center justify-center shadow-sm">
+                      <span className="material-symbols-outlined text-white text-3xl">music_note</span>
+                    </div>
+                  </div>
+
+                  {/* Authentic iOS Push Notification */}
                   <div 
-                    className={`absolute left-4 right-4 bg-white/90 backdrop-blur-xl rounded-[20px] p-3.5 shadow-2xl cursor-pointer flex gap-3 items-start border border-white/20 transition-all duration-500 hover:bg-white z-50 ${
+                    className={`absolute left-2 right-2 bg-[rgba(250,250,250,0.85)] backdrop-blur-[40px] rounded-[24px] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.25)] cursor-pointer flex gap-3.5 items-start border border-white/50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-50 ${
                       simStateA === 'notification' ? 'top-14 opacity-100 scale-100' : '-top-32 opacity-0 scale-95 pointer-events-none'
                     }`}
                     onClick={handlePhoneALaunch}
                   >
-                    <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shrink-0 shadow-sm">
-                      <span className="material-symbols-outlined text-white text-xl font-bold">shopping_bag</span>
+                    <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center shrink-0 shadow-[0_2px_10px_rgba(255,62,108,0.2)] mt-0.5">
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Myntra_logo.png" alt="Myntra" className="w-[65%] h-[65%] object-contain drop-shadow-sm brightness-[0] invert" />
                     </div>
-                    <div className="flex-1 overflow-hidden">
+                    <div className="flex-1 overflow-hidden font-sans">
                       <div className="flex justify-between items-center mb-0.5">
-                        <span className="font-bold text-black/80 text-[12px] tracking-tight">Myntra</span>
-                        <span className="text-black/50 text-[10px]">now</span>
+                        <span className="font-semibold text-black/90 text-[13px] tracking-tight">Myntra</span>
+                        <span className="text-black/50 text-[11px] font-medium">now</span>
                       </div>
-                      <p className="font-bold text-black text-[13px] leading-tight mb-0.5">Price Drop Alert! 🌟</p>
-                      <p className="text-black/70 text-[11px] leading-tight">The items in your wishlist are selling out fast. Open your Style Sandbox now to claim them!</p>
+                      <p className="font-semibold text-black text-[14px] leading-snug mb-0.5">Price Drop Alert! 🌟</p>
+                      <p className="text-black/80 text-[13px] leading-tight">The items in your wishlist are selling out fast. Open your Style Sandbox now to claim them!</p>
                     </div>
                   </div>
                 </div>
