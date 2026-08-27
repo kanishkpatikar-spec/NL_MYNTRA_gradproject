@@ -773,109 +773,177 @@ export default function AnalyticsDashboard() {
               </div>
               <div className="relative bg-black w-[360px] h-[780px] rounded-[52px] overflow-hidden shadow-2xl border-[14px] border-[#0a0a0a] flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] ring-[2px] ring-[#3a3a3c]">
                 
-                {/* 1. Homescreen View (User's Exact Screenshot) */}
-                <div className={`absolute inset-0 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  simStateA === 'wishlist' || simStateA === 'converted' ? 'scale-[3] opacity-0 pointer-events-none filter blur-[20px]' : 'scale-100 opacity-100'
+                {/* ===== LAYER 1: Homescreen (User's real iPhone screenshot) ===== */}
+                <div className={`absolute inset-0 z-10 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  simStateA === 'wishlist' || simStateA === 'converted' 
+                    ? 'scale-[2.5] opacity-0 pointer-events-none blur-[12px]' 
+                    : 'scale-100 opacity-100'
                 }`}>
-                  {/* The User's Authentic Homescreen Screenshot */}
-                  <img src="/panda_homescreen.png" alt="Homescreen" className="w-full h-full object-cover" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src="/panda_homescreen.png" 
+                    alt="iPhone Homescreen" 
+                    className="w-full h-full object-cover"
+                    style={{ imageRendering: 'auto' }}
+                  />
                   
-                  {/* Invisible Hotspot for the Myntra App Icon in the screenshot (approx Bottom Right) */}
+                  {/* Clickable Myntra icon hotspot (bottom-right area of grid, row 5 col 4) */}
                   <div 
-                    className="absolute w-[70px] h-[70px] cursor-pointer"
-                    style={{ top: '63%', left: '76%' }} 
+                    className="absolute cursor-pointer hover:bg-white/10 rounded-[14px] transition-colors"
+                    style={{ top: '72%', right: '8%', width: '60px', height: '72px' }} 
                     onClick={handlePhoneALaunch}
+                    title="Myntra"
                   ></div>
 
-                  {/* Authentic iOS Push Notification */}
+                  {/* iOS Push Notification Banner */}
                   <div 
-                    className={`absolute left-2 right-2 bg-[rgba(250,250,250,0.85)] backdrop-blur-[40px] rounded-[24px] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.25)] cursor-pointer flex gap-3.5 items-start border border-white/50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-50 ${
-                      simStateA === 'notification' ? 'top-12 opacity-100 scale-100' : '-top-32 opacity-0 scale-95 pointer-events-none'
+                    className={`absolute left-[6px] right-[6px] z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      simStateA === 'notification' 
+                        ? 'top-[6px] opacity-100 scale-100' 
+                        : '-top-[120px] opacity-0 scale-95 pointer-events-none'
                     }`}
                     onClick={handlePhoneALaunch}
                   >
-                    <div className="w-10 h-10 rounded-[10px] bg-[#222] flex items-center justify-center shrink-0 shadow-[0_2px_10px_rgba(0,0,0,0.2)] mt-0.5">
-                       <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] font-bold text-[24px] font-serif leading-none tracking-tighter">M</span>
-                    </div>
-                    <div className="flex-1 overflow-hidden font-sans">
-                      <div className="flex justify-between items-center mb-0.5">
-                        <span className="font-semibold text-black/90 text-[13px] tracking-tight">Myntra</span>
-                        <span className="text-black/50 text-[11px] font-medium">now</span>
+                    <div className="bg-white/[0.82] backdrop-blur-[25px] rounded-[22px] p-[14px] shadow-[0_8px_30px_rgba(0,0,0,0.18)] cursor-pointer flex gap-3 items-start border border-white/60">
+                      {/* Myntra App Icon */}
+                      <div className="w-[38px] h-[38px] rounded-[9px] bg-gradient-to-br from-[#ff3e6c] to-[#ee5a24] flex items-center justify-center shrink-0 mt-[1px]">
+                        <span className="text-white font-bold text-[20px] font-serif leading-none" style={{ fontFamily: 'Georgia, serif' }}>M</span>
                       </div>
-                      <p className="font-semibold text-black text-[14px] leading-snug mb-0.5">Price Drop Alert! 🌟</p>
-                      <p className="text-black/80 text-[13px] leading-tight">The items in your wishlist are selling out fast. Open your Style Sandbox now to claim them!</p>
+                      <div className="flex-1 min-w-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>
+                        <div className="flex justify-between items-center mb-[2px]">
+                          <span className="font-semibold text-[#1c1c1e] text-[13px] tracking-[-0.08px]">Myntra</span>
+                          <span className="text-[#8e8e93] text-[12px] font-normal">now</span>
+                        </div>
+                        <p className="font-semibold text-[#1c1c1e] text-[14px] leading-[18px] mb-[1px] tracking-[-0.15px]">Price Drop Alert! 🌟</p>
+                        <p className="text-[#3c3c43]/60 text-[14px] leading-[18px] tracking-[-0.15px]">Items in your wishlist are selling fast. Tap to claim them!</p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* 2. Wishlist App View (Revealed when homescreen scales away) */}
-                <div className={`absolute inset-0 bg-white flex flex-col transition-all duration-700 delay-100 ${
-                  simStateA === 'wishlist' || simStateA === 'converted' ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                {/* ===== LAYER 2: Myntra App View (visible after homescreen animates away) ===== */}
+                <div className={`absolute inset-0 z-5 bg-[#fafafa] flex flex-col transition-all duration-500 delay-200 ${
+                  simStateA === 'wishlist' || simStateA === 'converted' 
+                    ? 'opacity-100' 
+                    : 'opacity-0 pointer-events-none'
                 }`}>
-                  {/* Status Bar */}
-                  <div className="w-full h-[54px] flex justify-between items-center px-6 pt-2 z-40 bg-white text-black border-b border-gray-100">
-                    <span className="text-[14px] font-semibold tracking-tight w-[60px] ml-1">9:41</span>
-                    <div className="flex gap-1.5 items-center w-[60px] justify-end mr-1">
-                      <span className="material-symbols-outlined text-[14px]">signal_cellular_4_bar</span>
-                      <span className="material-symbols-outlined text-[14px]">wifi</span>
-                      <span className="material-symbols-outlined text-[14px]">battery_full</span>
+                  
+                  {/* Myntra App Header */}
+                  <div className="bg-white border-b border-gray-100">
+                    {/* Status Bar */}
+                    <div className="flex justify-between items-center px-5 pt-3 pb-1">
+                      <span className="text-[14px] font-semibold text-black" style={{ fontFamily: '-apple-system, sans-serif' }}>9:41</span>
+                      <div className="flex gap-1 items-center">
+                        <svg width="16" height="10" viewBox="0 0 17 11" fill="none"><rect x="0.5" y="7" width="3" height="4" rx="1" fill="black"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="black"/><rect x="8.5" y="3" width="3" height="8" rx="1" fill="black"/><rect x="12.5" y="0" width="3" height="11" rx="1" fill="black"/></svg>
+                        <svg width="14" height="10" viewBox="0 0 15 11" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M7.5 11C8.26 11 8.88 10.38 8.88 9.63C8.88 8.87 8.26 8.25 7.5 8.25C6.74 8.25 6.13 8.87 6.13 9.63C6.13 10.38 6.74 11 7.5 11ZM7.5 5.5C5.84 5.5 4.34 6.17 3.26 7.26L4.23 8.23C5.07 7.39 6.22 6.88 7.5 6.88C8.78 6.88 9.93 7.39 10.77 8.23L11.74 7.26C10.66 6.17 9.16 5.5 7.5 5.5ZM7.5 2.75C5.11 2.75 2.95 3.72 1.39 5.28L2.36 6.25C3.68 4.93 5.5 4.13 7.5 4.13C9.5 4.13 11.32 4.93 12.64 6.25L13.61 5.28C12.05 3.72 9.89 2.75 7.5 2.75Z" fill="black"/></svg>
+                        <div className="flex items-center"><div className="w-[22px] h-[10px] border border-black/30 rounded-[2.5px] p-[1px]"><div className="bg-black w-full h-full rounded-[1px]"></div></div><div className="w-[2px] h-[4px] bg-black/30 rounded-r-sm ml-[0.5px]"></div></div>
+                      </div>
+                    </div>
+                    
+                    {/* Myntra Navigation Bar */}
+                    <div className="flex items-center justify-between px-4 py-3">
+                      <div className="flex items-center gap-3">
+                        <span className="material-symbols-outlined text-[#282c3f] text-[22px]">arrow_back</span>
+                        <div>
+                          <h1 className="text-[16px] font-bold text-[#282c3f] leading-tight tracking-tight">Wishlist</h1>
+                          <p className="text-[11px] text-[#94969f]">1 item</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <span className="material-symbols-outlined text-[#282c3f] text-[22px]">search</span>
+                        <span className="material-symbols-outlined text-[#282c3f] text-[22px]">shopping_bag</span>
+                      </div>
                     </div>
                   </div>
                   
-                  {/* Wishlist Header */}
-                  <div className="px-6 py-4 border-b border-gray-100 bg-white">
-                    <h1 className="text-xl font-bold text-gray-900 tracking-tight">Your Wishlist</h1>
-                    <p className="text-xs text-gray-500">1 item saved</p>
-                  </div>
-
-                  {/* Wishlist Item Card */}
-                  <div className="p-4 bg-gray-50 flex-1">
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-                      <div className="h-[200px] bg-gray-200 relative">
-                        <img src={mockProducts['size'].image} alt="Product" className="w-full h-full object-cover" />
-                        <div className="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold text-red-500">
-                          SELLING FAST
+                  {/* Wishlist Product Card */}
+                  <div className="flex-1 overflow-y-auto p-3">
+                    <div className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                      {/* Product Image */}
+                      <div className="relative h-[240px] bg-gray-100">
+                        <img 
+                          src={mockProducts[simScenario]?.image || mockProducts['size'].image} 
+                          alt="Product" 
+                          className="w-full h-full object-cover" 
+                        />
+                        <div className="absolute top-2 left-2 bg-[#ff3e6c] text-white text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider">
+                          {mockProducts[simScenario]?.discount || '56% OFF'}
+                        </div>
+                        <div className="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                          <span className="material-symbols-outlined text-[#ff3e6c] text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
+                        </div>
+                        <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm text-[10px] text-[#282c3f] font-semibold px-2 py-1 rounded flex items-center gap-1">
+                          <span className="text-[#14958f]">★</span> {mockProducts[simScenario]?.rating || '4.2 ★ | 1.2k'}
                         </div>
                       </div>
-                      <div className="p-4">
-                        <h3 className="font-bold text-gray-900 text-sm mb-1">{mockProducts['size'].brand}</h3>
-                        <p className="text-gray-500 text-xs mb-3">{mockProducts['size'].title}</p>
-                        <div className="flex items-center gap-2 mb-4">
-                          <span className="font-bold text-gray-900">{mockProducts['size'].price}</span>
-                          <span className="text-gray-400 text-xs line-through">{mockProducts['size'].originalPrice}</span>
+                      
+                      {/* Product Info */}
+                      <div className="p-3">
+                        <h3 className="text-[14px] font-bold text-[#282c3f] mb-0.5">{mockProducts[simScenario]?.brand || 'Roadster'}</h3>
+                        <p className="text-[12px] text-[#535766] mb-2 leading-tight">{mockProducts[simScenario]?.title || 'Men Blue Solid Denim Jacket'}</p>
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-[14px] font-bold text-[#282c3f]">{mockProducts[simScenario]?.price || '₹1,299'}</span>
+                          <span className="text-[12px] text-[#94969f] line-through">{mockProducts[simScenario]?.originalPrice || '₹2,999'}</span>
+                          <span className="text-[12px] text-[#ff905a] font-semibold">{mockProducts[simScenario]?.discount || '56% OFF'}</span>
                         </div>
                         
-                        {/* Aura Sandbox CTA */}
-                        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 rounded-xl p-3 flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                             <span className="material-symbols-outlined text-primary text-[18px]">auto_awesome</span>
-                             <div>
-                               <p className="text-[10px] font-bold text-primary leading-tight">Style Sandbox Match</p>
-                               <p className="text-[9px] text-gray-600">Great fit for your profile</p>
-                             </div>
+                        {/* Aura AI Recommendation Banner */}
+                        <div className="bg-gradient-to-r from-[#fff0f5] to-[#fff5ee] border border-[#ff3e6c]/15 rounded-lg p-3 mb-3">
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#ff3e6c] to-[#ff8c42] flex items-center justify-center">
+                              <span className="material-symbols-outlined text-white text-[12px]">auto_awesome</span>
+                            </div>
+                            <span className="text-[11px] font-bold text-[#ff3e6c] uppercase tracking-wider">Aura Style Sandbox</span>
                           </div>
-                          <button className="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-lg shadow-sm">
-                            Buy Look
-                          </button>
+                          <p className="text-[11px] text-[#535766] leading-relaxed">This item matches your style profile perfectly. Price dropped 23% since you wishlisted it!</p>
                         </div>
+                        
+                        {/* Add to Bag Button */}
+                        <button className="w-full bg-[#ff3e6c] text-white font-bold text-[14px] py-3 rounded-lg uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_2px_8px_rgba(255,62,108,0.3)] active:scale-[0.98] transition-transform">
+                          <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
+                          Add to Bag
+                        </button>
+                      </div>
+                    </div>
+                    
+                    {/* Similar Products Suggestion */}
+                    <div className="mt-3 bg-white rounded-xl border border-gray-200 p-3">
+                      <p className="text-[11px] font-bold text-[#282c3f] uppercase tracking-wider mb-2">Complete the Look</p>
+                      <div className="flex gap-2">
+                        <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?w=100&q=80" className="w-full h-full object-cover" alt="suggestion" /></div>
+                        <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1622445275463-afa2ab738c34?w=100&q=80" className="w-full h-full object-cover" alt="suggestion" /></div>
+                        <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=100&q=80" className="w-full h-full object-cover" alt="suggestion" /></div>
                       </div>
                     </div>
                   </div>
+                  
+                  {/* Myntra Bottom Nav */}
+                  <div className="bg-white border-t border-gray-200 flex items-center justify-around py-2 px-1">
+                    <div className="flex flex-col items-center gap-0.5"><span className="material-symbols-outlined text-[#94969f] text-[20px]">home</span><span className="text-[9px] text-[#94969f]">Home</span></div>
+                    <div className="flex flex-col items-center gap-0.5"><span className="material-symbols-outlined text-[#94969f] text-[20px]">category</span><span className="text-[9px] text-[#94969f]">Categories</span></div>
+                    <div className="flex flex-col items-center gap-0.5"><span className="material-symbols-outlined text-[#94969f] text-[20px]">local_mall</span><span className="text-[9px] text-[#94969f]">Studio</span></div>
+                    <div className="flex flex-col items-center gap-0.5"><span className="material-symbols-outlined text-[#94969f] text-[20px]">explore</span><span className="text-[9px] text-[#94969f]">Explore</span></div>
+                    <div className="flex flex-col items-center gap-0.5"><span className="material-symbols-outlined text-[#ff3e6c] text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span><span className="text-[9px] text-[#ff3e6c] font-bold">Wishlist</span></div>
+                    <div className="flex flex-col items-center gap-0.5"><span className="material-symbols-outlined text-[#94969f] text-[20px]">person</span><span className="text-[9px] text-[#94969f]">Profile</span></div>
+                  </div>
+                </div>
 
-                  {/* Converted Overlay */}
-                  <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex flex-col items-center justify-center transition-all duration-500 ${
-                    simStateA === 'converted' ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                  }`}>
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-4">
-                      <span className="material-symbols-outlined text-white text-3xl">check</span>
-                    </div>
-                    <h3 className="text-white font-bold text-xl uppercase tracking-widest">Added to Bag</h3>
-                    <p className="text-white/70 text-sm mt-2">Converted after 28 days via Aura.</p>
+                {/* ===== LAYER 3: Conversion Success Overlay ===== */}
+                <div className={`absolute inset-0 z-50 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center transition-all duration-500 ${
+                  simStateA === 'converted' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}>
+                  <div className="w-20 h-20 bg-[#14958f] rounded-full flex items-center justify-center mb-5 shadow-[0_0_30px_rgba(20,149,143,0.5)]">
+                    <span className="material-symbols-outlined text-white text-4xl">check</span>
+                  </div>
+                  <h3 className="text-white font-bold text-xl uppercase tracking-[0.2em] mb-2">Added to Bag</h3>
+                  <p className="text-white/70 text-sm">Converted after 28 days via Aura AI</p>
+                  <div className="mt-4 bg-white/10 backdrop-blur px-4 py-2 rounded-full border border-white/20">
+                    <span className="text-white/90 text-xs font-medium">30-Day Conversion Funnel Complete ✓</span>
                   </div>
                 </div>
                 
                 {/* iPhone Home Indicator */}
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-300 rounded-full z-50 mix-blend-difference"></div>
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-300 rounded-full z-[60] mix-blend-difference"></div>
               </div>
             </div>
 
