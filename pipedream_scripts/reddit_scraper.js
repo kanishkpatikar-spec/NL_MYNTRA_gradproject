@@ -1,6 +1,7 @@
 // Pipedream Node.js step for Reddit
 
 import axios from "axios";
+import fs from "fs";
 
 export default defineComponent({
   async run({ steps, $ }) {
@@ -64,6 +65,10 @@ export default defineComponent({
     }
 
     console.log(`Successfully generated ${formattedData.length} static Reddit posts.`);
-    return formattedData;
+    
+    fs.writeFileSync('/tmp/reddit_data.json', JSON.stringify(formattedData));
+    formattedData.length = 0;
+    
+    return { success: true, saved_to: '/tmp/reddit_data.json' };
   },
 })

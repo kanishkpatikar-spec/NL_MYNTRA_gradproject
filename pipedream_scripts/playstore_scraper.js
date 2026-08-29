@@ -1,6 +1,7 @@
 // Pipedream Node.js step for Google Play Store Reviews
 
 import gplay from "google-play-scraper";
+import fs from "fs";
 
 export default defineComponent({
   props: {
@@ -29,7 +30,8 @@ export default defineComponent({
 
       if (!reviews || reviews.length === 0) {
         console.log("No reviews found.");
-        return [];
+        fs.writeFileSync('/tmp/playstore_data.json', JSON.stringify([]));
+        return { success: true, saved_to: '/tmp/playstore_data.json', empty: true };
       }
 
       // Map to raw_snippets schema
@@ -48,7 +50,15 @@ export default defineComponent({
       });
 
       console.log(`Successfully fetched ${formattedData.length} Play Store reviews.`);
-      return formattedData;
+      
+      // Save to disk instead of returning
+      fs.writeFileSync('/tmp/playstore_data.json', JSON.stringify(formattedData));
+      
+      // Clear arrays to free memory
+      reviews.length = 0;
+      formattedData.length = 0;
+
+      return { success: true, saved_to: '/tmp/playstore_data.json' };
 
     } catch (error) {
       console.error("Error fetching Play Store reviews:", error);

@@ -1,6 +1,7 @@
 // Pipedream Node.js step for YouTube Comments
 
 import axios from "axios";
+import fs from "fs";
 
 export default defineComponent({
   props: {
@@ -82,6 +83,10 @@ export default defineComponent({
     }
 
     console.log(`Finished scraping! Total comments collected: ${allFormattedData.length}`);
-    return allFormattedData;
+    
+    fs.writeFileSync('/tmp/youtube_data.json', JSON.stringify(allFormattedData));
+    allFormattedData.length = 0;
+    
+    return { success: true, saved_to: '/tmp/youtube_data.json' };
   },
 })
