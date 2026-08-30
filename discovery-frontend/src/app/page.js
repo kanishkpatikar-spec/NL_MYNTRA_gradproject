@@ -644,8 +644,13 @@ export default function AnalyticsDashboard() {
                         <td colSpan="4" className="py-4 px-4 text-xs italic text-white/60">
                           <p className="font-bold text-[10px] uppercase tracking-widest text-white/40 not-italic mb-2">Example Snippets</p>
                           <ul className="list-disc pl-4 space-y-2">
-                            <li>&quot;This item runs a bit smaller than expected based on similar products.&quot;</li>
-                            <li>&quot;Waiting for the big EOSS sale before I purchase this.&quot;</li>
+                            {opp.example_paraphrases && opp.example_paraphrases.length > 0 ? (
+                              opp.example_paraphrases.map((snippet, idx) => (
+                                <li key={idx}>&quot;{snippet}&quot;</li>
+                              ))
+                            ) : (
+                              <li>No dynamic snippets available for this driver.</li>
+                            )}
                           </ul>
                         </td>
                       </tr>
